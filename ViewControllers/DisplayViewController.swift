@@ -13,7 +13,33 @@ class DisplayViewController: UIViewController {
     @IBAction func backButton(sender: AnyObject) {
         
     }
+    @IBOutlet weak var titleTextField: UILabel!
+    @IBOutlet weak var contentTextView: UILabel!
+
+    var note: FoodInfo? {
+        didSet {
+            println("in note didset")
+            titleTextField.text = ""
+            contentTextView.text = ""
+            displayFood(self.note)
+            println(self.note!.name)
+            println("after calling displayFood")
+        }
+    }
     
+    func displayFood(note: FoodInfo?) {
+        println("in displayFood")
+        if let note = note{
+            println("in conditional!")
+            if let titleTextField = titleTextField, contentTextView = contentTextView  {
+                println("in inner conditional!")
+                titleTextField.text = note.name
+                println(titleTextField)
+                let allInfo : String = "\(note.group)\n\(note.factor)\n\(note.protGram)"
+                contentTextView.text = allInfo
+           }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

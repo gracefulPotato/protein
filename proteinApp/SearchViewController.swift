@@ -20,7 +20,7 @@ class SearchViewController: UIViewController {
         case DefaultMode
         case SearchMode
     }
-    
+    var selectedFood: FoodInfo?
     var state: State = .DefaultMode
     var filtered:[FoodInfo] = []
     
@@ -64,6 +64,14 @@ class SearchViewController: UIViewController {
     @IBAction func unwindToList(segue: UIStoryboardSegue) {
         
     }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "showFood") {
+            let FoodViewController = segue.destinationViewController as! DisplayViewController
+            println("selectedFood: \(selectedFood)")
+            FoodViewController.note = selectedFood
+        }
+    }
+
     //func searchNotes(searchString: String) -> Results<FoodInfo> {
     //let realm = Realm()
     //let searchPredicate = NSPredicate(format: "name CONTAINS[c] %@ OR content CONTAINS[c] %@", searchString, searchString)
@@ -72,6 +80,12 @@ class SearchViewController: UIViewController {
     
 }
 extension SearchViewController: UITableViewDelegate{
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("You selected cell #\(indexPath.row)!")
+        
+        selectedFood = allFoods.objectAtIndex(UInt(indexPath.row)) as? FoodInfo
+        self.performSegueWithIdentifier("showFood", sender: self)
+    }
    // func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
    //     self.performSegueWithIdentifier("showFood", sender: self)
    // }
@@ -97,10 +111,10 @@ extension SearchViewController: UITableViewDataSource {
         return Int(allFoods.count)
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("You selected cell #\(indexPath.row)!")
-        self.performSegueWithIdentifier("showFood", sender: self)
-    }
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        println("You selected cell #\(indexPath.row)!")
+//        self.performSegueWithIdentifier("showFood", sender: self)
+//    }
     
     
 }
