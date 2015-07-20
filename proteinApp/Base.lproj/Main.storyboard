@@ -46,6 +46,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.85266758945030197" green="0.95456045739950113" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="nameLabel" destination="tYi-7J-Zfu" id="RKd-hR-I8A"/>
                                         </connections>
@@ -56,7 +57,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="mAB-jl-3hc" secondAttribute="trailing" id="2Zf-Lr-2n6"/>
                             <constraint firstItem="1cC-pG-ch0" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="Ble-hd-wLg"/>
@@ -73,6 +74,7 @@
                     <connections>
                         <outlet property="searchBar" destination="1cC-pG-ch0" id="sfd-Jj-B3y"/>
                         <outlet property="tableView" destination="mAB-jl-3hc" id="Fqr-6D-skP"/>
+                        <outlet property="toolbarBottomSpace" destination="zCq-ck-tLX" id="o2e-dC-12e"/>
                         <segue destination="xQ9-aS-ivA" kind="show" identifier="showFood" id="CcA-6T-BYh"/>
                     </connections>
                 </viewController>
@@ -92,8 +94,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwh-gS-SNi">
+                                <rect key="frame" x="0.0" y="153" width="600" height="71"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBi-Ud-CIY">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="40" width="600" height="44"/>
+                                <color key="backgroundColor" red="0.34845461581231119" green="0.40695949814449961" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem id="2hH-ik-l9z">
                                         <barButtonItem key="leftBarButtonItem" image="Search" id="l0r-sL-Jjr">
@@ -105,28 +114,53 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNc-Cc-77h">
-                                <rect key="frame" x="108" y="248" width="363" height="222"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNc-Cc-77h">
+                                <rect key="frame" x="82" y="209" width="422" height="75"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwh-gS-SNi">
-                                <rect key="frame" x="279" y="102" width="127" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhj-pg-Pzc">
+                                <rect key="frame" x="82" y="316" width="433" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9UR-YA-k2U" customClass="JBBarChartView">
+                                <rect key="frame" x="215" y="243" width="300" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.72694274924550994" green="1" blue="0.65633816837615944" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="PBi-Ud-CIY" firstAttribute="top" secondItem="jWz-Gx-o0m" secondAttribute="bottom" id="Djv-5f-run"/>
+                            <constraint firstItem="jwh-gS-SNi" firstAttribute="leading" secondItem="zGK-DX-9Mn" secondAttribute="leadingMargin" id="63b-kj-KDg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jwh-gS-SNi" secondAttribute="trailing" constant="220" id="7kI-TA-JoD"/>
+                            <constraint firstItem="nQD-6p-wFv" firstAttribute="top" secondItem="9UR-YA-k2U" secondAttribute="bottom" constant="10" id="7wN-hr-8Eo"/>
+                            <constraint firstItem="zNc-Cc-77h" firstAttribute="leading" secondItem="zGK-DX-9Mn" secondAttribute="leadingMargin" constant="10" id="8nl-aq-KrD"/>
+                            <constraint firstItem="Bhj-pg-Pzc" firstAttribute="leading" secondItem="zGK-DX-9Mn" secondAttribute="leadingMargin" constant="10" id="Bvz-93-Tzg"/>
+                            <constraint firstItem="Bhj-pg-Pzc" firstAttribute="top" secondItem="zNc-Cc-77h" secondAttribute="bottom" constant="20" id="CqX-L4-Vjf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9UR-YA-k2U" secondAttribute="trailing" constant="50" id="D1w-wZ-Rqf"/>
+                            <constraint firstItem="PBi-Ud-CIY" firstAttribute="top" secondItem="jWz-Gx-o0m" secondAttribute="bottom" constant="20" id="Djv-5f-run"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jwh-gS-SNi" secondAttribute="trailing" id="FDQ-WW-sK6"/>
+                            <constraint firstItem="jwh-gS-SNi" firstAttribute="leading" secondItem="zGK-DX-9Mn" secondAttribute="leadingMargin" constant="221" id="Sfg-dk-Y4W"/>
                             <constraint firstAttribute="trailing" secondItem="PBi-Ud-CIY" secondAttribute="trailing" id="WDh-w4-LFm"/>
+                            <constraint firstItem="9UR-YA-k2U" firstAttribute="leading" secondItem="zGK-DX-9Mn" secondAttribute="leadingMargin" constant="199" id="WJc-eD-kvl"/>
+                            <constraint firstItem="zNc-Cc-77h" firstAttribute="top" secondItem="jwh-gS-SNi" secondAttribute="bottom" constant="75" id="bgS-P1-mVU"/>
                             <constraint firstItem="PBi-Ud-CIY" firstAttribute="leading" secondItem="zGK-DX-9Mn" secondAttribute="leading" id="ggR-4W-3el"/>
+                            <constraint firstItem="9UR-YA-k2U" firstAttribute="top" secondItem="jwh-gS-SNi" secondAttribute="bottom" constant="100" id="oQ0-nc-Zum"/>
+                            <constraint firstItem="jwh-gS-SNi" firstAttribute="top" secondItem="PBi-Ud-CIY" secondAttribute="bottom" constant="50" id="zK0-hM-yGb"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7kI-TA-JoD"/>
+                                <exclude reference="Sfg-dk-Y4W"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="contentTextView" destination="zNc-Cc-77h" id="gRf-dc-LgE"/>
+                        <outlet property="barChartView" destination="9UR-YA-k2U" id="elT-gS-zuh"/>
+                        <outlet property="groupTextView" destination="zNc-Cc-77h" id="Ek5-Yl-yLR"/>
+                        <outlet property="protGramTextView" destination="Bhj-pg-Pzc" id="eBR-67-AKV"/>
                         <outlet property="titleTextField" destination="jwh-gS-SNi" id="Cgp-wc-4cO"/>
                     </connections>
                 </viewController>

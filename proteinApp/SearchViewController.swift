@@ -14,14 +14,40 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var toolbarBottomSpace: NSLayoutConstraint!
     let allFoods : RLMResults = FoodInfo.allObjects()
-    
+    var carrySearchText : String?
+    var resultsArr = [FoodInfo]()
+    var keyboardNotificationHandler: KeyboardNotificationHandler?
     enum State {
         case DefaultMode
         case SearchMode
     }
     var selectedFood: FoodInfo?
-    var state: State = .DefaultMode
+    var state: State = .DefaultMode{
+        didSet{
+        switch (state) {
+        case .DefaultMode:
+            notes = allFoods.sortedResultsUsingProperty("name", ascending: true)
+            //self.navigationController!.setNavigationBarHidden(false, animated: true)
+            searchBar.resignFirstResponder()
+            searchBar.text = ""
+            searchBar.showsCancelButton = false
+            println(notes)
+        case .SearchMode:
+            let searchText = searchBar?.text ?? ""
+            carrySearchText = searchText as String?
+            searchBar.setShowsCancelButton(true, animated: true)
+            notes = searchNotes(searchText)
+            //for i in 0..<notes.count{
+//                var tmpIndex = Int(i)
+//                resultsArr[tmpIndex] = notes[i] as! FoodInfo
+//            }
+            //self.navigationController!.setNavigationBarHidden(true, animated: true)
+            println(notes)
+        }
+        }
+    }
     var filtered:[FoodInfo] = []
     
     let items : [String] = ["Avocado", "Bread","Cheese"]
@@ -38,25 +64,29 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //items.append(Static.f1.name)
-        //for i in 1...181{
-        //    var varname = "f\(i)"
-        //    foods.append(Static.f1)
-        //}
+        //notes = allFoods
+        notes = allFoods.sortedResultsUsingProperty("name", ascending: true)
         // Do any additional setup after loading the view, typically from a nib.
         tableView.dataSource = self
         
-
-        
-        //        InfoHelper.printFoods()
-        //        let f783 : FoodInfo = FoodInfo(name:"Peaches, canned, heavy syrup pack, solids and liquids",group:"Fruits and Fruit Juices",factor:3.36,nitFactor:6.25,protGram:0.45,tryp:0.001,thre:0.018,isol:0.013,leuc:0.026,lysi:0.015,meth:0.011,phen:0.014,vali:0.025,hist:0.008)
-        //        let realm = Realm() // 1
-        //        realm.write() { // 2
-        //            realm.add(f783) // 3
-        //        }
-        //        notes = realm.objects(FoodInfo)
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        keyboardNotificationHandler = KeyboardNotificationHandler()
+        
+        keyboardNotificationHandler!.keyboardWillBeHiddenHandler = { (height: CGFloat) in
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.toolbarBottomSpace.constant = 0
+                self.view.layoutIfNeeded()
+            })
+        }
+        
+        keyboardNotificationHandler!.keyboardWillBeShownHandler = { (height: CGFloat) in
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.toolbarBottomSpace.constant = height
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -68,22 +98,24 @@ class SearchViewController: UIViewController {
         if (segue.identifier == "showFood") {
             let FoodViewController = segue.destinationViewController as! DisplayViewController
             println("selectedFood: \(selectedFood)")
+//            FoodViewController.loadView()
             FoodViewController.note = selectedFood
         }
     }
 
-    //func searchNotes(searchString: String) -> Results<FoodInfo> {
-    //let realm = Realm()
-    //let searchPredicate = NSPredicate(format: "name CONTAINS[c] %@ OR content CONTAINS[c] %@", searchString, searchString)
-    //return realm.objects(Note).filter(searchPredicate)
-    //}
+    func searchNotes(searchString: String) -> RLMResults {
+        let realm = Realm()
+        let searchPredicate = NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@", searchString, searchString)
+        return FoodInfo.objectsWithPredicate(searchPredicate)
+    }
     
 }
 extension SearchViewController: UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected cell #\(indexPath.row)!")
         
-        selectedFood = allFoods.objectAtIndex(UInt(indexPath.row)) as? FoodInfo
+        //selectedFood = allFoods.objectAtIndex(UInt(indexPath.row)) as? FoodInfo
+        selectedFood = notes.objectAtIndex(UInt(indexPath.row)) as? FoodInfo
         self.performSegueWithIdentifier("showFood", sender: self)
     }
    // func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
@@ -96,19 +128,30 @@ extension SearchViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("FoodCell", forIndexPath: indexPath) as! FoodTableViewCell //1
         
         let row = indexPath.row
-        
-        cell.nameLabel?.text = allFoods[UInt(row)].name
-        
-        cell.foodnote = allFoods[UInt(row)] as! FoodInfo//JsonHelper.foodsArr[row]
+        //if state == .DefaultMode{
+        //    cell.nameLabel?.text = allFoods[UInt(row)].name
+        //}
+        //else{
+        //notes = allFoods.sortedResultsUsingProperty("name", ascending: true)
+            if let notes = notes{
+                cell.nameLabel?.text = notes[UInt(row)].name
+            }
+            
+        //}
+        //tableView.reloadData()
+        //cell.foodnote = allFoods[UInt(row)] as! FoodInfo//JsonHelper.foodsArr[row]
         
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return holdFoodArray.foods.count
-        
-
-        return Int(allFoods.count)
+        //return Int(allFoods.count)
+        if let notes = notes{
+            return Int(notes.count)
+        }
+        else{
+            return 0
+        }
     }
     
 //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -130,24 +173,28 @@ extension SearchViewController: UISearchBarDelegate {
         state = .DefaultMode
     }
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        state = .DefaultMode
+        state = .SearchMode
+        //searchBar.resignFirstResponder()
     }
+    //func searchBar(searchBar: UISearchBar) {
+    //    state = .DefaultMode
+    //}
+    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        //notes = searchNotes(searchText)
-        filtered = holdFoodArray.foods.filter({ (text) -> Bool in
-            let tmp: NSString = text.name
-            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
-            return range.location != NSNotFound
-        })
-        if(filtered.count == 0){
-            state = .DefaultMode
-        } else {
-            state = .SearchMode
-        }
+        notes = searchNotes(searchText)
+        //filtered = allFoods.filter({ (text) -> Bool in
+        //    let tmp: NSString = text.name
+         //   let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+         //   return range.location != NSNotFound
+       //})
+        //if(filtered.count == 0){
+        //    state = .DefaultMode
+        //} else {
+        //    state = .SearchMode
+        //}
         self.tableView.reloadData()
     }
-    
-}
-struct holdFoodArray{
-    static var foods = [FoodInfo]()
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        notes = allFoods.sortedResultsUsingProperty("name", ascending: true)
+    }
 }

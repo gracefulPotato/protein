@@ -13,6 +13,10 @@
 		651CF83A1B572D4000C647FD /* foodinfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 651CF8391B572D4000C647FD /* foodinfo.json */; };
 		651CF83C1B580C2200C647FD /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 651CF83B1B580C2200C647FD /* test.json */; };
 		651CF83E1B585DED00C647FD /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651CF83D1B585DED00C647FD /* DisplayViewController.swift */; };
+		651CF8481B59CD4900C647FD /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 651CF8431B59CD4900C647FD /* JBBarChartView.m */; };
+		651CF8491B59CD4900C647FD /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 651CF8451B59CD4900C647FD /* JBChartView.m */; };
+		651CF84A1B59CD4900C647FD /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 651CF8471B59CD4900C647FD /* JBLineChartView.m */; };
+		651CF84D1B5D716B00C647FD /* KeyboardNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651CF84C1B5D716A00C647FD /* KeyboardNotificationHandler.swift */; };
 		65CAA8D31B508EFC00EA8150 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CAA8D21B508EFC00EA8150 /* AppDelegate.swift */; };
 		65CAA8D51B508EFC00EA8150 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CAA8D41B508EFC00EA8150 /* SearchViewController.swift */; };
 		65CAA8D71B508EFC00EA8150 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CAA8D61B508EFC00EA8150 /* LogViewController.swift */; };
@@ -41,6 +45,14 @@
 		651CF8391B572D4000C647FD /* foodinfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = foodinfo.json; sourceTree = SOURCE_ROOT; };
 		651CF83B1B580C2200C647FD /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = SOURCE_ROOT; };
 		651CF83D1B585DED00C647FD /* DisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
+		651CF8421B59CD4900C647FD /* JBBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBarChartView.h; sourceTree = "<group>"; };
+		651CF8431B59CD4900C647FD /* JBBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBarChartView.m; sourceTree = "<group>"; };
+		651CF8441B59CD4900C647FD /* JBChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartView.h; sourceTree = "<group>"; };
+		651CF8451B59CD4900C647FD /* JBChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartView.m; sourceTree = "<group>"; };
+		651CF8461B59CD4900C647FD /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartView.h; sourceTree = "<group>"; };
+		651CF8471B59CD4900C647FD /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartView.m; sourceTree = "<group>"; };
+		651CF84B1B59CE0000C647FD /* JBChartView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JBChartView-Bridging-Header.h"; sourceTree = "<group>"; };
+		651CF84C1B5D716A00C647FD /* KeyboardNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationHandler.swift; sourceTree = SOURCE_ROOT; };
 		65CAA8CD1B508EFC00EA8150 /* proteinApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = proteinApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CAA8D11B508EFC00EA8150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65CAA8D21B508EFC00EA8150 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +96,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		651CF8411B59CD4900C647FD /* Jawbone - JBChartView */ = {
+			isa = PBXGroup;
+			children = (
+				651CF8421B59CD4900C647FD /* JBBarChartView.h */,
+				651CF8431B59CD4900C647FD /* JBBarChartView.m */,
+				651CF8441B59CD4900C647FD /* JBChartView.h */,
+				651CF8451B59CD4900C647FD /* JBChartView.m */,
+				651CF8461B59CD4900C647FD /* JBLineChartView.h */,
+				651CF8471B59CD4900C647FD /* JBLineChartView.m */,
+			);
+			name = "Jawbone - JBChartView";
+			path = "../../../Downloads/JBChartView-master/Classes";
+			sourceTree = "<group>";
+		};
 		6551A73C1B541D9300F8B0FC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +143,8 @@
 		65CAA8CF1B508EFC00EA8150 /* proteinApp */ = {
 			isa = PBXGroup;
 			children = (
+				651CF84C1B5D716A00C647FD /* KeyboardNotificationHandler.swift */,
+				651CF8411B59CD4900C647FD /* Jawbone - JBChartView */,
 				651CF83B1B580C2200C647FD /* test.json */,
 				651CF8391B572D4000C647FD /* foodinfo.json */,
 				65E04C6A1B570F2E00198FE2 /* Views */,
@@ -128,6 +156,7 @@
 				65CAA8DB1B508EFD00EA8150 /* Images.xcassets */,
 				65CAA8DD1B508EFD00EA8150 /* LaunchScreen.xib */,
 				65CAA8D01B508EFC00EA8150 /* Supporting Files */,
+				651CF84B1B59CE0000C647FD /* JBChartView-Bridging-Header.h */,
 			);
 			path = proteinApp;
 			sourceTree = "<group>";
@@ -327,8 +356,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				65E04C6C1B570F5000198FE2 /* FoodTableViewCell.swift in Sources */,
+				651CF8491B59CD4900C647FD /* JBChartView.m in Sources */,
+				651CF8481B59CD4900C647FD /* JBBarChartView.m in Sources */,
+				651CF84D1B5D716B00C647FD /* KeyboardNotificationHandler.swift in Sources */,
 				651CF83E1B585DED00C647FD /* DisplayViewController.swift in Sources */,
 				65CAA8D71B508EFC00EA8150 /* LogViewController.swift in Sources */,
+				651CF84A1B59CD4900C647FD /* JBLineChartView.m in Sources */,
 				65CAA8D31B508EFC00EA8150 /* AppDelegate.swift in Sources */,
 				6519EF5E1B57268F0047DB99 /* JsonHelper.swift in Sources */,
 				6519EF5D1B57268F0047DB99 /* FoodInfo.swift in Sources */,

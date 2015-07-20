@@ -12,6 +12,7 @@ target 'proteinApp' do
     pod 'Bond'
     pod 'RealmSwift'
     pod 'SwiftyJSON', '~> 2.2.0'
+    pod 'JBChartView'
 end
 
 target 'proteinAppTests' do
