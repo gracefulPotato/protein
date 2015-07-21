@@ -19,7 +19,7 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
 
     @IBOutlet weak var barChartView : JBBarChartView!
     @IBOutlet weak var informationLabel: UILabel!
-    
+    var addedFood : FoodInfo?
     var note: FoodInfo? {
         didSet {
             println("in note didset")
@@ -72,6 +72,23 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func addFoodButtonTapped(sender: AnyObject) {
+        addedFood = note
+        self.performSegueWithIdentifier("addFoodRecipeButtonTapped", sender: sender)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "addFoodRecipeButtonTapped") {
+            let FoodViewController = segue.destinationViewController as! HomeViewController
+            //println("addedFood: \(addedFood)")
+            //            FoodViewController.loadView()
+            FoodViewController.tmpIngredient = addedFood
+            //FoodViewController.ingredients.append(addedFood)
+        }
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FoodCell", forIndexPath: indexPath) as! FoodTableViewCell //1
         

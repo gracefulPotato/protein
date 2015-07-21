@@ -36,7 +36,7 @@ class SearchViewController: UIViewController {
             println(notes)
         case .SearchMode:
             let searchText = searchBar?.text ?? ""
-            carrySearchText = searchText as String?
+            //carrySearchText = searchText as String?
             searchBar.setShowsCancelButton(true, animated: true)
             notes = searchNotes(searchText)
             //for i in 0..<notes.count{

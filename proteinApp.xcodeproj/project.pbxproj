@@ -17,9 +17,10 @@
 		651CF8491B59CD4900C647FD /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 651CF8451B59CD4900C647FD /* JBChartView.m */; };
 		651CF84A1B59CD4900C647FD /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 651CF8471B59CD4900C647FD /* JBLineChartView.m */; };
 		651CF84D1B5D716B00C647FD /* KeyboardNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651CF84C1B5D716A00C647FD /* KeyboardNotificationHandler.swift */; };
+		651CF8511B5DCA7C00C647FD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651CF8501B5DCA7B00C647FD /* HomeViewController.swift */; };
+		655749941B5EC2D800DF75F8 /* IngredientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655749931B5EC2D800DF75F8 /* IngredientHelper.swift */; };
 		65CAA8D31B508EFC00EA8150 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CAA8D21B508EFC00EA8150 /* AppDelegate.swift */; };
 		65CAA8D51B508EFC00EA8150 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CAA8D41B508EFC00EA8150 /* SearchViewController.swift */; };
-		65CAA8D71B508EFC00EA8150 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CAA8D61B508EFC00EA8150 /* LogViewController.swift */; };
 		65CAA8DA1B508EFC00EA8150 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CAA8D81B508EFC00EA8150 /* Main.storyboard */; };
 		65CAA8DC1B508EFD00EA8150 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65CAA8DB1B508EFD00EA8150 /* Images.xcassets */; };
 		65CAA8DF1B508EFD00EA8150 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65CAA8DD1B508EFD00EA8150 /* LaunchScreen.xib */; };
@@ -53,11 +54,12 @@
 		651CF8471B59CD4900C647FD /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartView.m; sourceTree = "<group>"; };
 		651CF84B1B59CE0000C647FD /* JBChartView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JBChartView-Bridging-Header.h"; sourceTree = "<group>"; };
 		651CF84C1B5D716A00C647FD /* KeyboardNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationHandler.swift; sourceTree = SOURCE_ROOT; };
+		651CF8501B5DCA7B00C647FD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		655749931B5EC2D800DF75F8 /* IngredientHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientHelper.swift; sourceTree = "<group>"; };
 		65CAA8CD1B508EFC00EA8150 /* proteinApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = proteinApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CAA8D11B508EFC00EA8150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65CAA8D21B508EFC00EA8150 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65CAA8D41B508EFC00EA8150 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../proteinApp/SearchViewController.swift; sourceTree = "<group>"; };
-		65CAA8D61B508EFC00EA8150 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LogViewController.swift; path = ../proteinApp/LogViewController.swift; sourceTree = "<group>"; };
 		65CAA8D91B508EFC00EA8150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65CAA8DB1B508EFD00EA8150 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		65CAA8DE1B508EFD00EA8150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -114,8 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				65CAA8D41B508EFC00EA8150 /* SearchViewController.swift */,
-				65CAA8D61B508EFC00EA8150 /* LogViewController.swift */,
 				651CF83D1B585DED00C647FD /* DisplayViewController.swift */,
+				651CF8501B5DCA7B00C647FD /* HomeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = SOURCE_ROOT;
@@ -157,6 +159,7 @@
 				65CAA8DD1B508EFD00EA8150 /* LaunchScreen.xib */,
 				65CAA8D01B508EFC00EA8150 /* Supporting Files */,
 				651CF84B1B59CE0000C647FD /* JBChartView-Bridging-Header.h */,
+				655749931B5EC2D800DF75F8 /* IngredientHelper.swift */,
 			);
 			path = proteinApp;
 			sourceTree = "<group>";
@@ -360,12 +363,13 @@
 				651CF8481B59CD4900C647FD /* JBBarChartView.m in Sources */,
 				651CF84D1B5D716B00C647FD /* KeyboardNotificationHandler.swift in Sources */,
 				651CF83E1B585DED00C647FD /* DisplayViewController.swift in Sources */,
-				65CAA8D71B508EFC00EA8150 /* LogViewController.swift in Sources */,
 				651CF84A1B59CD4900C647FD /* JBLineChartView.m in Sources */,
+				655749941B5EC2D800DF75F8 /* IngredientHelper.swift in Sources */,
 				65CAA8D31B508EFC00EA8150 /* AppDelegate.swift in Sources */,
 				6519EF5E1B57268F0047DB99 /* JsonHelper.swift in Sources */,
 				6519EF5D1B57268F0047DB99 /* FoodInfo.swift in Sources */,
 				65CAA8D51B508EFC00EA8150 /* SearchViewController.swift in Sources */,
+				651CF8511B5DCA7C00C647FD /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
