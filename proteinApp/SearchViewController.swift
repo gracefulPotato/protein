@@ -101,8 +101,12 @@ class SearchViewController: UIViewController {
 //            FoodViewController.loadView()
             FoodViewController.note = selectedFood
         }
+        if (segue.identifier == "backHome") {
+            let FoodViewController = segue.destinationViewController as! HomeViewController
+            IngredientHelper.createString()
+        }
     }
-
+    
     func searchNotes(searchString: String) -> RLMResults {
         let realm = Realm()
         let searchPredicate = NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@", searchString, searchString)

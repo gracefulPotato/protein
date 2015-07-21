@@ -16,13 +16,22 @@ class IngredientHelper: NSObject {
 //        createString()
 //    }
     static func createString(){
+        ingredStr = ""
         for i in 0..<ingredients.count{
             if ingredients.count>1 {
-                ingredStr = "\(ingredients[i].name)\n\n\(ingredStr)"
+                ingredStr = ingredStr! + "\n\n" + ingredients[i].name
+                //ingredStr = "\(ingredStr)\n\n\(ingredients[i].name)"
             }
             else{
-                ingredStr = "\(ingredients[i].name)"
+                ingredStr = ingredients[i].name
             }
         }
+    }
+    static func returnProteinTotal()->Double{
+        var total : Double = 0
+        for i in 0..<ingredients.count{
+            total = total + ingredients[i].protGram
+        }
+        return total
     }
 }

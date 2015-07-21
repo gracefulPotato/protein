@@ -12,6 +12,9 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var addFoodButton : UIButton!
     @IBOutlet weak var ingredientLabel: UILabel!
+    @IBOutlet weak var totalProteinLabel: UILabel!
+    @IBOutlet weak var recipeCalcTitleLabel: UILabel!
+    
     //var ingredients: [FoodInfo]! = []
     var tmpIngredient : FoodInfo?
 
@@ -32,7 +35,12 @@ class HomeViewController: UIViewController {
 //                    ingredientLabel.text = "\(IngredientHelper.ingredients[i].name)"
 //                }
 //            }
+            recipeCalcTitleLabel.layer.borderWidth = 3
+            recipeCalcTitleLabel.layer.borderColor = UIColor.blackColor().CGColor
         }
+            if let totalProteinLabel = totalProteinLabel{
+                totalProteinLabel.text = "Total protein:   \(IngredientHelper.returnProteinTotal()) grams"
+            }
         }
         // Do any additional setup after loading the view.
     }

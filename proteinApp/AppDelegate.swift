@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if FoodInfo.allObjects().count == 0{
             JsonHelper.loadData()
         }
-        
+        //HomeViewController.loadView(HomeViewController.recipeCalcTitleLabel)
         //func UIStatusBarStyle -> preferredStatusBarStyle{ return UIStatusBarStyleBlackTranslucentContent }
         //self.window.backgroundColor = UIColor.colorWithRed(0.78,f,green:0.13,f,blue:0.11,f,alpha:1)
         //application.setStatusBarStyle(UIStatusBarStyleBlackTranslucent)
