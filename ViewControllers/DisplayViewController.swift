@@ -17,14 +17,8 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
     @IBAction func backButton(sender: AnyObject) {
     }
 
-    @IBOutlet weak var barChartView : JBBarChartView!//{
-        //didSet{
-            //barChartView.dataSource = self //as JBChartViewDataSource
-            //barChartView.delegate = self //as JBChartViewDelegate!
-            //self.addSubView = barChartView
-        //}
-    //}
-
+    @IBOutlet weak var barChartView : JBBarChartView!
+    @IBOutlet weak var informationLabel: UILabel!
     
     var note: FoodInfo? {
         didSet {
@@ -56,12 +50,13 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
         barChartView.delegate = self
         println(barChartView.dataSource)
         barChartView.minimumValue = 0
-        barChartView.maximumValue = 10
+        barChartView.maximumValue = 3
         titleTextField.adjustsFontSizeToFitWidth = true
         println("View DId Load")
         //barChartView.frame = CGRectMake(100,100,200,200)
         barChartView.reloadData()
         displayFood(self.note)
+        //informationLabel.text = ""
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -103,28 +98,55 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
     
     func barChartView(barChartView: JBBarChartView!, heightForBarViewAtIndex index: UInt) -> CGFloat {
         switch index{
-        case 1:
+        case 0:
             return CGFloat(note!.tryp)
-        case 2:
+        case 1:
             return CGFloat(note!.thre)
-        case 3:
+        case 2:
             return CGFloat(note!.isol)
-        case 4:
+        case 3:
             return CGFloat(note!.leuc)
-        case 5:
+        case 4:
             return CGFloat(note!.lysi)
-        case 6:
+        case 5:
             return CGFloat(note!.meth)
-        case 7:
+        case 6:
             return CGFloat(note!.phen)
-        case 8:
+        case 7:
             return CGFloat(note!.vali)
-        case 9:
+        case 8:
             return CGFloat(note!.hist)
         default:
             return 0
         }
         //return 1
+    }
+    
+    func barChartView(barChartView: JBBarChartView!, didSelectBarAtIndex index: UInt) {
+        if let note = note{
+        switch index{
+        case 0:
+            informationLabel.text = "Contains \(note.tryp)g Tryptophan"
+        case 1:
+            informationLabel.text = "Contains \(note.thre)g Threonine"
+        case 2:
+            informationLabel.text = "Contains \(note.isol)g Isoleucine"
+        case 3:
+            informationLabel.text = "Contains \(note.leuc)g Leucine"
+        case 4:
+            informationLabel.text = "Contains \(note.lysi)g Lysine"
+        case 5:
+            informationLabel.text = "Contains \(note.meth)g Methionine"
+        case 6:
+            informationLabel.text = "Contains \(note.phen)g Phenylalanine"
+        case 7:
+            informationLabel.text = "Contains \(note.vali)g Valine"
+        case 8:
+            informationLabel.text = "Contains \(note.hist)g Histidine"
+        default:
+            informationLabel.text = "Contains \(note.tryp)g DefaultCase!"
+        }
+        }
     }
 
     /*
