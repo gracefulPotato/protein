@@ -15,6 +15,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toolbarBottomSpace: NSLayoutConstraint!
+    @IBOutlet weak var categoryTitle: UINavigationItem!
     let allFoods : RLMResults = FoodInfo.allObjects()
     var carrySearchText : String?
     var resultsArr = [FoodInfo]()
@@ -24,34 +25,68 @@ class SearchViewController: UIViewController {
         case SearchMode
     }
     var selectedFood: FoodInfo?
+    var tmpCategory : String! = ""
     var state: State = .DefaultMode{
         didSet{
         switch (state) {
         case .DefaultMode:
-            notes = allFoods.sortedResultsUsingProperty("name", ascending: true)
+            categoryTitle.title = "All Foods"
+            if(tmpCategory != ""){
+                if(tmpCategory == "Soups and Sauces"){
+                    notes = filterNotes("Soups Sauces and Gravies",searchString:"")
+                }
+                else if(tmpCategory == "Sausages, etc."){
+                    notes = filterNotes("Sausages and Luncheon Meats",searchString:"")
+                }
+                else if(tmpCategory == "Nuts and Seeds"){
+                    notes = filterNotes("Nut and Seed Products",searchString:"")
+                }
+                else{
+                    notes = filterNotes(tmpCategory,searchString:"")
+                }
+                tableView.reloadData()
+            }
+            else{
+                notes = allFoods.sortedResultsUsingProperty("name", ascending: true)
+            }
             //self.navigationController!.setNavigationBarHidden(false, animated: true)
             searchBar.resignFirstResponder()
             searchBar.text = ""
             searchBar.showsCancelButton = false
-            println(notes)
         case .SearchMode:
             let searchText = searchBar?.text ?? ""
             //carrySearchText = searchText as String?
             searchBar.setShowsCancelButton(true, animated: true)
-            notes = searchNotes(searchText)
+            if(tmpCategory != ""){
+                notes = searchNotes(searchText)
+                if(tmpCategory == "Soups and Sauces"){
+                    notes = filterNotes("Soups Sauces and Gravies",searchString:searchText)
+                }
+                else if(tmpCategory == "Sausages, etc."){
+                    notes = filterNotes("Sausages and Luncheon Meats",searchString:searchText)
+                }
+                else if(tmpCategory == "Nuts and Seeds"){
+                    notes = filterNotes("Nut and Seed Products",searchString:searchText)
+                }
+                else{
+                    notes = filterNotes(tmpCategory,searchString:searchText)
+                }
+                tableView.reloadData()
+            }
+            else{
+                println("not filtering, just searching")
+                notes = searchNotes(searchText)
+            }
             //for i in 0..<notes.count{
 //                var tmpIndex = Int(i)
 //                resultsArr[tmpIndex] = notes[i] as! FoodInfo
 //            }
             //self.navigationController!.setNavigationBarHidden(true, animated: true)
-            println(notes)
         }
         }
     }
     var filtered:[FoodInfo] = []
-    
-    let items : [String] = ["Avocado", "Bread","Cheese"]
-    static var foods = [FoodInfo]()
+    //static var foods = [FoodInfo]()
     
     var notes: RLMResults! {
         didSet {
@@ -64,8 +99,28 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("Category:\(tmpCategory)")
+        if(tmpCategory != ""){
+            println("filtering")
+            if(tmpCategory == "Soups and Sauces"){
+                notes = filterNotes("Soups Sauces and Gravies",searchString:"")
+            }
+            else if(tmpCategory == "Sausages, etc."){
+                notes = filterNotes("Sausages and Luncheon Meats",searchString:"")
+            }
+            else if(tmpCategory == "Nuts and Seeds"){
+                notes = filterNotes("Nut and Seed Products",searchString:"")
+            }
+            else{
+                notes = filterNotes(tmpCategory,searchString:"")
+            }
+            categoryTitle.title = tmpCategory
+            tableView.reloadData()
+        }
         //notes = allFoods
-        notes = allFoods.sortedResultsUsingProperty("name", ascending: true)
+        else{
+            notes = allFoods.sortedResultsUsingProperty("name", ascending: true)
+        }
         // Do any additional setup after loading the view, typically from a nib.
         tableView.dataSource = self
         
@@ -113,10 +168,17 @@ class SearchViewController: UIViewController {
         return FoodInfo.objectsWithPredicate(searchPredicate)
     }
     
+    func filterNotes(tmpCategory: String, searchString: String) -> RLMResults {
+        let realm = Realm()
+        let categoryPredicate = NSPredicate(format: "group CONTAINS[c] %@", tmpCategory)
+        let searchPredicate = NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@", searchString, searchString)
+        return FoodInfo.objectsWithPredicate(categoryPredicate).objectsWithPredicate(searchPredicate)
+        //return notes.objectsWithPredicate(searchPredicate)
+    }
+    
 }
 extension SearchViewController: UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("You selected cell #\(indexPath.row)!")
         
         //selectedFood = allFoods.objectAtIndex(UInt(indexPath.row)) as? FoodInfo
         selectedFood = notes.objectAtIndex(UInt(indexPath.row)) as? FoodInfo
@@ -158,12 +220,6 @@ extension SearchViewController: UITableViewDataSource {
         }
     }
     
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        println("You selected cell #\(indexPath.row)!")
-//        self.performSegueWithIdentifier("showFood", sender: self)
-//    }
-    
-    
 }
 extension SearchViewController: UISearchBarDelegate {
     
@@ -185,7 +241,24 @@ extension SearchViewController: UISearchBarDelegate {
     //}
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        notes = searchNotes(searchText)
+        if(tmpCategory != ""){
+            if(tmpCategory == "Soups and Sauces"){
+                notes = filterNotes("Soups Sauces and Gravies",searchString:searchText)
+            }
+            else if(tmpCategory == "Sausages, etc."){
+                notes = filterNotes("Sausages and Luncheon Meats",searchString:searchText)
+            }
+            else if(tmpCategory == "Nuts and Seeds"){
+                notes = filterNotes("Nut and Seed Products",searchString:searchText)
+            }
+            else{
+                notes = filterNotes(tmpCategory,searchString:searchText)
+            }
+            tableView.reloadData()
+        }
+        else{
+            notes = searchNotes(searchText)
+        }
         //filtered = allFoods.filter({ (text) -> Bool in
         //    let tmp: NSString = text.name
          //   let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)

@@ -18,6 +18,21 @@
 		651CF84A1B59CD4900C647FD /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 651CF8471B59CD4900C647FD /* JBLineChartView.m */; };
 		651CF84D1B5D716B00C647FD /* KeyboardNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651CF84C1B5D716A00C647FD /* KeyboardNotificationHandler.swift */; };
 		651CF8511B5DCA7C00C647FD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651CF8501B5DCA7B00C647FD /* HomeViewController.swift */; };
+		652406E31B5FFF9B00A33D96 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652406E21B5FFF9B00A33D96 /* SettingsViewController.swift */; };
+		652406EE1B6047E000A33D96 /* Herbal_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 652406ED1B6047E000A33D96 /* Herbal_64.png */; };
+		652406F01B60487100A33D96 /* Herbal_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652406EF1B60487100A33D96 /* Herbal_32.png */; };
+		652406F21B6048B000A33D96 /* Piece_of_cheese_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652406F11B6048B000A33D96 /* Piece_of_cheese_32.png */; };
+		652406F41B60494100A33D96 /* baby_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652406F31B60494100A33D96 /* baby_32.png */; };
+		652406F61B604AAA00A33D96 /* Oil_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652406F51B604AAA00A33D96 /* Oil_32.png */; };
+		652406F81B604B7400A33D96 /* Chicken_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652406F71B604B7400A33D96 /* Chicken_32.png */; };
+		652406FA1B604C2B00A33D96 /* Soup_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652406F91B604C2B00A33D96 /* Soup_32.png */; };
+		652406FC1B604CE600A33D96 /* Salami_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652406FB1B604CE600A33D96 /* Salami_32.png */; };
+		652406FE1B604DB000A33D96 /* Cereals_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652406FD1B604DB000A33D96 /* Cereals_32.png */; };
+		652407001B604EB100A33D96 /* Grapes_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652406FF1B604EB100A33D96 /* Grapes_32.png */; };
+		652407021B60507E00A33D96 /* Olive_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652407011B60507E00A33D96 /* Olive_32.png */; };
+		652407041B60510A00A33D96 /* Bacon_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652407031B60510A00A33D96 /* Bacon_32.png */; };
+		652407061B60524800A33D96 /* Broccoli_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652407051B60524800A33D96 /* Broccoli_32.png */; };
+		652407081B60551E00A33D96 /* pistachio.png in Resources */ = {isa = PBXBuildFile; fileRef = 652407071B60551E00A33D96 /* pistachio.png */; };
 		655749941B5EC2D800DF75F8 /* IngredientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655749931B5EC2D800DF75F8 /* IngredientHelper.swift */; };
 		65CAA8D31B508EFC00EA8150 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CAA8D21B508EFC00EA8150 /* AppDelegate.swift */; };
 		65CAA8D51B508EFC00EA8150 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CAA8D41B508EFC00EA8150 /* SearchViewController.swift */; };
@@ -25,6 +40,18 @@
 		65CAA8DC1B508EFD00EA8150 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65CAA8DB1B508EFD00EA8150 /* Images.xcassets */; };
 		65CAA8DF1B508EFD00EA8150 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65CAA8DD1B508EFD00EA8150 /* LaunchScreen.xib */; };
 		65CAA8EB1B508EFD00EA8150 /* proteinAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CAA8EA1B508EFD00EA8150 /* proteinAppTests.swift */; };
+		65D65DBF1B605B2800B44955 /* steak_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DBE1B605B2800B44955 /* steak_32.png */; };
+		65D65DC11B605BB800B44955 /* beverage_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DC01B605BB800B44955 /* beverage_32.png */; };
+		65D65DC31B605D8C00B44955 /* fish_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DC21B605D8C00B44955 /* fish_32.png */; };
+		65D65DC51B605E1100B44955 /* Peas_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DC41B605E1100B44955 /* Peas_32.png */; };
+		65D65DC71B605EA100B44955 /* Deer_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DC61B605EA100B44955 /* Deer_32.png */; };
+		65D65DC91B605FE300B44955 /* Cookies_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DC81B605FE300B44955 /* Cookies_32.png */; };
+		65D65DCB1B60620900B44955 /* Chips_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DCA1B60620900B44955 /* Chips_32.png */; };
+		65D65DCD1B6062BB00B44955 /* Candy_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DCC1B6062BB00B44955 /* Candy_32.png */; };
+		65D65DCF1B60636A00B44955 /* Wheat_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DCE1B60636A00B44955 /* Wheat_32.png */; };
+		65D65DD11B60643D00B44955 /* Fast_food_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DD01B60643D00B44955 /* Fast_food_32.png */; };
+		65D65DD31B6066F900B44955 /* rice_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DD21B6066F900B44955 /* rice_32.png */; };
+		65DCA8EB1B5F021A0013B451 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DCA8EA1B5F02190013B451 /* CategoryViewController.swift */; };
 		65E04C6C1B570F5000198FE2 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E04C6B1B570F5000198FE2 /* FoodTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +82,21 @@
 		651CF84B1B59CE0000C647FD /* JBChartView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JBChartView-Bridging-Header.h"; sourceTree = "<group>"; };
 		651CF84C1B5D716A00C647FD /* KeyboardNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationHandler.swift; sourceTree = SOURCE_ROOT; };
 		651CF8501B5DCA7B00C647FD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		652406E21B5FFF9B00A33D96 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		652406ED1B6047E000A33D96 /* Herbal_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Herbal_64.png; sourceTree = "<group>"; };
+		652406EF1B60487100A33D96 /* Herbal_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Herbal_32.png; sourceTree = "<group>"; };
+		652406F11B6048B000A33D96 /* Piece_of_cheese_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Piece_of_cheese_32.png; sourceTree = "<group>"; };
+		652406F31B60494100A33D96 /* baby_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baby_32.png; sourceTree = "<group>"; };
+		652406F51B604AAA00A33D96 /* Oil_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Oil_32.png; sourceTree = "<group>"; };
+		652406F71B604B7400A33D96 /* Chicken_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chicken_32.png; sourceTree = "<group>"; };
+		652406F91B604C2B00A33D96 /* Soup_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Soup_32.png; sourceTree = "<group>"; };
+		652406FB1B604CE600A33D96 /* Salami_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Salami_32.png; sourceTree = "<group>"; };
+		652406FD1B604DB000A33D96 /* Cereals_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cereals_32.png; sourceTree = "<group>"; };
+		652406FF1B604EB100A33D96 /* Grapes_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grapes_32.png; sourceTree = "<group>"; };
+		652407011B60507E00A33D96 /* Olive_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Olive_32.png; sourceTree = "<group>"; };
+		652407031B60510A00A33D96 /* Bacon_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bacon_32.png; sourceTree = "<group>"; };
+		652407051B60524800A33D96 /* Broccoli_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Broccoli_32.png; sourceTree = "<group>"; };
+		652407071B60551E00A33D96 /* pistachio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pistachio.png; sourceTree = "<group>"; };
 		655749931B5EC2D800DF75F8 /* IngredientHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientHelper.swift; sourceTree = "<group>"; };
 		65CAA8CD1B508EFC00EA8150 /* proteinApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = proteinApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CAA8D11B508EFC00EA8150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -66,6 +108,18 @@
 		65CAA8E41B508EFD00EA8150 /* proteinAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = proteinAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CAA8E91B508EFD00EA8150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65CAA8EA1B508EFD00EA8150 /* proteinAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = proteinAppTests.swift; sourceTree = "<group>"; };
+		65D65DBE1B605B2800B44955 /* steak_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steak_32.png; sourceTree = "<group>"; };
+		65D65DC01B605BB800B44955 /* beverage_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beverage_32.png; sourceTree = "<group>"; };
+		65D65DC21B605D8C00B44955 /* fish_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish_32.png; sourceTree = "<group>"; };
+		65D65DC41B605E1100B44955 /* Peas_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Peas_32.png; sourceTree = "<group>"; };
+		65D65DC61B605EA100B44955 /* Deer_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Deer_32.png; sourceTree = "<group>"; };
+		65D65DC81B605FE300B44955 /* Cookies_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cookies_32.png; sourceTree = "<group>"; };
+		65D65DCA1B60620900B44955 /* Chips_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chips_32.png; sourceTree = "<group>"; };
+		65D65DCC1B6062BB00B44955 /* Candy_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Candy_32.png; sourceTree = "<group>"; };
+		65D65DCE1B60636A00B44955 /* Wheat_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wheat_32.png; sourceTree = "<group>"; };
+		65D65DD01B60643D00B44955 /* Fast_food_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fast_food_32.png; sourceTree = "<group>"; };
+		65D65DD21B6066F900B44955 /* rice_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rice_32.png; sourceTree = "<group>"; };
+		65DCA8EA1B5F02190013B451 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		65E04C6B1B570F5000198FE2 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		C58486782B785BCCF5923A1A /* Pods_proteinApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_proteinApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -112,12 +166,46 @@
 			path = "../../../Downloads/JBChartView-master/Classes";
 			sourceTree = "<group>";
 		};
+		652406E81B6046FC00A33D96 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				65D65DD21B6066F900B44955 /* rice_32.png */,
+				65D65DD01B60643D00B44955 /* Fast_food_32.png */,
+				65D65DCE1B60636A00B44955 /* Wheat_32.png */,
+				65D65DCC1B6062BB00B44955 /* Candy_32.png */,
+				65D65DCA1B60620900B44955 /* Chips_32.png */,
+				65D65DC81B605FE300B44955 /* Cookies_32.png */,
+				65D65DC61B605EA100B44955 /* Deer_32.png */,
+				65D65DC41B605E1100B44955 /* Peas_32.png */,
+				65D65DC21B605D8C00B44955 /* fish_32.png */,
+				65D65DC01B605BB800B44955 /* beverage_32.png */,
+				65D65DBE1B605B2800B44955 /* steak_32.png */,
+				652407071B60551E00A33D96 /* pistachio.png */,
+				652407051B60524800A33D96 /* Broccoli_32.png */,
+				652407031B60510A00A33D96 /* Bacon_32.png */,
+				652407011B60507E00A33D96 /* Olive_32.png */,
+				652406FF1B604EB100A33D96 /* Grapes_32.png */,
+				652406FD1B604DB000A33D96 /* Cereals_32.png */,
+				652406FB1B604CE600A33D96 /* Salami_32.png */,
+				652406F91B604C2B00A33D96 /* Soup_32.png */,
+				652406F71B604B7400A33D96 /* Chicken_32.png */,
+				652406F51B604AAA00A33D96 /* Oil_32.png */,
+				652406F31B60494100A33D96 /* baby_32.png */,
+				652406F11B6048B000A33D96 /* Piece_of_cheese_32.png */,
+				652406EF1B60487100A33D96 /* Herbal_32.png */,
+				652406ED1B6047E000A33D96 /* Herbal_64.png */,
+			);
+			path = Images;
+			sourceTree = SOURCE_ROOT;
+		};
 		6551A73C1B541D9300F8B0FC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				65CAA8D41B508EFC00EA8150 /* SearchViewController.swift */,
 				651CF83D1B585DED00C647FD /* DisplayViewController.swift */,
 				651CF8501B5DCA7B00C647FD /* HomeViewController.swift */,
+				65DCA8EA1B5F02190013B451 /* CategoryViewController.swift */,
+				652406E21B5FFF9B00A33D96 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = SOURCE_ROOT;
@@ -145,6 +233,7 @@
 		65CAA8CF1B508EFC00EA8150 /* proteinApp */ = {
 			isa = PBXGroup;
 			children = (
+				652406E81B6046FC00A33D96 /* Images */,
 				651CF84C1B5D716A00C647FD /* KeyboardNotificationHandler.swift */,
 				651CF8411B59CD4900C647FD /* Jawbone - JBChartView */,
 				651CF83B1B580C2200C647FD /* test.json */,
@@ -257,6 +346,7 @@
 				TargetAttributes = {
 					65CAA8CC1B508EFC00EA8150 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = W2F7H328QM;
 					};
 					65CAA8E31B508EFD00EA8150 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -288,11 +378,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				652406F61B604AAA00A33D96 /* Oil_32.png in Resources */,
 				65CAA8DA1B508EFC00EA8150 /* Main.storyboard in Resources */,
 				651CF83A1B572D4000C647FD /* foodinfo.json in Resources */,
+				65D65DC31B605D8C00B44955 /* fish_32.png in Resources */,
+				65D65DD31B6066F900B44955 /* rice_32.png in Resources */,
+				652406FE1B604DB000A33D96 /* Cereals_32.png in Resources */,
+				65D65DCB1B60620900B44955 /* Chips_32.png in Resources */,
+				65D65DBF1B605B2800B44955 /* steak_32.png in Resources */,
+				652407001B604EB100A33D96 /* Grapes_32.png in Resources */,
+				652406F01B60487100A33D96 /* Herbal_32.png in Resources */,
+				652407061B60524800A33D96 /* Broccoli_32.png in Resources */,
+				652406F81B604B7400A33D96 /* Chicken_32.png in Resources */,
+				65D65DC91B605FE300B44955 /* Cookies_32.png in Resources */,
+				652407081B60551E00A33D96 /* pistachio.png in Resources */,
+				652406F21B6048B000A33D96 /* Piece_of_cheese_32.png in Resources */,
+				65D65DC51B605E1100B44955 /* Peas_32.png in Resources */,
+				652407021B60507E00A33D96 /* Olive_32.png in Resources */,
+				65D65DD11B60643D00B44955 /* Fast_food_32.png in Resources */,
+				65D65DC11B605BB800B44955 /* beverage_32.png in Resources */,
 				651CF83C1B580C2200C647FD /* test.json in Resources */,
+				65D65DCD1B6062BB00B44955 /* Candy_32.png in Resources */,
+				652406FC1B604CE600A33D96 /* Salami_32.png in Resources */,
+				65D65DCF1B60636A00B44955 /* Wheat_32.png in Resources */,
 				65CAA8DF1B508EFD00EA8150 /* LaunchScreen.xib in Resources */,
 				65CAA8DC1B508EFD00EA8150 /* Images.xcassets in Resources */,
+				652406FA1B604C2B00A33D96 /* Soup_32.png in Resources */,
+				652406EE1B6047E000A33D96 /* Herbal_64.png in Resources */,
+				652406F41B60494100A33D96 /* baby_32.png in Resources */,
+				65D65DC71B605EA100B44955 /* Deer_32.png in Resources */,
+				652407041B60510A00A33D96 /* Bacon_32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +482,9 @@
 				655749941B5EC2D800DF75F8 /* IngredientHelper.swift in Sources */,
 				65CAA8D31B508EFC00EA8150 /* AppDelegate.swift in Sources */,
 				6519EF5E1B57268F0047DB99 /* JsonHelper.swift in Sources */,
+				652406E31B5FFF9B00A33D96 /* SettingsViewController.swift in Sources */,
 				6519EF5D1B57268F0047DB99 /* FoodInfo.swift in Sources */,
+				65DCA8EB1B5F021A0013B451 /* CategoryViewController.swift in Sources */,
 				65CAA8D51B508EFC00EA8150 /* SearchViewController.swift in Sources */,
 				651CF8511B5DCA7C00C647FD /* HomeViewController.swift in Sources */,
 			);
@@ -499,6 +616,8 @@
 			baseConfigurationReference = 4BF392D91CEBE2764F83CF6E /* Pods-proteinApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/proteinApp/realm-swift-0.93.2",
@@ -509,6 +628,7 @@
 				INFOPLIST_FILE = proteinApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -517,6 +637,8 @@
 			baseConfigurationReference = 45B7BCDF7596277C5E73573D /* Pods-proteinApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/proteinApp/realm-swift-0.93.2",
@@ -527,6 +649,7 @@
 				INFOPLIST_FILE = proteinApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

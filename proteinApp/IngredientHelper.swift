@@ -34,4 +34,23 @@ class IngredientHelper: NSObject {
         }
         return total
     }
+    
+    static func returnLevelJudgement()->String{
+        let protein = returnProteinTotal()
+        if(protein > 17){
+            return "Excellent!"
+        }
+        else if(protein > 15){
+            return "Great!"
+        }
+        else if(protein > 10){
+            return "Good,"
+        }
+        else if(protein > 5){
+            return "Getting there,"
+        }
+        else{
+            return "Needs more protein,"
+        }
+    }
 }

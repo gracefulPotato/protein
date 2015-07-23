@@ -73,19 +73,18 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func addFoodButtonTapped(sender: AnyObject) {
-        addedFood = note
-        self.performSegueWithIdentifier("addFoodRecipeButtonTapped", sender: sender)
+    //@IBAction func addFoodRecipeButtonTapped(sender: AnyObject) {
+        //addedFood = note
+        //self.performSegueWithIdentifier("addFoodRecipeButtonTapped", sender: sender)
         
-    }
+    //}
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "addFoodRecipeButtonTapped") {
+        if (segue.identifier == "AddFoodRecipeButtonTapped") {
+            //let nav = segue.destinationViewController as! UINavigationController
+            //let FoodViewController = nav.topViewController as! HomeViewController
             let FoodViewController = segue.destinationViewController as! HomeViewController
-            //println("addedFood: \(addedFood)")
-            //            FoodViewController.loadView()
-            FoodViewController.tmpIngredient = addedFood
-            //FoodViewController.ingredients.append(addedFood)
+            FoodViewController.tmpIngredient = note
         }
     }
     

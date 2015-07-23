@@ -10,35 +10,14 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Log" translatesAutoresizingMaskIntoConstraints="NO" id="859-jB-eCh">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
-                </imageView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="50" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EEB-cY-Hd5">
+                    <rect key="frame" x="212" y="208" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="859-jB-eCh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2YF-Fv-Szf"/>
-                <constraint firstAttribute="trailing" secondItem="859-jB-eCh" secondAttribute="trailing" id="9dJ-H9-raz"/>
-                <constraint firstItem="859-jB-eCh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AZQ-xt-vtu"/>
-                <constraint firstAttribute="trailing" secondItem="859-jB-eCh" secondAttribute="trailing" id="B8H-m8-44H"/>
-                <constraint firstAttribute="bottom" secondItem="859-jB-eCh" secondAttribute="bottom" id="Esc-0D-KQl"/>
-                <constraint firstAttribute="bottom" secondItem="859-jB-eCh" secondAttribute="bottom" id="FZg-sc-GjN"/>
-                <constraint firstItem="859-jB-eCh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HEj-c7-Aq6"/>
-                <constraint firstItem="859-jB-eCh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="f3o-FK-TVK"/>
-            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="9dJ-H9-raz"/>
-                    <exclude reference="Esc-0D-KQl"/>
-                    <exclude reference="HEj-c7-Aq6"/>
-                    <exclude reference="f3o-FK-TVK"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
-    <resources>
-        <image name="Log" width="32" height="32"/>
-    </resources>
 </document>

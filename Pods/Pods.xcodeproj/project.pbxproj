@@ -3113,6 +3113,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
+				TargetAttributes = {
+					D8FDB48B3032AC9DF6213D98 = {
+						DevelopmentTeam = W2F7H328QM;
+					};
+				};
 			};
 			buildConfigurationList = CADBF3EBF10CD5C4DC910E9F /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -3952,6 +3957,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1DDA2A1803564A897C758873 /* Pods-proteinApp-Bond-Private.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -3967,6 +3973,7 @@
 				MODULEMAP_FILE = "Target Support Files/Pods-proteinApp-Bond/Pods-proteinApp-Bond.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = Bond;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -4361,6 +4368,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1DDA2A1803564A897C758873 /* Pods-proteinApp-Bond-Private.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -4376,6 +4384,7 @@
 				MODULEMAP_FILE = "Target Support Files/Pods-proteinApp-Bond/Pods-proteinApp-Bond.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = Bond;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

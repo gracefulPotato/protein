@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Cooking Pot@1x.pdf"
+      "filename" : "Piece_of_cheese_32.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "Cooking Pot@2x.pdf"
+      "filename" : "Piece_of_cheese_64.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "Cooking Pot@3x.pdf"
+      "filename" : "Piece_of_cheese_128.png"
     }
   ],
   "info" : {

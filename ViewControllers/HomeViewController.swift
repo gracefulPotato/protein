@@ -14,32 +14,32 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var ingredientLabel: UILabel!
     @IBOutlet weak var totalProteinLabel: UILabel!
     @IBOutlet weak var recipeCalcTitleLabel: UILabel!
+    @IBOutlet weak var searchButton : UIButton!
+    @IBOutlet weak var ingredientTextView : UITextView!
+    @IBOutlet weak var reportLabel : UILabel!
     
     //var ingredients: [FoodInfo]! = []
     var tmpIngredient : FoodInfo?
+    var levelJudgement : String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         if let tmpIngredient = tmpIngredient{
+            println("adding ingredient")
         IngredientHelper.ingredients.append(tmpIngredient)
-        if let ingredientLabel = ingredientLabel{
+        //if let ingredientLabel = ingredientLabel{
+        if let ingredientTextView = ingredientTextView{
             println("Ingredients has\(IngredientHelper.ingredients.count)elements")
             IngredientHelper.createString()
             println(IngredientHelper.ingredStr)
-            ingredientLabel.text = IngredientHelper.ingredStr
-//            for i in 0..<IngredientHelper.ingredients.count{
-//                if IngredientHelper.ingredients.count>1 {
-//                    ingredientLabel.text = "\(IngredientHelper.ingredients[i].name)\n\n\(ingredientLabel.text)"
-//                }
-//                else{
-//                    ingredientLabel.text = "\(IngredientHelper.ingredients[i].name)"
-//                }
-//            }
-            recipeCalcTitleLabel.layer.borderWidth = 3
-            recipeCalcTitleLabel.layer.borderColor = UIColor.blackColor().CGColor
+            //ingredientLabel.text = IngredientHelper.ingredStr
+            ingredientTextView.text = IngredientHelper.ingredStr
         }
             if let totalProteinLabel = totalProteinLabel{
-                totalProteinLabel.text = "Total protein:   \(IngredientHelper.returnProteinTotal()) grams"
+                totalProteinLabel.text = "Total protein: \(IngredientHelper.returnProteinTotal()) grams"
+            }
+            if let reportLabel = reportLabel{
+                reportLabel.text = "Progress: \(IngredientHelper.returnLevelJudgement()) amino balance __."
             }
         }
         // Do any additional setup after loading the view.
