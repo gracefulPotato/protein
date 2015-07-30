@@ -27,25 +27,5 @@ class FoodInfo: RLMObject {
     dynamic var vali : Double = 0
     dynamic var hist : Double = 0
     
-//   override convenience required init(){
-//        self.init()
-//    }
-//    init(name:String,group:String,factor:Double,nitFactor:Double,protGram:Double,tryp:Double,thre:Double,isol:Double,leuc:Double,lysi:Double,meth:Double,phen:Double,vali:Double,hist:Double){
-//        self.name = name
-//        self.group = group
-//        self.factor = factor
-//        self.nitFactor = nitFactor
-//        self.protGram = protGram
-//        self.tryp = tryp
-//        self.thre = thre
-//        self.isol = isol
-//        self.leuc = leuc
-//        self.lysi = lysi
-//        self.meth = meth
-//        self.phen = phen
-//        self.vali = vali
-//        self.hist = hist
-//        super.init()
-//        //super.init(name,group,factor,nitFactor,protGram,tryp,thre,isol,leuc,lysi,meth,phen,vali,hist)
-//    }
+    //dynamic var partOfRecipes : RLMArray!
 }

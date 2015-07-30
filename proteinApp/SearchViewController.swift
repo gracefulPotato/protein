@@ -35,8 +35,19 @@ class SearchViewController: UIViewController {
                 if(tmpCategory == "Soups and Sauces"){
                     notes = filterNotes("Soups Sauces and Gravies",searchString:"")
                 }
+                else if(tmpCategory == "All Foods"){
+                    //notes = searchNotes(searchString)
+                    //notes = filterNotes("",searchString:"")
+                    notes = notes.sortedResultsUsingProperty("name", ascending: true)
+                }
                 else if(tmpCategory == "Sausages, etc."){
                     notes = filterNotes("Sausages and Luncheon Meats",searchString:"")
+                }
+                else if(tmpCategory == "Baked Goods"){
+                    notes = filterNotes("Baked Products",searchString:"")
+                }
+                else if(tmpCategory == "Lamb, Veal, Game"){
+                    notes = filterNotes("Lamb Veal and Game Products",searchString:"")
                 }
                 else if(tmpCategory == "Nuts and Seeds"){
                     notes = filterNotes("Nut and Seed Products",searchString:"")
@@ -62,8 +73,19 @@ class SearchViewController: UIViewController {
                 if(tmpCategory == "Soups and Sauces"){
                     notes = filterNotes("Soups Sauces and Gravies",searchString:searchText)
                 }
+                else if(tmpCategory == "All Foods"){
+                    notes = searchNotes(searchText)
+                    //notes = filterNotes("",searchString:"")
+                    notes = notes.sortedResultsUsingProperty("name", ascending: true)
+                }
                 else if(tmpCategory == "Sausages, etc."){
                     notes = filterNotes("Sausages and Luncheon Meats",searchString:searchText)
+                }
+                else if(tmpCategory == "Baked Goods"){
+                    notes = filterNotes("Baked Products",searchString:searchText)
+                }
+                else if(tmpCategory == "Lamb, Veal, Game"){
+                    notes = filterNotes("Lamb Veal and Game Products",searchString:searchText)
                 }
                 else if(tmpCategory == "Nuts and Seeds"){
                     notes = filterNotes("Nut and Seed Products",searchString:searchText)
@@ -71,6 +93,7 @@ class SearchViewController: UIViewController {
                 else{
                     notes = filterNotes(tmpCategory,searchString:searchText)
                 }
+                notes = notes.sortedResultsUsingProperty("name", ascending: true)
                 tableView.reloadData()
             }
             else{
@@ -105,8 +128,17 @@ class SearchViewController: UIViewController {
             if(tmpCategory == "Soups and Sauces"){
                 notes = filterNotes("Soups Sauces and Gravies",searchString:"")
             }
+            else if(tmpCategory == "All Foods"){
+                notes = allFoods.sortedResultsUsingProperty("name", ascending: true)
+            }
             else if(tmpCategory == "Sausages, etc."){
                 notes = filterNotes("Sausages and Luncheon Meats",searchString:"")
+            }
+            else if(tmpCategory == "Baked Goods"){
+                notes = filterNotes("Baked Products",searchString:"")
+            }
+            else if(tmpCategory == "Lamb, Veal, Game"){
+                notes = filterNotes("Lamb Veal and Game Products",searchString:"")
             }
             else if(tmpCategory == "Nuts and Seeds"){
                 notes = filterNotes("Nut and Seed Products",searchString:"")
@@ -115,6 +147,7 @@ class SearchViewController: UIViewController {
                 notes = filterNotes(tmpCategory,searchString:"")
             }
             categoryTitle.title = tmpCategory
+            notes = notes.sortedResultsUsingProperty("name", ascending: true)
             tableView.reloadData()
         }
         //notes = allFoods
@@ -165,15 +198,59 @@ class SearchViewController: UIViewController {
     func searchNotes(searchString: String) -> RLMResults {
         let realm = Realm()
         let searchPredicate = NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@", searchString, searchString)
-        return FoodInfo.objectsWithPredicate(searchPredicate)
+        //return FoodInfo.objectsWithPredicate(searchPredicate)
+        var predArr : [NSPredicate]?
+        var searchWords : [String] = split(searchString) {$0 == " "}
+        for i in 0..<searchWords.count{
+            println(searchWords[i])
+        }
+        for i in 0..<searchWords.count{
+            if i == 0{
+                predArr = [NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@",searchWords[i],searchWords[i])]
+            }
+            else{
+                predArr!.append(NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@",searchWords[i],searchWords[i]))
+            }
+        }
+        var ret = FoodInfo.allObjects()
+        if predArr !=  nil{
+            //var ret = FoodInfo.allObjects()
+            for i in 0..<predArr!.count{
+                ret = ret.objectsWithPredicate(predArr![i])
+                println(ret)
+            }
+            
+        }
+        return ret
     }
     
     func filterNotes(tmpCategory: String, searchString: String) -> RLMResults {
         let realm = Realm()
         let categoryPredicate = NSPredicate(format: "group CONTAINS[c] %@", tmpCategory)
-        let searchPredicate = NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@", searchString, searchString)
-        return FoodInfo.objectsWithPredicate(categoryPredicate).objectsWithPredicate(searchPredicate)
-        //return notes.objectsWithPredicate(searchPredicate)
+        var predArr : [NSPredicate]?
+        var searchWords : [String] = split(searchString) {$0 == " "}
+        for i in 0..<searchWords.count{
+            println(searchWords[i])
+        }
+        for i in 0..<searchWords.count{
+            if i == 0{
+                predArr = [NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@",searchWords[i],searchWords[i])]
+            }
+            else{
+                predArr!.append(NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@",searchWords[i],searchWords[i]))
+            }
+        }
+        if predArr !=  nil{
+              var ret = FoodInfo.objectsWithPredicate(categoryPredicate)
+            for i in 0..<predArr!.count{
+                ret = ret.objectsWithPredicate(predArr![i])
+                println(ret)
+            }
+            return ret
+        }
+        else{
+            return FoodInfo.objectsWithPredicate(categoryPredicate)
+        }
     }
     
 }
@@ -187,6 +264,9 @@ extension SearchViewController: UITableViewDelegate{
    // func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
    //     self.performSegueWithIdentifier("showFood", sender: self)
    // }
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool{
+            return false
+    }
 }
 extension SearchViewController: UITableViewDataSource {
     
@@ -194,18 +274,9 @@ extension SearchViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("FoodCell", forIndexPath: indexPath) as! FoodTableViewCell //1
         
         let row = indexPath.row
-        //if state == .DefaultMode{
-        //    cell.nameLabel?.text = allFoods[UInt(row)].name
-        //}
-        //else{
-        //notes = allFoods.sortedResultsUsingProperty("name", ascending: true)
-            if let notes = notes{
-                cell.nameLabel?.text = notes[UInt(row)].name
-            }
-            
-        //}
-        //tableView.reloadData()
-        //cell.foodnote = allFoods[UInt(row)] as! FoodInfo//JsonHelper.foodsArr[row]
+        if let notes = notes{
+            cell.nameLabel?.text = notes[UInt(row)].name
+        }
         
         return cell
     }
@@ -245,8 +316,18 @@ extension SearchViewController: UISearchBarDelegate {
             if(tmpCategory == "Soups and Sauces"){
                 notes = filterNotes("Soups Sauces and Gravies",searchString:searchText)
             }
+            else if(tmpCategory == "All Foods"){
+                notes = searchNotes(searchText)
+                //notes = filterNotes("",searchString:"")
+            }
             else if(tmpCategory == "Sausages, etc."){
                 notes = filterNotes("Sausages and Luncheon Meats",searchString:searchText)
+            }
+            else if(tmpCategory == "Baked Goods"){
+                notes = filterNotes("Baked Products",searchString:searchText)
+            }
+            else if(tmpCategory == "Lamb, Veal, Game"){
+                notes = filterNotes("Lamb Veal and Game Products",searchString:searchText)
             }
             else if(tmpCategory == "Nuts and Seeds"){
                 notes = filterNotes("Nut and Seed Products",searchString:searchText)
@@ -254,6 +335,7 @@ extension SearchViewController: UISearchBarDelegate {
             else{
                 notes = filterNotes(tmpCategory,searchString:searchText)
             }
+            notes = notes.sortedResultsUsingProperty("name", ascending: true)
             tableView.reloadData()
         }
         else{

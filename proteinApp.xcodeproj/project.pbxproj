@@ -18,6 +18,8 @@
 		651CF84A1B59CD4900C647FD /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 651CF8471B59CD4900C647FD /* JBLineChartView.m */; };
 		651CF84D1B5D716B00C647FD /* KeyboardNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651CF84C1B5D716A00C647FD /* KeyboardNotificationHandler.swift */; };
 		651CF8511B5DCA7C00C647FD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651CF8501B5DCA7B00C647FD /* HomeViewController.swift */; };
+		651E21451B69891C009A919D /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651E21441B69891C009A919D /* Recipe.swift */; };
+		651E21491B6A9D24009A919D /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 651E21481B6A9D24009A919D /* add.png */; };
 		652406E31B5FFF9B00A33D96 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652406E21B5FFF9B00A33D96 /* SettingsViewController.swift */; };
 		652406EE1B6047E000A33D96 /* Herbal_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 652406ED1B6047E000A33D96 /* Herbal_64.png */; };
 		652406F01B60487100A33D96 /* Herbal_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652406EF1B60487100A33D96 /* Herbal_32.png */; };
@@ -34,6 +36,13 @@
 		652407061B60524800A33D96 /* Broccoli_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652407051B60524800A33D96 /* Broccoli_32.png */; };
 		652407081B60551E00A33D96 /* pistachio.png in Resources */ = {isa = PBXBuildFile; fileRef = 652407071B60551E00A33D96 /* pistachio.png */; };
 		655749941B5EC2D800DF75F8 /* IngredientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655749931B5EC2D800DF75F8 /* IngredientHelper.swift */; };
+		658537761B61B7DA002DF82D /* Searching_magnifying_glass_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 658537751B61B7DA002DF82D /* Searching_magnifying_glass_32.png */; };
+		658537781B62A21B002DF82D /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658537771B62A21B002DF82D /* SuggestionViewController.swift */; };
+		6585377A1B62D9AB002DF82D /* nature-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 658537791B62D9AB002DF82D /* nature-background.jpg */; };
+		6585377C1B66C659002DF82D /* amino_10.png in Resources */ = {isa = PBXBuildFile; fileRef = 6585377B1B66C658002DF82D /* amino_10.png */; };
+		6585377E1B66CA7A002DF82D /* amino_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6585377D1B66CA7A002DF82D /* amino_4.png */; };
+		658537801B66DAFA002DF82D /* amino_meal_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6585377F1B66DAFA002DF82D /* amino_meal_4.png */; };
+		658537821B66E118002DF82D /* amino_4_meal_and_total.png in Resources */ = {isa = PBXBuildFile; fileRef = 658537811B66E118002DF82D /* amino_4_meal_and_total.png */; };
 		65CAA8D31B508EFC00EA8150 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CAA8D21B508EFC00EA8150 /* AppDelegate.swift */; };
 		65CAA8D51B508EFC00EA8150 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CAA8D41B508EFC00EA8150 /* SearchViewController.swift */; };
 		65CAA8DA1B508EFC00EA8150 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CAA8D81B508EFC00EA8150 /* Main.storyboard */; };
@@ -82,6 +91,8 @@
 		651CF84B1B59CE0000C647FD /* JBChartView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JBChartView-Bridging-Header.h"; sourceTree = "<group>"; };
 		651CF84C1B5D716A00C647FD /* KeyboardNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationHandler.swift; sourceTree = SOURCE_ROOT; };
 		651CF8501B5DCA7B00C647FD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		651E21441B69891C009A919D /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		651E21481B6A9D24009A919D /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 		652406E21B5FFF9B00A33D96 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		652406ED1B6047E000A33D96 /* Herbal_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Herbal_64.png; sourceTree = "<group>"; };
 		652406EF1B60487100A33D96 /* Herbal_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Herbal_32.png; sourceTree = "<group>"; };
@@ -98,6 +109,13 @@
 		652407051B60524800A33D96 /* Broccoli_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Broccoli_32.png; sourceTree = "<group>"; };
 		652407071B60551E00A33D96 /* pistachio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pistachio.png; sourceTree = "<group>"; };
 		655749931B5EC2D800DF75F8 /* IngredientHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientHelper.swift; sourceTree = "<group>"; };
+		658537751B61B7DA002DF82D /* Searching_magnifying_glass_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Searching_magnifying_glass_32.png; sourceTree = "<group>"; };
+		658537771B62A21B002DF82D /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
+		658537791B62D9AB002DF82D /* nature-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "nature-background.jpg"; sourceTree = "<group>"; };
+		6585377B1B66C658002DF82D /* amino_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amino_10.png; sourceTree = "<group>"; };
+		6585377D1B66CA7A002DF82D /* amino_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amino_4.png; sourceTree = "<group>"; };
+		6585377F1B66DAFA002DF82D /* amino_meal_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amino_meal_4.png; sourceTree = "<group>"; };
+		658537811B66E118002DF82D /* amino_4_meal_and_total.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amino_4_meal_and_total.png; sourceTree = "<group>"; };
 		65CAA8CD1B508EFC00EA8150 /* proteinApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = proteinApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CAA8D11B508EFC00EA8150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65CAA8D21B508EFC00EA8150 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +187,13 @@
 		652406E81B6046FC00A33D96 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				651E21481B6A9D24009A919D /* add.png */,
+				658537811B66E118002DF82D /* amino_4_meal_and_total.png */,
+				6585377F1B66DAFA002DF82D /* amino_meal_4.png */,
+				6585377D1B66CA7A002DF82D /* amino_4.png */,
+				6585377B1B66C658002DF82D /* amino_10.png */,
+				658537791B62D9AB002DF82D /* nature-background.jpg */,
+				658537751B61B7DA002DF82D /* Searching_magnifying_glass_32.png */,
 				65D65DD21B6066F900B44955 /* rice_32.png */,
 				65D65DD01B60643D00B44955 /* Fast_food_32.png */,
 				65D65DCE1B60636A00B44955 /* Wheat_32.png */,
@@ -201,11 +226,12 @@
 		6551A73C1B541D9300F8B0FC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				65CAA8D41B508EFC00EA8150 /* SearchViewController.swift */,
 				651CF83D1B585DED00C647FD /* DisplayViewController.swift */,
-				651CF8501B5DCA7B00C647FD /* HomeViewController.swift */,
 				65DCA8EA1B5F02190013B451 /* CategoryViewController.swift */,
+				651CF8501B5DCA7B00C647FD /* HomeViewController.swift */,
+				65CAA8D41B508EFC00EA8150 /* SearchViewController.swift */,
 				652406E21B5FFF9B00A33D96 /* SettingsViewController.swift */,
+				658537771B62A21B002DF82D /* SuggestionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = SOURCE_ROOT;
@@ -242,6 +268,7 @@
 				6551A73C1B541D9300F8B0FC /* ViewControllers */,
 				65CAA8D21B508EFC00EA8150 /* AppDelegate.swift */,
 				6519EF5A1B57268F0047DB99 /* FoodInfo.swift */,
+				651E21441B69891C009A919D /* Recipe.swift */,
 				6519EF5B1B57268F0047DB99 /* JsonHelper.swift */,
 				65CAA8D81B508EFC00EA8150 /* Main.storyboard */,
 				65CAA8DB1B508EFD00EA8150 /* Images.xcassets */,
@@ -378,7 +405,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6585377A1B62D9AB002DF82D /* nature-background.jpg in Resources */,
 				652406F61B604AAA00A33D96 /* Oil_32.png in Resources */,
+				6585377C1B66C659002DF82D /* amino_10.png in Resources */,
 				65CAA8DA1B508EFC00EA8150 /* Main.storyboard in Resources */,
 				651CF83A1B572D4000C647FD /* foodinfo.json in Resources */,
 				65D65DC31B605D8C00B44955 /* fish_32.png in Resources */,
@@ -389,14 +418,18 @@
 				652407001B604EB100A33D96 /* Grapes_32.png in Resources */,
 				652406F01B60487100A33D96 /* Herbal_32.png in Resources */,
 				652407061B60524800A33D96 /* Broccoli_32.png in Resources */,
+				658537801B66DAFA002DF82D /* amino_meal_4.png in Resources */,
+				658537761B61B7DA002DF82D /* Searching_magnifying_glass_32.png in Resources */,
 				652406F81B604B7400A33D96 /* Chicken_32.png in Resources */,
 				65D65DC91B605FE300B44955 /* Cookies_32.png in Resources */,
 				652407081B60551E00A33D96 /* pistachio.png in Resources */,
 				652406F21B6048B000A33D96 /* Piece_of_cheese_32.png in Resources */,
 				65D65DC51B605E1100B44955 /* Peas_32.png in Resources */,
+				651E21491B6A9D24009A919D /* add.png in Resources */,
 				652407021B60507E00A33D96 /* Olive_32.png in Resources */,
 				65D65DD11B60643D00B44955 /* Fast_food_32.png in Resources */,
 				65D65DC11B605BB800B44955 /* beverage_32.png in Resources */,
+				658537821B66E118002DF82D /* amino_4_meal_and_total.png in Resources */,
 				651CF83C1B580C2200C647FD /* test.json in Resources */,
 				65D65DCD1B6062BB00B44955 /* Candy_32.png in Resources */,
 				652406FC1B604CE600A33D96 /* Salami_32.png in Resources */,
@@ -408,6 +441,7 @@
 				652406F41B60494100A33D96 /* baby_32.png in Resources */,
 				65D65DC71B605EA100B44955 /* Deer_32.png in Resources */,
 				652407041B60510A00A33D96 /* Bacon_32.png in Resources */,
+				6585377E1B66CA7A002DF82D /* amino_4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +521,8 @@
 				65DCA8EB1B5F021A0013B451 /* CategoryViewController.swift in Sources */,
 				65CAA8D51B508EFC00EA8150 /* SearchViewController.swift in Sources */,
 				651CF8511B5DCA7C00C647FD /* HomeViewController.swift in Sources */,
+				651E21451B69891C009A919D /* Recipe.swift in Sources */,
+				658537781B62A21B002DF82D /* SuggestionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

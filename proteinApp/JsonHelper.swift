@@ -18,12 +18,12 @@ struct JsonHelper {
         let jsonData:NSData = NSData.dataWithContentsOfMappedFile(jsonFilePath as String) as! NSData
         let error:NSError?
         let json = JSON(data: jsonData)
-        //println(json)
-        println(json["foods"][0]["name"])
-        println(json["foods"].count)
         let realm = RLMRealm.defaultRealm()
         for i in 0..<3525{
-            println(i)
+            if(i % 500) == 0{
+                println(i)
+            }
+            //loadingLabel.text = "Please wait, hamster doing warmup exercises"
             let newFood : FoodInfo = FoodInfo()
 
             newFood.name = json["foods"][i]["name"].stringValue

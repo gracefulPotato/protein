@@ -14,11 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    @IBOutlet weak var loadingLabel : UILabel!
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         if FoodInfo.allObjects().count == 0{
-            JsonHelper.loadData()
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+                JsonHelper.loadData()
+            })
         }
         //HomeViewController.loadView(HomeViewController.recipeCalcTitleLabel)
         //func UIStatusBarStyle -> preferredStatusBarStyle{ return UIStatusBarStyleBlackTranslucentContent }

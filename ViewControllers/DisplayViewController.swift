@@ -14,12 +14,13 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
     @IBOutlet weak var titleTextField: UILabel!
     @IBOutlet weak var groupTextView: UILabel!
     @IBOutlet weak var protGramTextView: UILabel!
-    @IBAction func backButton(sender: AnyObject) {
-    }
-
+    @IBOutlet weak var foodGroupImage : UIImageView!
     @IBOutlet weak var barChartView : JBBarChartView!
     @IBOutlet weak var informationLabel: UILabel!
+    @IBOutlet weak var suggestionButton: UIButton!
+    
     var addedFood : FoodInfo?
+    let myTransparentWhite = UIColor(red:1.0, green:1.0, blue:1.0, alpha:0.5)
     var note: FoodInfo? {
         didSet {
             println("in note didset")
@@ -45,17 +46,19 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //titleTextField.numberOfLines = 0
+        barChartView.backgroundColor = myTransparentWhite
         barChartView.dataSource = self
         barChartView.delegate = self
         println(barChartView.dataSource)
         barChartView.minimumValue = 0
-        barChartView.maximumValue = 3
+        barChartView.maximumValue = 4
         titleTextField.adjustsFontSizeToFitWidth = true
-        println("View DId Load")
         //barChartView.frame = CGRectMake(100,100,200,200)
         barChartView.reloadData()
         displayFood(self.note)
+        var foodGroupImage = UIImageView(frame: CGRectMake(300, 150, 50, 50));
+        foodGroupImage.image = UIImage(named: getImage(note!.group))
+        self.view.addSubview(foodGroupImage);
         //informationLabel.text = ""
     }
 
@@ -65,7 +68,6 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
         // our code
         barChartView.reloadData()
         
-//        var timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("showChart"), userInfo: nil, repeats: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,40 +75,16 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
         // Dispose of any resources that can be recreated.
     }
     
-    //@IBAction func addFoodRecipeButtonTapped(sender: AnyObject) {
-        //addedFood = note
-        //self.performSegueWithIdentifier("addFoodRecipeButtonTapped", sender: sender)
-        
-    //}
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "AddFoodRecipeButtonTapped") {
-            //let nav = segue.destinationViewController as! UINavigationController
-            //let FoodViewController = nav.topViewController as! HomeViewController
             let FoodViewController = segue.destinationViewController as! HomeViewController
             FoodViewController.tmpIngredient = note
         }
+        if (segue.identifier == "toSuggestions") {
+            let FoodViewController = segue.destinationViewController as! SuggestionViewController
+            FoodViewController.originalFood = note
+        }
     }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FoodCell", forIndexPath: indexPath) as! FoodTableViewCell //1
-        
-        let row = indexPath.row
-
-        cell.nameLabel?.text = ""
-        
-        return cell
-    }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return Int(allFoods.count)
-            return 1
-    }
-    //func numberOfBarsInBarChartView(barChartView: JBBarChartView)->NSInteger{
-    //    return 9 // number of bars in chart
-    //}
-//    func numberOfBarsInBarChartView(barChartView: JBBarChartView!) -> UInt {
-//        return 9
-//    }
     
     func numberOfBarsInBarChartView(barChartView: JBBarChartView!) -> UInt {
         return 9
@@ -114,65 +92,110 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
     
     func barChartView(barChartView: JBBarChartView!, heightForBarViewAtIndex index: UInt) -> CGFloat {
         switch index{
-        case 0:
-            return CGFloat(note!.tryp)
-        case 1:
-            return CGFloat(note!.thre)
-        case 2:
-            return CGFloat(note!.isol)
-        case 3:
-            return CGFloat(note!.leuc)
-        case 4:
-            return CGFloat(note!.lysi)
-        case 5:
-            return CGFloat(note!.meth)
-        case 6:
-            return CGFloat(note!.phen)
-        case 7:
-            return CGFloat(note!.vali)
-        case 8:
-            return CGFloat(note!.hist)
-        default:
-            return 0
+            case 0:
+                return CGFloat(note!.tryp) //0.45 //0.15
+            case 1:
+                return CGFloat(note!.thre) //1.81 //0.60
+            case 2:
+                return CGFloat(note!.isol) //1.73 //0.58
+            case 3:
+                return CGFloat(note!.leuc) //3.82 //1.27
+            case 4:
+                return CGFloat(note!.lysi) //3.45 //1.15
+            case 5:
+                return CGFloat(note!.meth) //1.73 //0.58
+            case 6:
+                return CGFloat(note!.phen) //3.00 //1.00
+            case 7:
+                return CGFloat(note!.vali) //2.18 //0.73
+            case 8:
+                return CGFloat(note!.hist) //1.27 //0.42
+            default:
+                return 0
         }
-        //return 1
     }
     
     func barChartView(barChartView: JBBarChartView!, didSelectBarAtIndex index: UInt) {
         if let note = note{
-        switch index{
-        case 0:
-            informationLabel.text = "Contains \(note.tryp)g Tryptophan"
-        case 1:
-            informationLabel.text = "Contains \(note.thre)g Threonine"
-        case 2:
-            informationLabel.text = "Contains \(note.isol)g Isoleucine"
-        case 3:
-            informationLabel.text = "Contains \(note.leuc)g Leucine"
-        case 4:
-            informationLabel.text = "Contains \(note.lysi)g Lysine"
-        case 5:
-            informationLabel.text = "Contains \(note.meth)g Methionine"
-        case 6:
-            informationLabel.text = "Contains \(note.phen)g Phenylalanine"
-        case 7:
-            informationLabel.text = "Contains \(note.vali)g Valine"
-        case 8:
-            informationLabel.text = "Contains \(note.hist)g Histidine"
+            switch index{
+                case 0:
+                    informationLabel.text = "Contains \(note.tryp)g Tryptophan"
+                case 1:
+                    informationLabel.text = "Contains \(note.thre)g Threonine"
+                case 2:
+                    informationLabel.text = "Contains \(note.isol)g Isoleucine"
+                case 3:
+                    informationLabel.text = "Contains \(note.leuc)g Leucine"
+                case 4:
+                    informationLabel.text = "Contains \(note.lysi)g Lysine"
+                case 5:
+                    informationLabel.text = "Contains \(note.meth)g Methionine"
+                case 6:
+                    informationLabel.text = "Contains \(note.phen)g Phenylalanine"
+                case 7:
+                    informationLabel.text = "Contains \(note.vali)g Valine"
+                case 8:
+                    informationLabel.text = "Contains \(note.hist)g Histidine"
+                default:
+                    informationLabel.text = "Contains \(note.tryp)g DefaultCase!"
+            }
+        }
+    }
+//    func barChartView(barChartView: JBBarChartView!, colorForBarViewAtIndex index: UInt) -> UIColor {
+//        return UIColor.blueColor()
+//    }
+    
+    func getImage(groupName: String)->String{
+        switch groupName{
+        case "Dairy and Egg Products":
+            return "Piece_of_cheese_32.png"
+        case "Spices and Herbs":
+            return "Herbal_32.png"
+        case "Baby Foods":
+            return "Baby_32.png"
+        case "Fats and Oils":
+            return "Olive_32.png"
+        case "Poultry Products":
+            return "Chicken_32.png"
+        case "Soups Sauces and Gravies":
+            return "Soup_32.png"
+        case "Sausages and Luncheon Meats":
+            return "Salami_32.png"
+        case "Breakfast Cereals":
+            return "Cereals_32.png"
+        case "Fruits and Fruit Juices":
+            return "Grapes_32.png"
+        case "Pork Products":
+            return "Bacon_32.png"
+        case "Vegetables and Vegetable Products":
+            return "Broccoli_32.png"
+        case "Nut and Seed Products":
+            return "pistachio.png"
+        case "Beef Products":
+            return "steak_32.png"
+        case "Beverages":
+            return "beverage_32.png"
+        case "Finfish and Shellfish Products":
+            return "fish_32.png"
+        case "Legumes and Legume Products":
+            return "Peas_32.png"
+        case "Lamb Veal and Game Products":
+            return "Deer_32.png"
+        case "Baked Products":
+            return "Cookies_32.png"
+        case "Snacks":
+            return "Chips_32.png"
+        case "Sweets":
+            return "Candy_32.png"
+        case "Cereal Grains and Pasta":
+            return "Wheat_32.png"
+        case "Fast Foods":
+            return "Fast_food_32.png"
+        case "Meals Entrees and Side Dishes":
+            return "rice_32.png"
         default:
-            informationLabel.text = "Contains \(note.tryp)g DefaultCase!"
-        }
+            return "rice_32.png"
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -10,11 +10,27 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="50" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EEB-cY-Hd5">
-                    <rect key="frame" x="212" y="208" width="20" height="20"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="50" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EEB-cY-Hd5">
+                    <rect key="frame" x="212" y="208" width="460" height="429"/>
                 </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Please wait, our hamster is doing warmup exercises." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwx-Da-DfL">
+                    <rect key="frame" x="111" y="286" width="403" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="EEB-cY-Hd5" secondAttribute="trailing" constant="10" id="0he-Wl-Deh"/>
+                <constraint firstItem="EEB-cY-Hd5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="6O1-Wr-gJ2"/>
+                <constraint firstAttribute="trailing" secondItem="jwx-Da-DfL" secondAttribute="trailing" constant="10" id="Jzw-Pm-HJ3"/>
+                <constraint firstItem="jwx-Da-DfL" firstAttribute="top" secondItem="EEB-cY-Hd5" secondAttribute="bottom" constant="200" id="LqO-bq-aLE"/>
+                <constraint firstAttribute="bottom" secondItem="jwx-Da-DfL" secondAttribute="bottom" constant="10" id="SLl-zq-Fmb"/>
+                <constraint firstItem="jwx-Da-DfL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="hLL-SO-iFg"/>
+                <constraint firstItem="EEB-cY-Hd5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="pqs-tz-BTV"/>
+                <constraint firstItem="jwx-Da-DfL" firstAttribute="top" secondItem="EEB-cY-Hd5" secondAttribute="bottom" constant="10" id="pys-fZ-yFB"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="548" y="455"/>
