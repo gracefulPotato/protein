@@ -20,17 +20,38 @@ class SuggestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         (matchCat, matchImageName) = calcMatchCat(originalFood)
+        var imgNames : [String] = split(matchImageName) {$0 == " "}
         broadSugLabel.text = "\(originalFood.name)\n\nis complemented by\n\n\(matchCat)"
         let displayVC = DisplayViewController()
-        var origImg = UIImageView(frame: CGRectMake(100, 300, 50, 50));
+        var origImg = UIImageView(frame: CGRectMake(100, 350, 50, 50));
         origImg.image = UIImage(named: displayVC.getImage(originalFood.group))
         self.view.addSubview(origImg)
         
-        var matchImg = UIImageView(frame: CGRectMake(200, 300, 50, 50));
-        matchImg.image = UIImage(named: matchImageName)
-        self.view.addSubview(matchImg)
+        println("\nimgNames.count: \(imgNames.count)")
+        for i in 0..<imgNames.count{
+            println("i: \(i)")
+            var matchImg : UIImageView
+//            if i == 0{
+//                matchImg = UIImageView(frame: CGRect(x:200, y:(300), width:50, height:50));
+//            }
+            if i % 2 == 0{
+                println("i is even")
+                matchImg = UIImageView(frame: CGRect(x:200, y:(350-60*(i/2)), width:50, height:50));
+            }
+            else{
+                println("i is odd")
+                if i == 3{
+                    matchImg = UIImageView(frame: CGRect(x:200, y:(350+60*(i-1)), width:50, height:50));
+                }
+                else{
+                    matchImg = UIImageView(frame: CGRect(x:200, y:(350+60*i), width:50, height:50));
+                }
+            }
+            matchImg.image = UIImage(named: imgNames[i])
+            self.view.addSubview(matchImg)
+        }
         
-        var plus = UIImageView(frame: CGRectMake(150, 300, 40, 40));
+        var plus = UIImageView(frame: CGRectMake(160, 360, 30, 30));
         plus.image = UIImage(named: "add.png")
         self.view.addSubview(plus)
         
@@ -48,54 +69,84 @@ class SuggestionViewController: UIViewController {
     
     func calcMatchCat(food:FoodInfo) ->(String!,String!){
         switch food.group{
-        case "Dairy and Egg products":
-            return ("something","Link")
+        case "Dairy and Egg Products":
+            return ("Nuts, legumes, or grains","pistachio.png Peas_32.png Wheat_32.png")
         case "Spices and Herbs":
-            return ("Any high-protein food group","Peas_32.png")
+            return ("Any high-protein food group","Peas_32.png Chicken_32.png pistachio.png Salami_32.png fish_32.png")
         case "Baby Foods":
-            return ("idk","Link")
+            if food.protGram > 8{
+                return ("Any food group (already has complete protein","Grapes_32.png Broccoli_32.png beverage_32.png")
+            }else{
+                return ("Any high-protein food group","Peas_32.png Chicken_32.png pistachio.png Salami_32.png fish_32.png")
+            }
         case "Fats and Oils":
-            return ("Any high-protein food group","Peas_32.png")
+            if food.protGram > 8{
+                return ("Any food group (already has complete protein","Grapes_32.png Broccoli_32.png beverage_32.png")
+            }else{
+                return ("Any high-protein food group","Peas_32.png Chicken_32.png pistachio.png Salami_32.png fish_32.png")
+            }
         case "Poultry Products":
-            return ("Baked Products or Grains","Wheat_32.png")
-        case "Soups, Sauces, and Gravies":
-            return ("Any high-protein food group","Peas_32.png")
+            return ("Any food group (already has complete protein","Grapes_32.png Broccoli_32.png beverage_32.png")
+            //return ("Baked Products or Grains","Wheat_32.png")
+        case "Soups Sauces and Gravies":
+            if food.protGram > 8{
+                return ("Any food group (already has complete protein","Grapes_32.png Broccoli_32.png beverage_32.png")
+            }else{
+                return ("Any high-protein food group","Peas_32.png Chicken_32.png pistachio.png Salami_32.png fish_32.png")
+            }
         case "Sausages and Luncheon Meats":
-            return ("Baked Products or Grains","Wheat_32.png")
+            return ("Any food group (already has complete protein","Grapes_32.png Broccoli_32.png beverage_32.png")
+            //return ("Baked Products or Grains","Wheat_32.png")
         case "Breakfast Cereals":
-            return ("Dairy and Egg products or Nut and Seed Products","Piece_of_cheese_32.png")
+            return ("Dairy, nuts, or legumes","Piece_of_cheese_32.png pistachio.png Peas_32.png")
         case "Fruits and Fruit Juices":
-            return ("Any high-protein food group","Peas_32.png")
+            return ("Any high-protein food group","Peas_32.png Chicken_32.png pistachio.png Salami_32.png fish_32.png")
         case "Pork Products":
-            return ("Baked Products or Grains","Wheat_32.png")
+            return ("Any food group (already has complete protein","Grapes_32.png Broccoli_32.png beverage_32.png")
+            //return ("Baked Products or Grains","Wheat_32.png")
         case "Vegetables and Veg. Products":
             return ("Baked Products or Grains","Wheat_32.png")
         case "Nut and Seed Products":
-            return ("Baked Products or Grains","Wheat_32.png")
+            return ("Grains, legumes, or dairy","Wheat_32.png Peas_32.png Piece_of_cheese_32.png")
         case "Beef Products":
-            return ("Baked Products or Grains","Wheat_32.png")
+            return ("Any food group (already has complete protein","Grapes_32.png Broccoli_32.png beverage_32.png")
+            //return ("Baked Products or Grains","Wheat_32.png")
         case "Beverages":
-            return ("Any high-protein food group","Peas_32.png")
+            return ("Any high-protein food group","Peas_32.png Chicken_32.png pistachio.png Salami_32.png fish_32.png")
         case "Finfish and Shellfish Products":
-            return ("Baked Products or Grains","Wheat_32.png")
+            return ("Any food group (already has complete protein","Grapes_32.png Broccoli_32.png beverage_32.png")
+            //return ("Baked Products or Grains","Wheat_32.png")
         case "Legumes and Legume Products":
-            return ("Baked Products or Grains","Wheat_32.png")
+            return ("Grains, nuts, or dairy","Wheat_32.png pistachio.png Piece_of_cheese_32.png")
         case "Lamb, Veal, and Game Products":
-            return ("Baked Products or Grains","Wheat_32.png")
+            return ("Any food group (already has complete protein","Grapes_32.png Broccoli_32.png beverage_32.png")
+            //return ("Baked Products or Grains","Wheat_32.png")
         case "Baked Products":
-            return ("Meat, Legumes, Fish, Dairy, or Nuts","steak_32.png")
+            return ("Legumes, dairy, or nuts","Peas_32.png Piece_of_cheese_32.png pistachio.png")
         case "Snacks":
-            return ("Any high-protein food group","Peas_32.png")
+            return ("Any high-protein food group","Peas_32.png Chicken_32.png pistachio.png Salami_32.png fish_32.png")
         case "Sweets":
-            return ("Any high-protein food group","Peas_32.png")
+            return ("Any high-protein food group","Peas_32.png Chicken_32.png pistachio.png Salami_32.png fish_32.png")
         case "Cereal Grains and Pasta":
-            return ("Meat, Legumes, Fish, Dairy, or Nuts","steak_32.png")
+            return ("Legumes, dairy, or nuts","Peas_32.png Piece_of_cheese_32.png pistachio.png")
         case "Fast Foods":
-            return ("idk","Link")
+            if food.protGram > 8{
+                return ("Any food group (already has complete protein","Grapes_32.png Broccoli_32.png beverage_32.png")
+            }else{
+                return ("Any high-protein food group","Peas_32.png Chicken_32.png pistachio.png Salami_32.png fish_32.png")
+            }
         case "Meals Entrees and Side Dishes":
-            return ("idk","Link")
+            if food.protGram > 8{
+                return ("Any food group (already has complete protein","Grapes_32.png Broccoli_32.png beverage_32.png")
+            }else{
+                return ("Any high-protein food group","Peas_32.png Chicken_32.png pistachio.png Salami_32.png fish_32.png")
+            }
         default:
-            return ("idk","Link")
+            if food.protGram > 8{
+                return ("Any food group (already has complete protein","Grapes_32.png Broccoli_32.png beverage_32.png")
+            }else{
+                return ("Any high-protein food group","Peas_32.png Chicken_32.png pistachio.png Salami_32.png fish_32.png")
+            }
         }
     }
     /*
