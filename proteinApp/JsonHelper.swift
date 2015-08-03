@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftyJSON
-import Realm
 import RealmSwift
 
 struct JsonHelper {
@@ -18,7 +17,7 @@ struct JsonHelper {
         let jsonData:NSData = NSData.dataWithContentsOfMappedFile(jsonFilePath as String) as! NSData
         let error:NSError?
         let json = JSON(data: jsonData)
-        let realm = RLMRealm.defaultRealm()
+        let realm = Realm()
         for i in 0..<3525{
             if(i % 500) == 0{
                 println(i)
@@ -44,9 +43,9 @@ struct JsonHelper {
             newFood.phen = json["foods"][i]["phen"].double!
             newFood.vali = json["foods"][i]["vali"].double!
             newFood.hist = json["foods"][i]["hist"].double!
-            realm.transactionWithBlock() {
-                realm.addObject(newFood)
-            }
+            realm.write({ () -> Void in
+                realm.add(newFood, update: false)
+            })
             //foodsArr.append(newFood)
             //let newFood : FoodInfo = FoodInfo(name:name,group:group,factor:factor!,nitFactor:nitFactor!,protGram:protGram!,tryp:tryp!,thre:thre!,isol:isol!,leuc:leuc!,lysi:lysi!,meth:meth!,phen:phen!,vali:vali!,hist:hist!)
         }

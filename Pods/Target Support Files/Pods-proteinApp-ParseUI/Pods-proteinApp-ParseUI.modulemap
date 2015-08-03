@@ -1,6 +1,0 @@
-framework module ParseUI {
-  umbrella header "Pods-proteinApp-ParseUI-umbrella.h"
-
-  export *
-  module * { export * }
-}

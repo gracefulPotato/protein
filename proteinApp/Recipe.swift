@@ -8,13 +8,14 @@
 
 import UIKit
 import Foundation
-import Realm
 import RealmSwift
 
-class RecipeObj: RLMObject{
+class RecipeWithPicture: Object{
     
     //dynamic var ingredientList : RLMArray<FoodInfo>
     dynamic var ingredientStr : String = ""
     dynamic var title : String = ""
     dynamic var totProt : Double = 0
+    dynamic var picture = NSData()
+    //dynamic var img : UIImage = UIImage(named: "rice_32.png")!
 }

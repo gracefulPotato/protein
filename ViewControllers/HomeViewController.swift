@@ -8,8 +8,8 @@
 
 import UIKit
 import JBChartView
-import Realm
 import RealmSwift
+import Haneke
 
 class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChartViewDelegate, UITableViewDataSource,UITableViewDelegate{
     
@@ -20,9 +20,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     @IBOutlet weak var aminoLabel : UILabel!
     @IBOutlet weak var barChartView : JBBarChartView!
     @IBOutlet weak var informationLabel: UILabel!
-    //@IBOutlet weak var backBarChart : JBBarChartView!
     @IBOutlet weak var ingredientTable : UITableView!
-    //@IBOutlet weak var backgroundChart : UIImageView!
     
     var tmpIngredient : FoodInfo?
     var levelJudgement : String!
@@ -40,13 +38,22 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     let myTransparentWhite = UIColor(red:1.0, green:1.0, blue:1.0, alpha:0.0)
     let myBarColor = UIColor(red:0.7, green:0.1, blue:1, alpha:1.0)
     var displayMeat : Bool!
-    var alert = UIAlertController(title: "Deletion Alert", message: "Are you sure you want to delete this recipe?", preferredStyle: UIAlertControllerStyle.Alert)
+    var alert = UIAlertController(title: "Deletion Alert", message: "Are you sure you want to clear this recipe?\nIf you haven't saved it, you'll lose it.", preferredStyle: UIAlertControllerStyle.Alert)
+    var saveAlert = UIAlertController(title: "Save Recipe?", message: "Clear recipe when done?\n\nEnter recipe title:", preferredStyle: UIAlertControllerStyle.Alert)
+    
     var selectedFood: FoodInfo?
-    let realm = RLMRealm.defaultRealm()
+    let realm = Realm()
+    var textField = UITextField(frame: CGRectMake(0, 0, 10, 10))
+    var imagePickerController: UIImagePickerController?
+    var selectedImage : UIImage!
+    let cache = Shared.dataCache
+    var deleteSwitch : UISwitch = UISwitch(frame: CGRectMake(220, 40, 10, 10))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("is this loading the first time?")
+        saveAlert.addTextFieldWithConfigurationHandler(configurationTextField)
+        saveAlert.view.addSubview(deleteSwitch)
+        //println("is this loading the first time?")
         prepareBarChartView()
         if let tmpIngredient = tmpIngredient{
             println("adding ingredient")
@@ -63,6 +70,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         }
         println("displayMeat: \(displayMeat)")
         addAlertAction()
+        addSaveAlertAction()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -116,14 +124,6 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             println(tmpIngred.name)
             println(cell.nameLabel?.text)
         }
-//        else{
-//            println("add ingred message should display")
-//            cell.nameLabel?.text = "Add ingredients to see total protein!"
-//        }
-        
-        //}
-        //tableView.reloadData()
-        //cell.foodnote = allFoods[UInt(row)] as! FoodInfo//JsonHelper.foodsArr[row]
         
         return cell
     }
@@ -195,21 +195,51 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         //realm.deleteObject(Recipe.allObjects() as? RLMObject)
         //}
         //realm.deleteObject(withPredicate: realm.objects(Recipe))
-        var recipe = RecipeObj()
-        for i in 1..<IngredientHelper.ingredients.count{
-            recipe.ingredientStr += IngredientHelper.ingredients[i].name
-            recipe.totProt += IngredientHelper.ingredients[i].protGram
+        self.presentViewController(saveAlert, animated: true, completion: nil)
+        //saveAlert.addTextFieldWithConfigurationHandler(configurationTextField)
+        //var textField = saveAlert.textFieldAtIndex(0)
+    }
+
+    func saveConfirmed(){
+        var recipe = RecipeWithPicture()
+        recipe.title = textField.text
+        for i in 0..<IngredientHelper.ingredients.count{
+            println("in for loop, \(i) iteration")
+            recipe.ingredientStr = "\(recipe.ingredientStr)\n\(i+1). \(IngredientHelper.ingredients[i].name)"
+            recipe.totProt = recipe.totProt + IngredientHelper.ingredients[i].protGram
         }
-//        var recipe = Recipe()
-//        for i in 1..<IngredientHelper.ingredients.count{
-//            //recipe.ingredientList.insert(IngredientHelper.ingredients[i], atIndex:i)
-//        }
+        //recipe.img = selectedImage
+        println("recipe.ingredientStr: \(recipe.ingredientStr)")
+        println("recipe.totProt: \(recipe.totProt)")
         println("new recipe!")
         
-        realm.transactionWithBlock() {
-            self.realm.addObject(recipe)
+        realm.write() {
+            self.realm.add(recipe, update: false)
         }
-        println(RecipeObj.allObjects().count)
+        if deleteSwitch.on{
+            if IngredientHelper.ingredients.count > 0{
+                //self.presentViewController(self.alert, animated: true, completion: nil)
+                for i in 0..<IngredientHelper.ingredients.count{
+                    println("i: \(i)")
+                    IngredientHelper.ingredients.removeAtIndex(0)
+                }
+                self.ingredientTable.reloadData()
+                self.prepareOtherViews()
+                self.barChartView.reloadData()
+                
+            }
+        }
+        println(realm.objects(RecipeWithPicture).count)
+    }
+    func configurationTextField(textField: UITextField!)
+    {
+        println("configurat hire the TextField")
+        
+        if let tField = textField {
+            
+            self.textField = textField!        //Save reference to the UITextField
+            self.textField.text = "Hello world"
+        }
     }
     @IBAction func addFoodButtonPressed(sender:AnyObject){
         if IngredientHelper.ingredients.count > 0{
@@ -232,7 +262,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             case .Default:
                 println("default")
                 if IngredientHelper.ingredients.count > 0{
-                    self.presentViewController(self.alert, animated: true, completion: nil)
+                    //self.presentViewController(self.alert, animated: true, completion: nil)
                     for i in 0..<IngredientHelper.ingredients.count{
                         println("i: \(i)")
                         IngredientHelper.ingredients.removeAtIndex(0)
@@ -253,6 +283,38 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         }))
         
         alert.addAction(UIAlertAction(title: "No", style: .Default, handler: { action in
+        }))
+    }
+    func addSaveAlertAction(){
+        saveAlert.addAction(UIAlertAction(title: "Save without picture", style: .Default, handler: { action in
+            switch action.style{
+            case .Default:
+                println("default")
+                self.saveConfirmed()
+            case .Cancel:
+            println("cancel")
+            
+            case .Destructive:
+            println("destructive")
+            }
+        }))
+        // Only show camera option if rear camera is available
+        if (UIImagePickerController.isCameraDeviceAvailable(.Rear)) {
+            let cameraAction = UIAlertAction(title: "Photo from Camera", style: .Default) { (action) in
+                self.saveConfirmed()
+                self.showImagePickerController(.Camera)
+            }
+            
+            saveAlert.addAction(cameraAction)
+        }
+        let photoLibraryAction = UIAlertAction(title: "Photo from Library", style: .Default) { (action) in
+            self.saveConfirmed()
+            self.showImagePickerController(.PhotoLibrary)
+        }
+        
+        saveAlert.addAction(photoLibraryAction)
+        
+        saveAlert.addAction(UIAlertAction(title: "No", style: .Default, handler: { action in
         }))
     }
     func prepareOtherViews(){
@@ -299,19 +361,38 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             }
         //}
     }
+    func showImagePickerController(sourceType: UIImagePickerControllerSourceType) {
+        imagePickerController = UIImagePickerController()
+        imagePickerController!.sourceType = sourceType
+        imagePickerController!.delegate = self
+        self.presentViewController(imagePickerController!, animated: true, completion: nil)
+    }
+//    func takePhoto() {
+//        // instantiate photo taking class, provide callback for when photo  is selected
+//        photoTakingHelper = PhotoTakingHelper(viewController: self.tabBarController!) { (image: UIImage?) in
+//            // don't do anything, yet...
+//        }
+//    }
 }
-
-//extension HomeViewController: UITableViewDelegate{
-//    func ingredientTable(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        
-//        //selectedFood = allFoods.objectAtIndex(UInt(indexPath.row)) as? FoodInfo
-//        //selectedFood = notes.objectAtIndex(UInt(indexPath.row)) as? FoodInfo
-//        self.performSegueWithIdentifier("showFood", sender: self)
-//    }
-//    // func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-//    //     self.performSegueWithIdentifier("showFood", sender: self)
-//    // }
-//    func ingredientTable(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool{
-//        return false
-//    }
-//}
+extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        
+        self.dismissViewControllerAnimated(false, completion: nil)
+        if let image = image{
+            println(realm.objects(RecipeWithPicture).count)
+            println("\(realm.objects(RecipeWithPicture)[realm.objects(RecipeWithPicture).count-1].ingredientStr)")
+            println("about to convert and assign picture")
+            let add : NSData = UIImageJPEGRepresentation(image, 1)
+            println("converted image to NSData")
+            realm.write() {
+                self.realm.objects(RecipeWithPicture)[self.realm.objects(RecipeWithPicture).count-1].picture = add
+            }
+        }
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+}

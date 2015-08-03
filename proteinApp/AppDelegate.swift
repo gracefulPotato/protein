@@ -8,6 +8,7 @@
 
 import UIKit
 import JBChartView
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @IBOutlet weak var loadingLabel : UILabel!
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        if FoodInfo.allObjects().count == 0{
+        let realm = Realm()
+        if realm.objects(FoodInfo).count == 0{
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
                 JsonHelper.loadData()
             })

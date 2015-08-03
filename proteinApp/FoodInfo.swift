@@ -8,10 +8,9 @@
 
 import UIKit
 import Foundation
-import Realm
 import RealmSwift
 
-class FoodInfo: RLMObject {
+class FoodInfo: Object {
     dynamic var name : String = ""
     dynamic var group : String = ""
     dynamic var factor : Double = 0

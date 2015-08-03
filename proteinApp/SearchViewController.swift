@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Realm
 import RealmSwift
 
 class SearchViewController: UIViewController {
@@ -16,7 +15,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toolbarBottomSpace: NSLayoutConstraint!
     @IBOutlet weak var categoryTitle: UINavigationItem!
-    let allFoods : RLMResults = FoodInfo.allObjects()
+    var allFoods: Results<FoodInfo> = { let realm = Realm(); return realm.objects(FoodInfo); } ()
     var carrySearchText : String?
     var resultsArr = [FoodInfo]()
     var keyboardNotificationHandler: KeyboardNotificationHandler?
@@ -38,7 +37,7 @@ class SearchViewController: UIViewController {
                 else if(tmpCategory == "All Foods"){
                     //notes = searchNotes(searchString)
                     //notes = filterNotes("",searchString:"")
-                    notes = notes.sortedResultsUsingProperty("name", ascending: true)
+                    notes = notes.sorted("name", ascending: true)
                 }
                 else if(tmpCategory == "Sausages, etc."){
                     notes = filterNotes("Sausages and Luncheon Meats",searchString:"")
@@ -58,7 +57,7 @@ class SearchViewController: UIViewController {
                 tableView.reloadData()
             }
             else{
-                notes = allFoods.sortedResultsUsingProperty("name", ascending: true)
+                notes = allFoods.sorted("name", ascending: true)
             }
             //self.navigationController!.setNavigationBarHidden(false, animated: true)
             searchBar.resignFirstResponder()
@@ -76,7 +75,7 @@ class SearchViewController: UIViewController {
                 else if(tmpCategory == "All Foods"){
                     notes = searchNotes(searchText)
                     //notes = filterNotes("",searchString:"")
-                    notes = notes.sortedResultsUsingProperty("name", ascending: true)
+                    notes = notes.sorted("name", ascending: true)
                 }
                 else if(tmpCategory == "Sausages, etc."){
                     notes = filterNotes("Sausages and Luncheon Meats",searchString:searchText)
@@ -93,7 +92,7 @@ class SearchViewController: UIViewController {
                 else{
                     notes = filterNotes(tmpCategory,searchString:searchText)
                 }
-                notes = notes.sortedResultsUsingProperty("name", ascending: true)
+                notes = notes.sorted("name", ascending: true)
                 tableView.reloadData()
             }
             else{
@@ -111,7 +110,7 @@ class SearchViewController: UIViewController {
     var filtered:[FoodInfo] = []
     //static var foods = [FoodInfo]()
     
-    var notes: RLMResults! {
+    var notes: Results<FoodInfo>! {
         didSet {
             // Whenever notes update, update the table view
             if let tableView = tableView {
@@ -129,7 +128,7 @@ class SearchViewController: UIViewController {
                 notes = filterNotes("Soups Sauces and Gravies",searchString:"")
             }
             else if(tmpCategory == "All Foods"){
-                notes = allFoods.sortedResultsUsingProperty("name", ascending: true)
+                notes = allFoods.sorted("name", ascending: true)
             }
             else if(tmpCategory == "Sausages, etc."){
                 notes = filterNotes("Sausages and Luncheon Meats",searchString:"")
@@ -147,12 +146,12 @@ class SearchViewController: UIViewController {
                 notes = filterNotes(tmpCategory,searchString:"")
             }
             categoryTitle.title = tmpCategory
-            notes = notes.sortedResultsUsingProperty("name", ascending: true)
+            notes = notes.sorted("name", ascending: true)
             tableView.reloadData()
         }
         //notes = allFoods
         else{
-            notes = allFoods.sortedResultsUsingProperty("name", ascending: true)
+            notes = allFoods.sorted("name", ascending: true)
         }
         // Do any additional setup after loading the view, typically from a nib.
         tableView.dataSource = self
@@ -195,7 +194,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func searchNotes(searchString: String) -> RLMResults {
+    func searchNotes(searchString: String) -> Results<FoodInfo> {
         let realm = Realm()
         let searchPredicate = NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@", searchString, searchString)
         //return FoodInfo.objectsWithPredicate(searchPredicate)
@@ -212,11 +211,11 @@ class SearchViewController: UIViewController {
                 predArr!.append(NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@",searchWords[i],searchWords[i]))
             }
         }
-        var ret = FoodInfo.allObjects()
-        if predArr !=  nil{
+        var ret = realm.objects(FoodInfo)
+        if let predArr = predArr {
             //var ret = FoodInfo.allObjects()
-            for i in 0..<predArr!.count{
-                ret = ret.objectsWithPredicate(predArr![i])
+            for i in 0..<predArr.count{
+                ret = ret.filter(predArr[i])
                 println(ret)
             }
             
@@ -224,7 +223,7 @@ class SearchViewController: UIViewController {
         return ret
     }
     
-    func filterNotes(tmpCategory: String, searchString: String) -> RLMResults {
+    func filterNotes(tmpCategory: String, searchString: String) -> Results<FoodInfo> {
         let realm = Realm()
         let categoryPredicate = NSPredicate(format: "group CONTAINS[c] %@", tmpCategory)
         var predArr : [NSPredicate]?
@@ -241,15 +240,15 @@ class SearchViewController: UIViewController {
             }
         }
         if predArr !=  nil{
-              var ret = FoodInfo.objectsWithPredicate(categoryPredicate)
+              var ret = realm.objects(FoodInfo).filter(categoryPredicate)
             for i in 0..<predArr!.count{
-                ret = ret.objectsWithPredicate(predArr![i])
+                ret = ret.filter(predArr![i])
                 println(ret)
             }
             return ret
         }
         else{
-            return FoodInfo.objectsWithPredicate(categoryPredicate)
+            return realm.objects(FoodInfo).filter(categoryPredicate)
         }
     }
     
@@ -258,7 +257,7 @@ extension SearchViewController: UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         //selectedFood = allFoods.objectAtIndex(UInt(indexPath.row)) as? FoodInfo
-        selectedFood = notes.objectAtIndex(UInt(indexPath.row)) as? FoodInfo
+        selectedFood = notes[indexPath.row]
         self.performSegueWithIdentifier("showFood", sender: self)
     }
    // func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
@@ -275,7 +274,7 @@ extension SearchViewController: UITableViewDataSource {
         
         let row = indexPath.row
         if let notes = notes{
-            cell.nameLabel?.text = notes[UInt(row)].name
+            cell.nameLabel?.text = notes[row].name
         }
         
         return cell
@@ -335,7 +334,7 @@ extension SearchViewController: UISearchBarDelegate {
             else{
                 notes = filterNotes(tmpCategory,searchString:searchText)
             }
-            notes = notes.sortedResultsUsingProperty("name", ascending: true)
+            notes = notes.sorted("name", ascending: true)
             tableView.reloadData()
         }
         else{
@@ -354,6 +353,6 @@ extension SearchViewController: UISearchBarDelegate {
         self.tableView.reloadData()
     }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        notes = allFoods.sortedResultsUsingProperty("name", ascending: true)
+        notes = allFoods.sorted("name", ascending: true)
     }
 }

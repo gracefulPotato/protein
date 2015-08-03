@@ -29,27 +29,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-proteinApp-FBSDKLoginKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-proteinApp-JBChartView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-proteinApp-Parse.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-proteinApp-ParseFacebookUtilsV4.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-proteinApp-ParseUI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -77,72 +57,52 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0B22F4091CE49EE4EB625C1E</key>
+		<key>4207656F90220D33795AC84D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0D78A3E7DE91538FAA0CE520</key>
+		<key>4CE3F432C32EDDA01E6D3541</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>126E32F77C3ED08A71102BFC</key>
+		<key>5BD7BF07BD32ECEB4A6969C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>13E9DA1D444C834A3660CD0D</key>
+		<key>7DF0D432DC0CAA8E73951F13</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1FD708BB8C43FBDCD16259A5</key>
+		<key>8C5FF0169235B9A5670439DA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>248479F20C38564D27E6C14D</key>
+		<key>9EF9AE07B1D7F748277BF5C7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2D6214179705B975F4A3BD02</key>
+		<key>B4A3AF7960186AC1BF0EB5BB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>412A6D14377AD79B4495EBFB</key>
+		<key>BB337512944D93A36A272C13</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4A7B27D07E672C7ED73CB941</key>
+		<key>C63688629EC9E8C762B9CE92</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>514A1BC2FB9F4649FD150F30</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>62800128128D9AD16F0EF9A1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A070345460868A94DF2C1247</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CCD1708518E3ACE1DA3F8139</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F6482ACC51C199B758AAF420</key>
+		<key>E79DFD1B32C27E9E3FDBE5F3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
