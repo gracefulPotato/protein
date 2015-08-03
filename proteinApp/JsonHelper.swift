@@ -15,14 +15,13 @@ struct JsonHelper {
     static func loadData() {
         let jsonFilePath:NSString = NSBundle.mainBundle().pathForResource("foodinfo", ofType: "json")!
         let jsonData:NSData = NSData.dataWithContentsOfMappedFile(jsonFilePath as String) as! NSData
-        let error:NSError?
-        let json = JSON(data: jsonData)
+        var error:NSError?
+        let json = JSON(data: jsonData, error: &error)
         let realm = Realm()
         for i in 0..<3525{
             if(i % 500) == 0{
                 println(i)
             }
-            //loadingLabel.text = "Please wait, hamster doing warmup exercises"
             let newFood : FoodInfo = FoodInfo()
 
             newFood.name = json["foods"][i]["name"].stringValue
