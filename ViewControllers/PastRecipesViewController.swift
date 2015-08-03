@@ -8,12 +8,10 @@
 
 import UIKit
 import RealmSwift
-import Haneke
 
 class PastRecipesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     @IBOutlet weak var recipeLabel : UITextView!
     @IBOutlet weak var tableView: UITableView!
-    let cache = Shared.dataCache
     override func viewDidLoad() {
         super.viewDidLoad()
         loadRecipeLabel()

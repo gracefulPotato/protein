@@ -9,7 +9,6 @@
 import UIKit
 import JBChartView
 import RealmSwift
-import Haneke
 
 class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChartViewDelegate, UITableViewDataSource,UITableViewDelegate{
     
@@ -46,7 +45,6 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     var textField = UITextField(frame: CGRectMake(0, 0, 10, 10))
     var imagePickerController: UIImagePickerController?
     var selectedImage : UIImage!
-    let cache = Shared.dataCache
     var deleteSwitch : UISwitch = UISwitch(frame: CGRectMake(220, 40, 10, 10))
     
     override func viewDidLoad() {
@@ -71,6 +69,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         println("displayMeat: \(displayMeat)")
         addAlertAction()
         addSaveAlertAction()
+        deleteSwitch.on = true
     }
     
     override func viewDidAppear(animated: Bool) {

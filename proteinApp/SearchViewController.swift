@@ -15,6 +15,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var toolbarBottomSpace: NSLayoutConstraint!
     @IBOutlet weak var categoryTitle: UINavigationItem!
+    @IBOutlet weak var sortSeg : UISegmentedControl!
+    
     var allFoods: Results<FoodInfo> = { let realm = Realm(); return realm.objects(FoodInfo); } ()
     var carrySearchText : String?
     var resultsArr = [FoodInfo]()
@@ -25,6 +27,8 @@ class SearchViewController: UIViewController {
     }
     var selectedFood: FoodInfo?
     var tmpCategory : String! = ""
+    var sortCat : String! = "name"
+    var ascendDescend : Bool = true
     var state: State = .DefaultMode{
         didSet{
         switch (state) {
@@ -37,7 +41,7 @@ class SearchViewController: UIViewController {
                 else if(tmpCategory == "All Foods"){
                     //notes = searchNotes(searchString)
                     //notes = filterNotes("",searchString:"")
-                    notes = notes.sorted("name", ascending: true)
+                    notes = notes.sorted(sortCat, ascending: ascendDescend)
                 }
                 else if(tmpCategory == "Sausages, etc."){
                     notes = filterNotes("Sausages and Luncheon Meats",searchString:"")
@@ -57,7 +61,7 @@ class SearchViewController: UIViewController {
                 tableView.reloadData()
             }
             else{
-                notes = allFoods.sorted("name", ascending: true)
+                notes = allFoods.sorted(sortCat, ascending: ascendDescend)
             }
             //self.navigationController!.setNavigationBarHidden(false, animated: true)
             searchBar.resignFirstResponder()
@@ -75,7 +79,7 @@ class SearchViewController: UIViewController {
                 else if(tmpCategory == "All Foods"){
                     notes = searchNotes(searchText)
                     //notes = filterNotes("",searchString:"")
-                    notes = notes.sorted("name", ascending: true)
+                    notes = notes.sorted(sortCat, ascending:ascendDescend)
                 }
                 else if(tmpCategory == "Sausages, etc."){
                     notes = filterNotes("Sausages and Luncheon Meats",searchString:searchText)
@@ -92,7 +96,7 @@ class SearchViewController: UIViewController {
                 else{
                     notes = filterNotes(tmpCategory,searchString:searchText)
                 }
-                notes = notes.sorted("name", ascending: true)
+                notes = notes.sorted(sortCat, ascending: ascendDescend)
                 tableView.reloadData()
             }
             else{
@@ -128,7 +132,7 @@ class SearchViewController: UIViewController {
                 notes = filterNotes("Soups Sauces and Gravies",searchString:"")
             }
             else if(tmpCategory == "All Foods"){
-                notes = allFoods.sorted("name", ascending: true)
+                notes = allFoods.sorted("name", ascending: ascendDescend)
             }
             else if(tmpCategory == "Sausages, etc."){
                 notes = filterNotes("Sausages and Luncheon Meats",searchString:"")
@@ -146,12 +150,12 @@ class SearchViewController: UIViewController {
                 notes = filterNotes(tmpCategory,searchString:"")
             }
             categoryTitle.title = tmpCategory
-            notes = notes.sorted("name", ascending: true)
+            notes = notes.sorted(sortCat, ascending: ascendDescend)
             tableView.reloadData()
         }
         //notes = allFoods
         else{
-            notes = allFoods.sorted("name", ascending: true)
+            notes = allFoods.sorted(sortCat, ascending: ascendDescend)
         }
         // Do any additional setup after loading the view, typically from a nib.
         tableView.dataSource = self
@@ -334,7 +338,7 @@ extension SearchViewController: UISearchBarDelegate {
             else{
                 notes = filterNotes(tmpCategory,searchString:searchText)
             }
-            notes = notes.sorted("name", ascending: true)
+            notes = notes.sorted(sortCat, ascending: ascendDescend)
             tableView.reloadData()
         }
         else{
@@ -353,6 +357,25 @@ extension SearchViewController: UISearchBarDelegate {
         self.tableView.reloadData()
     }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        notes = allFoods.sorted("name", ascending: true)
+        notes = allFoods.sorted(sortCat, ascending: ascendDescend)
+    }
+    @IBAction func indexChanged(sender:UISegmentedControl){
+        switch sortSeg.selectedSegmentIndex{
+            case 0:
+            sortCat = "name"
+            ascendDescend = true
+            println("name")
+            case 1:
+            sortCat = "protGram"
+            ascendDescend = false
+            println("protGram")
+            //textLabel.text = "Second Segment selected";
+            default:
+            break;
+        }
+        println("did it break yet?")
+        notes = notes.sorted(sortCat, ascending: ascendDescend)
+        tableView.reloadData()
+        println("should have reloaded")
     }
 }

@@ -30,10 +30,10 @@
                                 <color key="backgroundColor" red="0.78519263969999997" green="0.7259282038" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="mAB-jl-3hc">
-                                <rect key="frame" x="1" y="108" width="598" height="492"/>
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <scrollView key="tableFooterView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="nrJ-6K-V2W">
-                                    <rect key="frame" x="0.0" y="66" width="598" height="44"/>
+                                    <rect key="frame" x="0.0" y="95" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </scrollView>
                                 <prototypes>
@@ -70,22 +70,37 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="mAB-jl-3hc" secondAttribute="trailing" constant="-15" id="2Zf-Lr-2n6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mAB-jl-3hc" secondAttribute="trailing" constant="-16" id="2Zf-Lr-2n6"/>
                             <constraint firstItem="1cC-pG-ch0" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="Ble-hd-wLg"/>
                             <constraint firstItem="G9n-l2-G6M" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="topMargin" id="IXb-MP-QCW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1cC-pG-ch0" secondAttribute="trailing" constant="-16" id="VxK-fA-YY7"/>
                             <constraint firstItem="mAB-jl-3hc" firstAttribute="top" secondItem="1cC-pG-ch0" secondAttribute="bottom" id="ZlL-jD-zg3"/>
+                            <constraint firstItem="1cC-pG-ch0" firstAttribute="top" secondItem="G9n-l2-G6M" secondAttribute="bottom" constant="20" id="bYU-52-gOy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="G9n-l2-G6M" secondAttribute="trailing" constant="-20" id="jCO-Rm-sq3"/>
-                            <constraint firstItem="1cC-pG-ch0" firstAttribute="top" secondItem="G9n-l2-G6M" secondAttribute="bottom" constant="20" id="xY7-IH-9f0"/>
-                            <constraint firstItem="mAB-jl-3hc" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-15" id="yRb-ut-b4f"/>
+                            <constraint firstItem="mAB-jl-3hc" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="yRb-ut-b4f"/>
                             <constraint firstItem="G9n-l2-G6M" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="yqd-Ie-vf5"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="mAB-jl-3hc" secondAttribute="bottom" id="zCq-ck-tLX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="All Foods" id="3f6-8N-ygh"/>
+                    <navigationItem key="navigationItem" title="All Foods" id="3f6-8N-ygh">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Nwg-JQ-KRk">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="bar" selectedSegmentIndex="0" id="KDi-Jy-lNP">
+                                <rect key="frame" x="16" y="8" width="123" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Alpha"/>
+                                    <segment title="Protein"/>
+                                </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="9pv-A4-QxB" eventType="valueChanged" id="Tfk-dU-zx8"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="categoryTitle" destination="3f6-8N-ygh" id="Eqi-SH-2bv"/>
                         <outlet property="searchBar" destination="1cC-pG-ch0" id="sfd-Jj-B3y"/>
+                        <outlet property="sortSeg" destination="KDi-Jy-lNP" id="bVZ-ML-vpz"/>
                         <outlet property="tableView" destination="mAB-jl-3hc" id="Fqr-6D-skP"/>
                         <outlet property="toolbarBottomSpace" destination="zCq-ck-tLX" id="o2e-dC-12e"/>
                         <segue destination="xQ9-aS-ivA" kind="show" identifier="showFood" id="CcA-6T-BYh"/>
@@ -741,7 +756,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TNa-CK-5m1"/>
-        <segue reference="mO0-je-qaX"/>
         <segue reference="aV9-j2-5Ws"/>
+        <segue reference="CcA-6T-BYh"/>
     </inferredMetricsTieBreakers>
 </document>
