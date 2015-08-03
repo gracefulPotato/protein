@@ -8,6 +8,7 @@
 
 import UIKit
 import JBChartView
+import RealmSwift
 
 class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarChartViewDelegate {
     //@IBOutlet weak var tableView: UITableView!
@@ -76,9 +77,13 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let realm = Realm()
         if (segue.identifier == "AddFoodRecipeButtonTapped") {
             let FoodViewController = segue.destinationViewController as! HomeViewController
             FoodViewController.tmpIngredient = note
+            realm.write{
+                self.note!.nitFactor = self.note!.nitFactor + 1
+            }
         }
         if (segue.identifier == "toSuggestions") {
             let FoodViewController = segue.destinationViewController as! SuggestionViewController

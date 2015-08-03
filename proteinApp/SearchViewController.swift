@@ -362,14 +362,17 @@ extension SearchViewController: UISearchBarDelegate {
     @IBAction func indexChanged(sender:UISegmentedControl){
         switch sortSeg.selectedSegmentIndex{
             case 0:
-            sortCat = "name"
-            ascendDescend = true
-            println("name")
+                sortCat = "name"
+                ascendDescend = true
+                println("name")
             case 1:
-            sortCat = "protGram"
-            ascendDescend = false
-            println("protGram")
-            //textLabel.text = "Second Segment selected";
+                sortCat = "protGram"
+                ascendDescend = false
+                println("protGram")
+            case 2:
+                sortCat = "nitFactor"
+                ascendDescend = false
+                println("nitFactor")
             default:
             break;
         }

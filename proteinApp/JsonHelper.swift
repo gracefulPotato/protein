@@ -29,9 +29,9 @@ struct JsonHelper {
             if let factor = json["foods"][i]["factor"].double{
                 newFood.factor = factor
             }
-            if let nitFactor = json["foods"][i]["nitFactor"].double{
-                newFood.nitFactor = nitFactor
-            }
+            //if let nitFactor = json["foods"][i]["nitFactor"].double{
+                newFood.nitFactor = 0
+            //}
             newFood.protGram = json["foods"][i]["protGram"].double!
             newFood.tryp = json["foods"][i]["tryp"].double!
             newFood.thre = json["foods"][i]["thre"].double!

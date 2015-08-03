@@ -90,6 +90,7 @@
                                 <segments>
                                     <segment title="Alpha"/>
                                     <segment title="Protein"/>
+                                    <segment title="Use"/>
                                 </segments>
                                 <connections>
                                     <action selector="indexChanged:" destination="9pv-A4-QxB" eventType="valueChanged" id="Tfk-dU-zx8"/>
