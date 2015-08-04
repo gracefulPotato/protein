@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     @IBOutlet weak var ingredientTable : UITableView!
     
     var tmpIngredient : FoodInfo?
+    var tmpRecipeStr : String?
     var levelJudgement : String!
 
     var tryp : Double = 0
@@ -51,15 +52,27 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         super.viewDidLoad()
         saveAlert.addTextFieldWithConfigurationHandler(configurationTextField)
         saveAlert.view.addSubview(deleteSwitch)
-        //println("is this loading the first time?")
         prepareBarChartView()
         if let tmpIngredient = tmpIngredient{
-            println("adding ingredient")
             IngredientHelper.ingredients.append(tmpIngredient)
             prepareOtherViews()
         }
+        if let tmpRecipeStr = tmpRecipeStr{
+            var recipes : [String] = split(tmpRecipeStr) {$0 == "\n"}
+            println("string was split")
+            for i in recipes{
+                println(i)
+            }
+            for ingred in recipes{
+                let namePredicate = NSPredicate(format: "name CONTAINS[c] %@", ingred)
+                let tmpFood = realm.objects(FoodInfo).filter(namePredicate)
+                IngredientHelper.ingredients.append(tmpFood[0])
+            }
+            prepareOtherViews()
+            ingredientTable.reloadData()
+        }
         else{
-            println("in the else")
+            println("tmpRecipeStr didnt come through")
             let message = FoodInfo()
             message.name = "Add ingredients to see total protein!"
             IngredientHelper.ingredients.append(message)
@@ -116,12 +129,9 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         let cell = tableView.dequeueReusableCellWithIdentifier("FoodCell", forIndexPath: indexPath) as! FoodTableViewCell //1
         
         let row = indexPath.row
-        println("in cellforrowatindexpath, row = \(row)")
         if row < IngredientHelper.ingredients.count{
             let tmpIngred = IngredientHelper.ingredients[row]
             cell.nameLabel?.text = tmpIngred.name
-            println(tmpIngred.name)
-            println(cell.nameLabel?.text)
         }
         
         return cell
@@ -130,7 +140,6 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
         //return Int(allFoods.count)
         if let ingredientArr = IngredientHelper.ingredients{
-            println(ingredientArr.count)
             return Int(ingredientArr.count)
         }
         else{
@@ -143,17 +152,24 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            println("indexPath.row: \(indexPath.row)")
             IngredientHelper.ingredients.removeAtIndex(indexPath.row)
             ingredientTable.reloadData()
             
-//            let realm = Realm()
-//            
-//            realm.write() {
-//                realm.delete(note)
-//            }
-            
         }
+    }
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if(identifier == "showFood"){
+            if IngredientHelper.ingredients.count != 0 || IngredientHelper.ingredients[0].name == "Add ingredients to see total protein!"{
+                return false
+            }
+            else{
+                return true
+            }
+        }
+        else{
+            return true
+        }
+
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "toSettings") {
@@ -161,15 +177,26 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             settingsVc.meat = displayMeat
         }
         if (segue.identifier == "showFood") {
+            println("in showFood prepareForSegue")
             if IngredientHelper.ingredients[0].name == "Add ingredients to see total protein!"{
                 IngredientHelper.ingredients.removeAtIndex(0)
+                println("removed add ingred...")
             }
-            let FoodViewController = segue.destinationViewController as! DisplayViewController
-            var cell : UITableViewCell = sender as! UITableViewCell
-            if let indexPath = self.ingredientTable?.indexPathForCell(cell) {
-                selectedFood = IngredientHelper.ingredients[indexPath.row]
-            }
-            FoodViewController.note = selectedFood
+
+            
+           if IngredientHelper.ingredients.count != 0{//"Add ingredients to see total protein!" {
+                println("segue code getting run")
+                let FoodViewController = segue.destinationViewController as! DisplayViewController
+                var cell : UITableViewCell = sender as! UITableViewCell
+                if self.ingredientTable?.indexPathForCell(cell) != nil {
+                    let indexPath = self.ingredientTable?.indexPathForCell(cell)
+                    selectedFood = IngredientHelper.ingredients[indexPath!.row]
+                    FoodViewController.note = selectedFood
+                }
+           }
+           else{
+               println("count = 0")
+           }
         }
     }
     
@@ -186,30 +213,17 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         }
     }
     @IBAction func saveButtonPressed(sender:AnyObject){
-        //realm.transactionWithBlock() {
-        //let deleteTheseObjs = toArray(Recipe.self) // tracks is of type [Track]
-        //for i in 0..<deleteTheseObjs.count{
-            //realm.deleteObject(deleteTheseObjs[i])
-        //}
-        //realm.deleteObject(Recipe.allObjects() as? RLMObject)
-        //}
-        //realm.deleteObject(withPredicate: realm.objects(Recipe))
         self.presentViewController(saveAlert, animated: true, completion: nil)
-        //saveAlert.addTextFieldWithConfigurationHandler(configurationTextField)
-        //var textField = saveAlert.textFieldAtIndex(0)
     }
 
     func saveConfirmed(){
         var recipe = RecipeWithPicture()
         recipe.title = textField.text
         for i in 0..<IngredientHelper.ingredients.count{
-            println("in for loop, \(i) iteration")
             recipe.ingredientStr = "\(recipe.ingredientStr)\n\(i+1). \(IngredientHelper.ingredients[i].name)"
             recipe.totProt = recipe.totProt + IngredientHelper.ingredients[i].protGram
         }
         //recipe.img = selectedImage
-        println("recipe.ingredientStr: \(recipe.ingredientStr)")
-        println("recipe.totProt: \(recipe.totProt)")
         println("new recipe!")
         
         realm.write() {
@@ -217,7 +231,6 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         }
         if deleteSwitch.on{
             if IngredientHelper.ingredients.count > 0{
-                //self.presentViewController(self.alert, animated: true, completion: nil)
                 for i in 0..<IngredientHelper.ingredients.count{
                     println("i: \(i)")
                     IngredientHelper.ingredients.removeAtIndex(0)
@@ -228,12 +241,9 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
                 
             }
         }
-        println(realm.objects(RecipeWithPicture).count)
     }
     func configurationTextField(textField: UITextField!)
     {
-        println("configurat hire the TextField")
-        
         if let tField = textField {
             
             self.textField = textField!        //Save reference to the UITextField
@@ -263,7 +273,6 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
                 if IngredientHelper.ingredients.count > 0{
                     //self.presentViewController(self.alert, animated: true, completion: nil)
                     for i in 0..<IngredientHelper.ingredients.count{
-                        println("i: \(i)")
                         IngredientHelper.ingredients.removeAtIndex(0)
                     }
                     self.ingredientTable.reloadData()
@@ -299,14 +308,14 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         }))
         // Only show camera option if rear camera is available
         if (UIImagePickerController.isCameraDeviceAvailable(.Rear)) {
-            let cameraAction = UIAlertAction(title: "Photo from Camera", style: .Default) { (action) in
+            let cameraAction = UIAlertAction(title: "Save with photo from Camera", style: .Default) { (action) in
                 self.saveConfirmed()
                 self.showImagePickerController(.Camera)
             }
             
             saveAlert.addAction(cameraAction)
         }
-        let photoLibraryAction = UIAlertAction(title: "Photo from Library", style: .Default) { (action) in
+        let photoLibraryAction = UIAlertAction(title: "Save with photo from Library", style: .Default) { (action) in
             self.saveConfirmed()
             self.showImagePickerController(.PhotoLibrary)
         }
@@ -329,13 +338,11 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             let (aminoText,aminoColor) = IngredientHelper.returnAminoJudgement(tryp,thre:thre,isol:isol,leuc:leuc,lysi:lysi,meth:meth,phen:phen,vali:vali,hist:hist)
             reportLabel.text = "Progress: \(text)"// amino balance __."
             reportLabel.textColor = color
-            println(aminoText)
             aminoLabel.text = "Amino balance: \(aminoText)"
             aminoLabel.textColor = aminoColor
         }
     }
     func barChartView(barChartView: JBBarChartView!, didSelectBarAtIndex index: UInt) {
-        //if let tryp = tryp, thre = thre, isol = isol, leuc = leuc, lysi = lysi, meth = meth, phen = phen, vali = vali, hist = hist{
             switch index{
             case 0:
                 informationLabel.text = "Contains \(tryp)g Tryptophan"
@@ -358,7 +365,6 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             default:
                 informationLabel.text = "Contains \(tryp)g DefaultCase!"
             }
-        //}
     }
     func showImagePickerController(sourceType: UIImagePickerControllerSourceType) {
         imagePickerController = UIImagePickerController()
@@ -366,12 +372,6 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         imagePickerController!.delegate = self
         self.presentViewController(imagePickerController!, animated: true, completion: nil)
     }
-//    func takePhoto() {
-//        // instantiate photo taking class, provide callback for when photo  is selected
-//        photoTakingHelper = PhotoTakingHelper(viewController: self.tabBarController!) { (image: UIImage?) in
-//            // don't do anything, yet...
-//        }
-//    }
 }
 extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -379,9 +379,7 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
         
         self.dismissViewControllerAnimated(false, completion: nil)
         if let image = image{
-            println(realm.objects(RecipeWithPicture).count)
             println("\(realm.objects(RecipeWithPicture)[realm.objects(RecipeWithPicture).count-1].ingredientStr)")
-            println("about to convert and assign picture")
             let add : NSData = UIImageJPEGRepresentation(image, 1)
             println("converted image to NSData")
             realm.write() {

@@ -24,22 +24,15 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
     let myTransparentWhite = UIColor(red:1.0, green:1.0, blue:1.0, alpha:0.5)
     var note: FoodInfo? {
         didSet {
-            println("in note didset")
             displayFood(self.note)
             println(self.note!.name)
-            println("after calling displayFood")
-            
         }
     }
     
     func displayFood(note: FoodInfo?) {
-        println("in displayFood")
         if let note = note{
-            println("in conditional")
             if let titleTextField = titleTextField, groupTextView = groupTextView, protGramTextView = protGramTextView  {
-                println("in inner conditional")
                 titleTextField.text = note.name
-                println(titleTextField)
                 groupTextView.text = "Food Group:\n\(note.group)"
                 protGramTextView.text = "Total protein: \(note.protGram) grams"
             }

@@ -15,10 +15,6 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     let reuseIdentifier = "CategoryCell"
     var selectedCat : String = ""
     var prevcell : UICollectionViewCell!
-    //@IBOutlet weak var catLabel : UILabel!
-    //@IBOutlet weak var catImg : UIImageView!
-    
-    //@IBOutlet weak var CategoryCell : UICollectionViewCell!
     @IBOutlet weak var catView : UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +34,6 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         //cell.contentView.subviews.makeObjectsPerformSelector:@selector(removeFromSuperview)
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier( reuseIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
-//        if let test = prevcell{
-//            for subview in prevcell!.subviews {
-//                subview.removeFromSuperview()
-//            }
-//        }
-        //let tmp = cell.contentView.subviews as? UIView
-        //println(tmp)
-        //tmp!.removeFromSuperview()
-        //cell.contentView.subviews.makeObjectsPerformSelector(action: selector(removeFromSuperview))
         cell.backgroundColor = UIColor.whiteColor()
         // Configure the cell
         var title = UILabel(frame: CGRectMake(0, 0, cell.bounds.size.width, 40))
@@ -63,34 +50,14 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         //let index = indexPath as Int
         title.text = catArr[indexPath.section][indexPath.row]
-        //catLabel.text = catArr[indexPath.section][indexPath.row]
-        //selectedCat = title.text as! String!
-        //image = imgArr[indexPath.section][indexPath.row]
         prevcell = cell
         return cell
     }
     
-//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        self.performSegueWithIdentifier("CategoryButtonTapped", sender: self)
-//          selectedCat = catArr[indexPath.section][indexPath.row]
-//          println("Selected Cat:\(selectedCat)")
-//        let FoodViewController = segue.destinationViewController as! SearchViewController
-//        FoodViewController.tmpCategory = selectedCat
-//    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "CategoryButtonTapped") {
-            //let nav = segue.destinationViewController as! UINavigationController
-            //let FoodViewController = nav.topViewController as! SearchViewController
+
             let FoodViewController = segue.destinationViewController as! SearchViewController
-            //println("addedFood: \(addedFood)")
-            //            FoodViewController.loadView()
-            //selectedCat = collectionView.cell.title.text as String //catArr[indexPath.section][indexPath.row]
-            //if let indexPath = {
-            println("sender\nsender\nsender: \(sender)")
-            println("sender.indexPath\(sender!.indexPath)")
-            println("\(object_getClass(sender))")
-            //println("sender.title: \(sender!.title!.text)")
             assert(sender as? UICollectionViewCell != nil, "sender is not a collection view")
             var cell : UICollectionViewCell = sender as! UICollectionViewCell
             if let indexPath = self.catView?.indexPathForCell(cell) {

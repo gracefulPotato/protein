@@ -23,15 +23,6 @@ class SettingsViewController: UIViewController {
         if let creditLabel = creditLabel{
             creditLabel.text = "Credits:\n\nApp icon by Ben Smithers.\n\nCooking pot image by Ignat Remizov.\n\nIn-App Icons:\nIcon made by http://www.freepik.com from http://www.flaticon.com\nFlaticon is licensed under http://creativecommons.org/licenses/by/3.0/ Creative Commons BY 3.0\n\nPistachio by Moxilla from the Noun Project"
         }
-//        if let recipeLabel = recipeLabel{
-//            println("in conditional")
-//            for i in 0..<realm.objects(RecipeWithPicture).count{
-//                recipeLabel.text = RecipeWithPicture(value: realm.objects(RecipeWithPicture)[i]).ingredientStr
-//                println("recipeLabel.text\(recipeLabel.text)")
-//            }
-//            println("realm.objects(RecipeWithPicture).count: \(realm.objects(RecipeWithPicture).count)")
-//            println(realm.objects(RecipeWithPicture))
-//        }
         // Do any additional setup after loading the view.
         if let tmpMeat = meat{
             if meat == true{

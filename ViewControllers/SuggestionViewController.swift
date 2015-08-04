@@ -25,7 +25,6 @@ class SuggestionViewController: UIViewController {
         origImg.image = UIImage(named: displayVC.getImage(originalFood.group))
         self.view.addSubview(origImg)
         var tapGestureRecognizers : [UITapGestureRecognizer] = []
-        println("\nimgNames.count: \(imgNames.count)")
         for i in 0..<imgNames.count{
             println("i: \(i)")
             tapGestureRecognizers.append(UITapGestureRecognizer(target:self, action:Selector("imageTapped")))

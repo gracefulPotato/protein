@@ -456,6 +456,7 @@
                                             <outlet property="recipeTextView" destination="1g0-MQ-S1d" id="2cf-Ib-67e"/>
                                             <outlet property="titleLabel" destination="JJa-tS-gBL" id="2oO-el-lmO"/>
                                             <outlet property="userMadePic" destination="G7s-hI-yKe" id="fsm-Zm-4bK"/>
+                                            <segue destination="j7h-4q-BRo" kind="show" identifier="showRecipe" id="Hb7-Ix-Z40"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -479,7 +480,7 @@
                     <navigationItem key="navigationItem" title="Past Recipes" id="zWT-DR-iWU" userLabel="Past Recipes">
                         <barButtonItem key="rightBarButtonItem" title="Delete All" id="yVi-2z-JQW" userLabel="Delete All">
                             <connections>
-                                <action selector="deleteAllButtonPressed" destination="DTY-4A-82X" id="KEZ-fG-N7y"/>
+                                <action selector="deleteButtonPressed:" destination="DTY-4A-82X" id="q9e-JH-srg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -756,8 +757,8 @@
         <image name="pot" width="193" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TNa-CK-5m1"/>
-        <segue reference="aV9-j2-5Ws"/>
         <segue reference="CcA-6T-BYh"/>
+        <segue reference="aV9-j2-5Ws"/>
+        <segue reference="Hb7-Ix-Z40"/>
     </inferredMetricsTieBreakers>
 </document>

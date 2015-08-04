@@ -100,14 +100,8 @@ class SearchViewController: UIViewController {
                 tableView.reloadData()
             }
             else{
-                println("not filtering, just searching")
                 notes = searchNotes(searchText)
             }
-            //for i in 0..<notes.count{
-//                var tmpIndex = Int(i)
-//                resultsArr[tmpIndex] = notes[i] as! FoodInfo
-//            }
-            //self.navigationController!.setNavigationBarHidden(true, animated: true)
         }
         }
     }
@@ -125,7 +119,6 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("Category:\(tmpCategory)")
         if(tmpCategory != ""){
             println("filtering")
             if(tmpCategory == "Soups and Sauces"){
@@ -188,8 +181,6 @@ class SearchViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "showFood") {
             let FoodViewController = segue.destinationViewController as! DisplayViewController
-            println("selectedFood: \(selectedFood)")
-//            FoodViewController.loadView()
             FoodViewController.note = selectedFood
         }
         if (segue.identifier == "backHome") {
@@ -364,21 +355,16 @@ extension SearchViewController: UISearchBarDelegate {
             case 0:
                 sortCat = "name"
                 ascendDescend = true
-                println("name")
             case 1:
                 sortCat = "protGram"
                 ascendDescend = false
-                println("protGram")
             case 2:
                 sortCat = "nitFactor"
                 ascendDescend = false
-                println("nitFactor")
             default:
             break;
         }
-        println("did it break yet?")
         notes = notes.sorted(sortCat, ascending: ascendDescend)
         tableView.reloadData()
-        println("should have reloaded")
     }
 }
