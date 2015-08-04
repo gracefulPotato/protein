@@ -40,6 +40,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     var displayMeat : Bool!
     var alert = UIAlertController(title: "Deletion Alert", message: "Are you sure you want to clear this recipe?\nIf you haven't saved it, you'll lose it.", preferredStyle: UIAlertControllerStyle.Alert)
     var saveAlert = UIAlertController(title: "Save Recipe?", message: "Clear recipe when done?\n\nEnter recipe title:", preferredStyle: UIAlertControllerStyle.Alert)
+    var saveMessage = UIAlertController(title: "Recipe saved.", message: "Find saved recipes in the Recipe Log found in the hamburger menu.", preferredStyle: UIAlertControllerStyle.Alert)
     
     var selectedFood: FoodInfo?
     let realm = Realm()
@@ -82,6 +83,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         println("displayMeat: \(displayMeat)")
         addAlertAction()
         addSaveAlertAction()
+        addSaveMessageAction()
         deleteSwitch.on = true
     }
     
@@ -138,7 +140,6 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
-        //return Int(allFoods.count)
         if let ingredientArr = IngredientHelper.ingredients{
             return Int(ingredientArr.count)
         }
@@ -214,6 +215,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     }
     @IBAction func saveButtonPressed(sender:AnyObject){
         self.presentViewController(saveAlert, animated: true, completion: nil)
+        println("both should have presented")
     }
 
     func saveConfirmed(){
@@ -223,7 +225,6 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             recipe.ingredientStr = "\(recipe.ingredientStr)\n\(i+1). \(IngredientHelper.ingredients[i].name)"
             recipe.totProt = recipe.totProt + IngredientHelper.ingredients[i].protGram
         }
-        //recipe.img = selectedImage
         println("new recipe!")
         
         realm.write() {
@@ -241,6 +242,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
                 
             }
         }
+        self.presentViewController(saveMessage, animated: true, completion: nil)
     }
     func configurationTextField(textField: UITextField!)
     {
@@ -271,7 +273,6 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             case .Default:
                 println("default")
                 if IngredientHelper.ingredients.count > 0{
-                    //self.presentViewController(self.alert, animated: true, completion: nil)
                     for i in 0..<IngredientHelper.ingredients.count{
                         IngredientHelper.ingredients.removeAtIndex(0)
                     }
@@ -281,7 +282,6 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
                     
                 }
                 self.tmpIngredient = nil
-                //self.prepareOtherViews()
             case .Cancel:
                 println("cancel")
                 
@@ -324,9 +324,23 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         
         saveAlert.addAction(UIAlertAction(title: "No", style: .Default, handler: { action in
         }))
+        
+    }
+    func addSaveMessageAction(){
+        saveMessage.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+            switch action.style{
+            case .Default:
+                println("default")
+            case .Cancel:
+                println("cancel")
+                
+            case .Destructive:
+                println("destructive")
+            }
+        }))
     }
     func prepareOtherViews(){
-        ingredientTable.dataSource = self //as UITableViewDataSource?
+        ingredientTable.dataSource = self
         ingredientTable.reloadData()
 
         if let totalProteinLabel = totalProteinLabel{
@@ -336,7 +350,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             let (text,color) = IngredientHelper.returnLevelJudgement()
             (tryp,thre,isol,leuc,lysi,meth,phen,vali,hist) = IngredientHelper.returnAminoTotals()
             let (aminoText,aminoColor) = IngredientHelper.returnAminoJudgement(tryp,thre:thre,isol:isol,leuc:leuc,lysi:lysi,meth:meth,phen:phen,vali:vali,hist:hist)
-            reportLabel.text = "Progress: \(text)"// amino balance __."
+            reportLabel.text = "Progress: \(text)"
             reportLabel.textColor = color
             aminoLabel.text = "Amino balance: \(aminoText)"
             aminoLabel.textColor = aminoColor

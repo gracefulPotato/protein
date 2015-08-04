@@ -11,7 +11,8 @@ import UIKit
 class RecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var recipeTextView : UITextView!
     @IBOutlet weak var userMadePic : UIImageView!
-    @IBOutlet weak var titleLabel : UILabel!
+    @IBOutlet weak var titletextView : UITextField!
+    var correspondRecipe : RecipeWithPicture!
 
     override func awakeFromNib() {
         super.awakeFromNib()

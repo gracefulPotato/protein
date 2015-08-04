@@ -10,10 +10,11 @@ import UIKit
 import RealmSwift
 
 class PastRecipesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
-    @IBOutlet weak var recipeLabel : UITextView!
+    @IBOutlet weak var recipeLabel : UILabel!
     @IBOutlet weak var tableView: UITableView!
     var selectedRecipe: String?//[String?] = []
     var alert = UIAlertController(title: "Deletion Alert", message: "Are you sure you want to clear all recipes?", preferredStyle: UIAlertControllerStyle.Alert)
+    var cell : RecipeTableViewCell!
     override func viewDidLoad() {
         super.viewDidLoad()
         loadRecipeLabel()
@@ -48,13 +49,17 @@ class PastRecipesViewController: UIViewController, UITableViewDataSource, UITabl
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let realm = Realm()
-        let cell = tableView.dequeueReusableCellWithIdentifier("RecipeCell", forIndexPath: indexPath) as! RecipeTableViewCell //1
-        
+        cell = tableView.dequeueReusableCellWithIdentifier("RecipeCell", forIndexPath: indexPath) as! RecipeTableViewCell //1
         let row = indexPath.row
+        println("cell.correspondRecipe: \(cell.correspondRecipe)")
+        if cell.correspondRecipe == nil{
+            cell.correspondRecipe = realm.objects(RecipeWithPicture)[row]
+        }
         println("in conditional")
         cell.recipeTextView.text = nil
-        cell.titleLabel.text = "\(RecipeWithPicture(value: realm.objects(RecipeWithPicture)[row]).title)"
-        cell.recipeTextView.text = "​\u{200B}\(RecipeWithPicture(value: realm.objects(RecipeWithPicture)[row]).ingredientStr)\n\n"
+        cell.titletextView.text = "\(cell.correspondRecipe.title)"
+        cell.recipeTextView.text = "​\u{200B}\(cell.correspondRecipe.ingredientStr)\n\n"
+        //cell.correspondRecipe = realm.objects(RecipeWithPicture)[row]
         println(realm.objects(RecipeWithPicture))
         
         let img = UIImage(data: realm.objects(RecipeWithPicture)[row].picture)
@@ -84,13 +89,11 @@ class PastRecipesViewController: UIViewController, UITableViewDataSource, UITabl
             switch action.style{
             case .Default:
                 println("default")
-                //if IngredientHelper.ingredients.count > 0{
                     realm.write(){
                         realm.delete(realm.objects(RecipeWithPicture))
                     }
                     self.loadRecipeLabel()
                     self.tableView.reloadData()
-                //}
             case .Cancel:
                 println("cancel")
                 
@@ -104,6 +107,14 @@ class PastRecipesViewController: UIViewController, UITableViewDataSource, UITabl
     }
     @IBAction func deleteButtonPressed(sender:AnyObject){
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    func textFieldDidBeginEditing(textField: UITextField) {
+        let realm = Realm()
+        //let myrow: Int? = tableView.indexPathForCell(RecipeCell : RecipeTableViewCell)//cellCurrentlyEditing(self)
+        //realm.objects(RecipeWithPicture)[cell].title = textField.text
+        realm.write(){
+            self.cell.correspondRecipe.title = textField.text
+        }
     }
 }
 extension PastRecipesViewController: UITableViewDataSource {

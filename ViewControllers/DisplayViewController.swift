@@ -11,14 +11,11 @@ import JBChartView
 import RealmSwift
 
 class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarChartViewDelegate {
-    //@IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleTextField: UILabel!
     @IBOutlet weak var groupTextView: UILabel!
     @IBOutlet weak var protGramTextView: UILabel!
-    @IBOutlet weak var foodGroupImage : UIImageView!
     @IBOutlet weak var barChartView : JBBarChartView!
     @IBOutlet weak var informationLabel: UILabel!
-    @IBOutlet weak var suggestionButton: UIButton!
     
     var addedFood : FoodInfo?
     let myTransparentWhite = UIColor(red:1.0, green:1.0, blue:1.0, alpha:0.5)
@@ -47,21 +44,16 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
         barChartView.minimumValue = 0
         barChartView.maximumValue = 4
         titleTextField.adjustsFontSizeToFitWidth = true
-        //barChartView.frame = CGRectMake(100,100,200,200)
         barChartView.reloadData()
         displayFood(self.note)
         var foodGroupImage = UIImageView(frame: CGRectMake(300, 150, 50, 50));
         foodGroupImage.image = UIImage(named: getImage(note!.group))
         self.view.addSubview(foodGroupImage);
-        //informationLabel.text = ""
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        // our code
         barChartView.reloadData()
-        
     }
 
     override func didReceiveMemoryWarning() {

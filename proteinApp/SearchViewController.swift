@@ -35,35 +35,18 @@ class SearchViewController: UIViewController {
         case .DefaultMode:
             categoryTitle.title = "All Foods"
             if(tmpCategory != ""){
-                if(tmpCategory == "Soups and Sauces"){
-                    notes = filterNotes("Soups Sauces and Gravies",searchString:"")
-                }
-                else if(tmpCategory == "All Foods"){
-                    //notes = searchNotes(searchString)
-                    //notes = filterNotes("",searchString:"")
-                    notes = notes.sorted(sortCat, ascending: ascendDescend)
-                }
-                else if(tmpCategory == "Sausages, etc."){
-                    notes = filterNotes("Sausages and Luncheon Meats",searchString:"")
-                }
-                else if(tmpCategory == "Baked Goods"){
-                    notes = filterNotes("Baked Products",searchString:"")
-                }
-                else if(tmpCategory == "Lamb, Veal, Game"){
-                    notes = filterNotes("Lamb Veal and Game Products",searchString:"")
-                }
-                else if(tmpCategory == "Nuts and Seeds"){
-                    notes = filterNotes("Nut and Seed Products",searchString:"")
+                let convertedCat = convertCat(tmpCategory)
+                if(tmpCategory != ""){
+                    notes = filterNotes(convertedCat,searchString:"")
                 }
                 else{
-                    notes = filterNotes(tmpCategory,searchString:"")
+                    notes = allFoods.sorted(sortCat, ascending: ascendDescend)
                 }
                 tableView.reloadData()
             }
             else{
                 notes = allFoods.sorted(sortCat, ascending: ascendDescend)
             }
-            //self.navigationController!.setNavigationBarHidden(false, animated: true)
             searchBar.resignFirstResponder()
             searchBar.text = ""
             searchBar.showsCancelButton = false
@@ -73,28 +56,12 @@ class SearchViewController: UIViewController {
             searchBar.setShowsCancelButton(true, animated: true)
             if(tmpCategory != ""){
                 notes = searchNotes(searchText)
-                if(tmpCategory == "Soups and Sauces"){
-                    notes = filterNotes("Soups Sauces and Gravies",searchString:searchText)
-                }
-                else if(tmpCategory == "All Foods"){
-                    notes = searchNotes(searchText)
-                    //notes = filterNotes("",searchString:"")
-                    notes = notes.sorted(sortCat, ascending:ascendDescend)
-                }
-                else if(tmpCategory == "Sausages, etc."){
-                    notes = filterNotes("Sausages and Luncheon Meats",searchString:searchText)
-                }
-                else if(tmpCategory == "Baked Goods"){
-                    notes = filterNotes("Baked Products",searchString:searchText)
-                }
-                else if(tmpCategory == "Lamb, Veal, Game"){
-                    notes = filterNotes("Lamb Veal and Game Products",searchString:searchText)
-                }
-                else if(tmpCategory == "Nuts and Seeds"){
-                    notes = filterNotes("Nut and Seed Products",searchString:searchText)
+                let convertedCat = convertCat(tmpCategory)
+                if(tmpCategory != ""){
+                    notes = filterNotes(convertedCat,searchString:"")
                 }
                 else{
-                    notes = filterNotes(tmpCategory,searchString:searchText)
+                    notes = allFoods.sorted(sortCat, ascending: ascendDescend)
                 }
                 notes = notes.sorted(sortCat, ascending: ascendDescend)
                 tableView.reloadData()
@@ -121,26 +88,12 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         if(tmpCategory != ""){
             println("filtering")
-            if(tmpCategory == "Soups and Sauces"){
-                notes = filterNotes("Soups Sauces and Gravies",searchString:"")
-            }
-            else if(tmpCategory == "All Foods"){
-                notes = allFoods.sorted("name", ascending: ascendDescend)
-            }
-            else if(tmpCategory == "Sausages, etc."){
-                notes = filterNotes("Sausages and Luncheon Meats",searchString:"")
-            }
-            else if(tmpCategory == "Baked Goods"){
-                notes = filterNotes("Baked Products",searchString:"")
-            }
-            else if(tmpCategory == "Lamb, Veal, Game"){
-                notes = filterNotes("Lamb Veal and Game Products",searchString:"")
-            }
-            else if(tmpCategory == "Nuts and Seeds"){
-                notes = filterNotes("Nut and Seed Products",searchString:"")
+            let convertedCat = convertCat(tmpCategory)
+            if(tmpCategory != ""){
+                notes = filterNotes(convertedCat,searchString:"")
             }
             else{
-                notes = filterNotes(tmpCategory,searchString:"")
+                notes = allFoods.sorted(sortCat, ascending: ascendDescend)
             }
             categoryTitle.title = tmpCategory
             notes = notes.sorted(sortCat, ascending: ascendDescend)
@@ -192,7 +145,6 @@ class SearchViewController: UIViewController {
     func searchNotes(searchString: String) -> Results<FoodInfo> {
         let realm = Realm()
         let searchPredicate = NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@", searchString, searchString)
-        //return FoodInfo.objectsWithPredicate(searchPredicate)
         var predArr : [NSPredicate]?
         var searchWords : [String] = split(searchString) {$0 == " "}
         for i in 0..<searchWords.count{
@@ -208,12 +160,10 @@ class SearchViewController: UIViewController {
         }
         var ret = realm.objects(FoodInfo)
         if let predArr = predArr {
-            //var ret = FoodInfo.allObjects()
             for i in 0..<predArr.count{
                 ret = ret.filter(predArr[i])
                 println(ret)
             }
-            
         }
         return ret
     }
@@ -299,36 +249,39 @@ extension SearchViewController: UISearchBarDelegate {
     }
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         state = .SearchMode
-        //searchBar.resignFirstResponder()
     }
-    //func searchBar(searchBar: UISearchBar) {
-    //    state = .DefaultMode
-    //}
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if(tmpCategory != ""){
-            if(tmpCategory == "Soups and Sauces"){
-                notes = filterNotes("Soups Sauces and Gravies",searchString:searchText)
-            }
-            else if(tmpCategory == "All Foods"){
-                notes = searchNotes(searchText)
-                //notes = filterNotes("",searchString:"")
-            }
-            else if(tmpCategory == "Sausages, etc."){
-                notes = filterNotes("Sausages and Luncheon Meats",searchString:searchText)
-            }
-            else if(tmpCategory == "Baked Goods"){
-                notes = filterNotes("Baked Products",searchString:searchText)
-            }
-            else if(tmpCategory == "Lamb, Veal, Game"){
-                notes = filterNotes("Lamb Veal and Game Products",searchString:searchText)
-            }
-            else if(tmpCategory == "Nuts and Seeds"){
-                notes = filterNotes("Nut and Seed Products",searchString:searchText)
+            let convertedCat = convertCat(tmpCategory)
+            if(convertedCat != ""){
+                notes = filterNotes(convertedCat,searchString:searchText)
             }
             else{
-                notes = filterNotes(tmpCategory,searchString:searchText)
+                notes = searchNotes(searchText)
             }
+//            if(tmpCategory == "Soups and Sauces"){
+//                notes = filterNotes("Soups Sauces and Gravies",searchString:searchText)
+//            }
+//            else if(tmpCategory == "All Foods"){
+//                notes = searchNotes(searchText)
+//                //notes = filterNotes("",searchString:"")
+//            }
+//            else if(tmpCategory == "Sausages, etc."){
+//                notes = filterNotes("Sausages and Luncheon Meats",searchString:searchText)
+//            }
+//            else if(tmpCategory == "Baked Goods"){
+//                notes = filterNotes("Baked Products",searchString:searchText)
+//            }
+//            else if(tmpCategory == "Lamb, Veal, Game"){
+//                notes = filterNotes("Lamb Veal and Game Products",searchString:searchText)
+//            }
+//            else if(tmpCategory == "Nuts and Seeds"){
+//                notes = filterNotes("Nut and Seed Products",searchString:searchText)
+//            }
+//            else{
+//                notes = filterNotes(tmpCategory,searchString:searchText)
+//            }
             notes = notes.sorted(sortCat, ascending: ascendDescend)
             tableView.reloadData()
         }
@@ -366,5 +319,23 @@ extension SearchViewController: UISearchBarDelegate {
         }
         notes = notes.sorted(sortCat, ascending: ascendDescend)
         tableView.reloadData()
+    }
+    func convertCat(tmpCategory : String) -> String {
+        switch tmpCategory{
+            case "Soups and Sauces":
+                return "Soups Sauces and Gravies"
+            case "Sausages, etc.":
+                return "Sausages and Luncheon Meats"
+            case "Baked Goods":
+                return "Baked Products"
+            case "Lamb, Veal, Game":
+                return "Lamb Veal and Game Products"
+            case "Nuts and Seeds":
+                return "Nut and Seed Products"
+            case "All Foods":
+                return ""
+            default:
+                return tmpCategory
+        }
     }
 }
