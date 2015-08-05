@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:proteinApp.xcodeproj">
+      location = "group:/Users/grace/Documents/proteinApp/proteinCalculator.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

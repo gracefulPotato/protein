@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "65CAA8CC1B508EFC00EA8150"
-               BuildableName = "proteinApp.app"
-               BlueprintName = "proteinApp"
-               ReferencedContainer = "container:proteinApp.xcodeproj">
+               BuildableName = "proteinCalculator.app"
+               BlueprintName = "proteinCalculator"
+               ReferencedContainer = "container:proteinCalculator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "65CAA8E31B508EFD00EA8150"
-               BuildableName = "proteinAppTests.xctest"
-               BlueprintName = "proteinAppTests"
-               ReferencedContainer = "container:proteinApp.xcodeproj">
+               BuildableName = "proteinCalculatorTests.xctest"
+               BlueprintName = "proteinCalculatorTests"
+               ReferencedContainer = "container:proteinCalculator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "65CAA8E31B508EFD00EA8150"
-               BuildableName = "proteinAppTests.xctest"
-               BlueprintName = "proteinAppTests"
-               ReferencedContainer = "container:proteinApp.xcodeproj">
+               BuildableName = "proteinCalculatorTests.xctest"
+               BlueprintName = "proteinCalculatorTests"
+               ReferencedContainer = "container:proteinCalculator.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65CAA8CC1B508EFC00EA8150"
-            BuildableName = "proteinApp.app"
-            BlueprintName = "proteinApp"
-            ReferencedContainer = "container:proteinApp.xcodeproj">
+            BuildableName = "proteinCalculator.app"
+            BlueprintName = "proteinCalculator"
+            ReferencedContainer = "container:proteinCalculator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65CAA8CC1B508EFC00EA8150"
-            BuildableName = "proteinApp.app"
-            BlueprintName = "proteinApp"
-            ReferencedContainer = "container:proteinApp.xcodeproj">
+            BuildableName = "proteinCalculator.app"
+            BlueprintName = "proteinCalculator"
+            ReferencedContainer = "container:proteinCalculator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65CAA8CC1B508EFC00EA8150"
-            BuildableName = "proteinApp.app"
-            BlueprintName = "proteinApp"
-            ReferencedContainer = "container:proteinApp.xcodeproj">
+            BuildableName = "proteinCalculator.app"
+            BlueprintName = "proteinCalculator"
+            ReferencedContainer = "container:proteinCalculator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

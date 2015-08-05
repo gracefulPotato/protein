@@ -19,8 +19,10 @@ class PastRecipesViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         loadRecipeLabel()
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.reloadData()
         addAlertAction()
+        //tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     }
     override func viewDidAppear(animated: Bool){
         super.viewDidAppear(animated)
@@ -51,37 +53,61 @@ class PastRecipesViewController: UIViewController, UITableViewDataSource, UITabl
         let realm = Realm()
         cell = tableView.dequeueReusableCellWithIdentifier("RecipeCell", forIndexPath: indexPath) as! RecipeTableViewCell //1
         let row = indexPath.row
-        println("cell.correspondRecipe: \(cell.correspondRecipe)")
+        //println("cell.correspondRecipe: \(cell.correspondRecipe)")
         if cell.correspondRecipe == nil{
             cell.correspondRecipe = realm.objects(RecipeWithPicture)[row]
         }
-        println("in conditional")
+        //println("in conditional")
         cell.recipeTextView.text = nil
         cell.titletextView.text = "\(cell.correspondRecipe.title)"
         cell.recipeTextView.text = "​\u{200B}\(cell.correspondRecipe.ingredientStr)\n\n"
         //cell.correspondRecipe = realm.objects(RecipeWithPicture)[row]
-        println(realm.objects(RecipeWithPicture))
+        //println(realm.objects(RecipeWithPicture))
         
         let img = UIImage(data: realm.objects(RecipeWithPicture)[row].picture)
         cell.userMadePic.image = img
         
         return cell
     }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        println("in didSelectRowAtIndexPath")
+        let realm = Realm()
+        //selectedFood = allFoods.objectAtIndex(UInt(indexPath.row)) as? FoodInfo
+        //selectedRecipe[0] = realm.objects(RecipeWithPicture)[indexPath.row].title
+        //selectedRecipe = realm.objects(RecipeWithPicture)[indexPath.row].ingredientStr
+        IngredientHelper.tmpRecipeStr = realm.objects(RecipeWithPicture)[indexPath.row].ingredientStr
+        //println("\n\nselectedRecipe\n\n\(selectedRecipe)")
+        //let FoodViewController = HomeViewController()
+        //FoodViewController.tmpRecipeStr = selectedRecipe
+        //println("FoodViewController.tmpRecipeStr\(FoodViewController.tmpRecipeStr)")
+        self.performSegueWithIdentifier("showRecipe", sender: self)
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let realm = Realm()
         return realm.objects(RecipeWithPicture).count
     }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "showRecipe") {
-            let FoodViewController = segue.destinationViewController as! HomeViewController
-            println("type: \(sender!.recipeTextView.dynamicType)");
-            //selectedRecipe = sender!.recipeTextView.text//ingredientStr
-            println("selectedRecipe\(selectedRecipe)")
-            FoodViewController.tmpRecipeStr = selectedRecipe
-            println("FoodViewController.tmpRecipeStr\(FoodViewController.tmpRecipeStr)")
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let realm = Realm()
+        if editingStyle == .Delete {
+            realm.write(){
+                realm.delete(realm.objects(RecipeWithPicture)[indexPath.row])
+            }
+            //realm.objects(RecipeWithPicture).removeObjectAtIndex(indexPath.row)
+            //IngredientHelper.ingredients.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+            
         }
     }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if (segue.identifier == "showRecipe") {
+//            let FoodViewController = segue.destinationViewController as! HomeViewController
+//            println("type: \(sender!.recipeTextView.dynamicType)");
+//            //selectedRecipe = sender!.recipeTextView.text//ingredientStr
+//            println("selectedRecipe\(selectedRecipe)")
+//            FoodViewController.tmpRecipeStr = selectedRecipe
+//            println("FoodViewController.tmpRecipeStr\(FoodViewController.tmpRecipeStr)")
+//        }
+//    }
     
     func addAlertAction(){
         alert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { action in
@@ -116,14 +142,8 @@ class PastRecipesViewController: UIViewController, UITableViewDataSource, UITabl
             self.cell.correspondRecipe.title = textField.text
         }
     }
+
 }
-extension PastRecipesViewController: UITableViewDataSource {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let realm = Realm()
-        //selectedFood = allFoods.objectAtIndex(UInt(indexPath.row)) as? FoodInfo
-        //selectedRecipe[0] = realm.objects(RecipeWithPicture)[indexPath.row].title
-        selectedRecipe = realm.objects(RecipeWithPicture)[indexPath.row].ingredientStr
-        //println("selectedRecipe\(selectedRecipe)")
-        self.performSegueWithIdentifier("showRecipe", sender: self)
-    }
-}
+//extension PastRecipesViewController: UITableViewDataSource {
+//
+//}

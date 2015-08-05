@@ -38,6 +38,8 @@
 		652407061B60524800A33D96 /* Broccoli_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 652407051B60524800A33D96 /* Broccoli_32.png */; };
 		652407081B60551E00A33D96 /* pistachio.png in Resources */ = {isa = PBXBuildFile; fileRef = 652407071B60551E00A33D96 /* pistachio.png */; };
 		655749941B5EC2D800DF75F8 /* IngredientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655749931B5EC2D800DF75F8 /* IngredientHelper.swift */; };
+		655F28171B728B48003B86C2 /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655F28161B728B48003B86C2 /* PhotoTakingHelper.swift */; };
+		655F28191B7294E7003B86C2 /* Cooking Pot@3x.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 655F28181B7294E7003B86C2 /* Cooking Pot@3x.pdf */; };
 		658537761B61B7DA002DF82D /* Searching_magnifying_glass_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 658537751B61B7DA002DF82D /* Searching_magnifying_glass_32.png */; };
 		658537781B62A21B002DF82D /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658537771B62A21B002DF82D /* SuggestionViewController.swift */; };
 		6585377A1B62D9AB002DF82D /* nature-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 658537791B62D9AB002DF82D /* nature-background.jpg */; };
@@ -113,6 +115,8 @@
 		652407051B60524800A33D96 /* Broccoli_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Broccoli_32.png; sourceTree = "<group>"; };
 		652407071B60551E00A33D96 /* pistachio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pistachio.png; sourceTree = "<group>"; };
 		655749931B5EC2D800DF75F8 /* IngredientHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientHelper.swift; sourceTree = "<group>"; };
+		655F28161B728B48003B86C2 /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoTakingHelper.swift; path = ../../../Downloads/PhotoTakingHelper.swift; sourceTree = "<group>"; };
+		655F28181B7294E7003B86C2 /* Cooking Pot@3x.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Cooking Pot@3x.pdf"; sourceTree = "<group>"; };
 		658537751B61B7DA002DF82D /* Searching_magnifying_glass_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Searching_magnifying_glass_32.png; sourceTree = "<group>"; };
 		658537771B62A21B002DF82D /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
 		658537791B62D9AB002DF82D /* nature-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "nature-background.jpg"; sourceTree = "<group>"; };
@@ -120,14 +124,14 @@
 		6585377D1B66CA7A002DF82D /* amino_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amino_4.png; sourceTree = "<group>"; };
 		6585377F1B66DAFA002DF82D /* amino_meal_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amino_meal_4.png; sourceTree = "<group>"; };
 		658537811B66E118002DF82D /* amino_4_meal_and_total.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amino_4_meal_and_total.png; sourceTree = "<group>"; };
-		65CAA8CD1B508EFC00EA8150 /* proteinApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = proteinApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65CAA8CD1B508EFC00EA8150 /* proteinCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = proteinCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CAA8D11B508EFC00EA8150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65CAA8D21B508EFC00EA8150 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65CAA8D41B508EFC00EA8150 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../proteinApp/SearchViewController.swift; sourceTree = "<group>"; };
 		65CAA8D91B508EFC00EA8150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65CAA8DB1B508EFD00EA8150 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		65CAA8DE1B508EFD00EA8150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		65CAA8E41B508EFD00EA8150 /* proteinAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = proteinAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65CAA8E41B508EFD00EA8150 /* proteinCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = proteinCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CAA8E91B508EFD00EA8150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65CAA8EA1B508EFD00EA8150 /* proteinAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = proteinAppTests.swift; sourceTree = "<group>"; };
 		65D65DBE1B605B2800B44955 /* steak_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steak_32.png; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 		652406E81B6046FC00A33D96 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				655F28181B7294E7003B86C2 /* Cooking Pot@3x.pdf */,
 				651E21481B6A9D24009A919D /* add.png */,
 				658537811B66E118002DF82D /* amino_4_meal_and_total.png */,
 				6585377F1B66DAFA002DF82D /* amino_meal_4.png */,
@@ -255,8 +260,8 @@
 		65CAA8CE1B508EFC00EA8150 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65CAA8CD1B508EFC00EA8150 /* proteinApp.app */,
-				65CAA8E41B508EFD00EA8150 /* proteinAppTests.xctest */,
+				65CAA8CD1B508EFC00EA8150 /* proteinCalculator.app */,
+				65CAA8E41B508EFD00EA8150 /* proteinCalculatorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 		65CAA8D01B508EFC00EA8150 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				655F28161B728B48003B86C2 /* PhotoTakingHelper.swift */,
 				65CAA8D11B508EFC00EA8150 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -330,9 +336,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		65CAA8CC1B508EFC00EA8150 /* proteinApp */ = {
+		65CAA8CC1B508EFC00EA8150 /* proteinCalculator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65CAA8EE1B508EFD00EA8150 /* Build configuration list for PBXNativeTarget "proteinApp" */;
+			buildConfigurationList = 65CAA8EE1B508EFD00EA8150 /* Build configuration list for PBXNativeTarget "proteinCalculator" */;
 			buildPhases = (
 				F6248A56E70E964E7E36A039 /* Check Pods Manifest.lock */,
 				65CAA8C91B508EFC00EA8150 /* Sources */,
@@ -345,14 +351,14 @@
 			);
 			dependencies = (
 			);
-			name = proteinApp;
+			name = proteinCalculator;
 			productName = proteinApp;
-			productReference = 65CAA8CD1B508EFC00EA8150 /* proteinApp.app */;
+			productReference = 65CAA8CD1B508EFC00EA8150 /* proteinCalculator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		65CAA8E31B508EFD00EA8150 /* proteinAppTests */ = {
+		65CAA8E31B508EFD00EA8150 /* proteinCalculatorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65CAA8F11B508EFD00EA8150 /* Build configuration list for PBXNativeTarget "proteinAppTests" */;
+			buildConfigurationList = 65CAA8F11B508EFD00EA8150 /* Build configuration list for PBXNativeTarget "proteinCalculatorTests" */;
 			buildPhases = (
 				65CAA8E01B508EFD00EA8150 /* Sources */,
 				65CAA8E11B508EFD00EA8150 /* Frameworks */,
@@ -363,9 +369,9 @@
 			dependencies = (
 				65CAA8E61B508EFD00EA8150 /* PBXTargetDependency */,
 			);
-			name = proteinAppTests;
+			name = proteinCalculatorTests;
 			productName = proteinAppTests;
-			productReference = 65CAA8E41B508EFD00EA8150 /* proteinAppTests.xctest */;
+			productReference = 65CAA8E41B508EFD00EA8150 /* proteinCalculatorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -387,7 +393,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 65CAA8C81B508EFC00EA8150 /* Build configuration list for PBXProject "proteinApp" */;
+			buildConfigurationList = 65CAA8C81B508EFC00EA8150 /* Build configuration list for PBXProject "proteinCalculator" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -400,8 +406,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				65CAA8CC1B508EFC00EA8150 /* proteinApp */,
-				65CAA8E31B508EFD00EA8150 /* proteinAppTests */,
+				65CAA8CC1B508EFC00EA8150 /* proteinCalculator */,
+				65CAA8E31B508EFD00EA8150 /* proteinCalculatorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -415,6 +421,7 @@
 				652406F61B604AAA00A33D96 /* Oil_32.png in Resources */,
 				6585377C1B66C659002DF82D /* amino_10.png in Resources */,
 				65CAA8DA1B508EFC00EA8150 /* Main.storyboard in Resources */,
+				655F28191B7294E7003B86C2 /* Cooking Pot@3x.pdf in Resources */,
 				651CF83A1B572D4000C647FD /* foodinfo.json in Resources */,
 				65D65DC31B605D8C00B44955 /* fish_32.png in Resources */,
 				65D65DD31B6066F900B44955 /* rice_32.png in Resources */,
@@ -521,6 +528,7 @@
 				651CF83E1B585DED00C647FD /* DisplayViewController.swift in Sources */,
 				651CF84A1B59CD4900C647FD /* JBLineChartView.m in Sources */,
 				655749941B5EC2D800DF75F8 /* IngredientHelper.swift in Sources */,
+				655F28171B728B48003B86C2 /* PhotoTakingHelper.swift in Sources */,
 				65CAA8D31B508EFC00EA8150 /* AppDelegate.swift in Sources */,
 				6519EF5E1B57268F0047DB99 /* JsonHelper.swift in Sources */,
 				652406E31B5FFF9B00A33D96 /* SettingsViewController.swift in Sources */,
@@ -547,7 +555,7 @@
 /* Begin PBXTargetDependency section */
 		65CAA8E61B508EFD00EA8150 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 65CAA8CC1B508EFC00EA8150 /* proteinApp */;
+			target = 65CAA8CC1B508EFC00EA8150 /* proteinCalculator */;
 			targetProxy = 65CAA8E51B508EFD00EA8150 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -660,6 +668,7 @@
 			baseConfigurationReference = 4BF392D91CEBE2764F83CF6E /* Pods-proteinApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -671,7 +680,7 @@
 				);
 				INFOPLIST_FILE = proteinApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = proteinCalculator;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -681,6 +690,7 @@
 			baseConfigurationReference = 45B7BCDF7596277C5E73573D /* Pods-proteinApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -692,7 +702,7 @@
 				);
 				INFOPLIST_FILE = proteinApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = proteinCalculator;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -711,7 +721,7 @@
 				);
 				INFOPLIST_FILE = proteinAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = proteinCalculatorTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/proteinApp.app/proteinApp";
 			};
 			name = Debug;
@@ -726,7 +736,7 @@
 				);
 				INFOPLIST_FILE = proteinAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = proteinCalculatorTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/proteinApp.app/proteinApp";
 			};
 			name = Release;
@@ -734,7 +744,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		65CAA8C81B508EFC00EA8150 /* Build configuration list for PBXProject "proteinApp" */ = {
+		65CAA8C81B508EFC00EA8150 /* Build configuration list for PBXProject "proteinCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65CAA8EC1B508EFD00EA8150 /* Debug */,
@@ -743,7 +753,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65CAA8EE1B508EFD00EA8150 /* Build configuration list for PBXNativeTarget "proteinApp" */ = {
+		65CAA8EE1B508EFD00EA8150 /* Build configuration list for PBXNativeTarget "proteinCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65CAA8EF1B508EFD00EA8150 /* Debug */,
@@ -752,7 +762,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65CAA8F11B508EFD00EA8150 /* Build configuration list for PBXNativeTarget "proteinAppTests" */ = {
+		65CAA8F11B508EFD00EA8150 /* Build configuration list for PBXNativeTarget "proteinCalculatorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65CAA8F21B508EFD00EA8150 /* Debug */,

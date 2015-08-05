@@ -15,6 +15,7 @@ class IngredientHelper: NSObject {
 //        //super.viewDidLoad()
 //        createString()
 //    }
+    static var tmpRecipeStr : String?
     static func createString(){
         ingredStr = ""
         for i in 0..<ingredients.count{

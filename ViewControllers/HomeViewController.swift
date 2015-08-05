@@ -48,6 +48,8 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     var imagePickerController: UIImagePickerController?
     var selectedImage : UIImage!
     var deleteSwitch : UISwitch = UISwitch(frame: CGRectMake(220, 40, 10, 10))
+    var noPicture = true
+    var photoTakingHelper : PhotoTakingHelper?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,15 +60,20 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             IngredientHelper.ingredients.append(tmpIngredient)
             prepareOtherViews()
         }
-        if let tmpRecipeStr = tmpRecipeStr{
+        if let tmpRecipeStr = IngredientHelper.tmpRecipeStr{
             var recipes : [String] = split(tmpRecipeStr) {$0 == "\n"}
             println("string was split")
             for i in recipes{
                 println(i)
             }
             for ingred in recipes{
-                let namePredicate = NSPredicate(format: "name CONTAINS[c] %@", ingred)
+                //ingred = String(dropFirst(dropFirst(dropFirst((ingred.characters))))
+                var paredIngred = String(dropFirst(dropFirst(dropFirst(ingred))))
+                println(paredIngred)
+                let namePredicate = NSPredicate(format: "name CONTAINS[c] %@", paredIngred)
+                
                 let tmpFood = realm.objects(FoodInfo).filter(namePredicate)
+                println("\(object_getClassName(tmpFood))")
                 IngredientHelper.ingredients.append(tmpFood[0])
             }
             prepareOtherViews()
@@ -74,9 +81,11 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         }
         else{
             println("tmpRecipeStr didnt come through")
+            if IngredientHelper.ingredients.count == 0{
             let message = FoodInfo()
-            message.name = "Add ingredients to see total protein!"
-            IngredientHelper.ingredients.append(message)
+                message.name = "Add ingredients to see total protein!"
+                IngredientHelper.ingredients.append(message)
+            }
             prepareOtherViews()
             ingredientTable.reloadData()
         }
@@ -242,7 +251,9 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
                 
             }
         }
-        self.presentViewController(saveMessage, animated: true, completion: nil)
+        if noPicture{
+            self.presentViewController(saveMessage, animated: true, completion: nil)
+        }
     }
     func configurationTextField(textField: UITextField!)
     {
@@ -295,6 +306,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     }
     func addSaveAlertAction(){
         saveAlert.addAction(UIAlertAction(title: "Save without picture", style: .Default, handler: { action in
+            self.noPicture = true
             switch action.style{
             case .Default:
                 println("default")
@@ -306,18 +318,64 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             println("destructive")
             }
         }))
+        
+        
         // Only show camera option if rear camera is available
-        if (UIImagePickerController.isCameraDeviceAvailable(.Rear)) {
-            let cameraAction = UIAlertAction(title: "Save with photo from Camera", style: .Default) { (action) in
-                self.saveConfirmed()
-                self.showImagePickerController(.Camera)
-            }
-            
-            saveAlert.addAction(cameraAction)
-        }
-        let photoLibraryAction = UIAlertAction(title: "Save with photo from Library", style: .Default) { (action) in
+        
+        
+//        if (UIImagePickerController.isCameraDeviceAvailable(.Rear)) {
+//            let cameraAction = UIAlertAction(title: "Save with photo from Camera", style: .Default) { (action) in
+//                self.noPicture = false
+//                self.saveConfirmed()
+//                
+//                //self.show
+//                //self.showImagePickerController(.Camera)
+//                
+//                self.presentViewController(self.saveMessage, animated: true, completion: { () -> Void in
+//                    self.showImagePickerController(.Camera)
+//                })
+        
+        
+        
+        
+                //self.presentViewController(self.saveMessage, animated: true, completion: nil)
+                //self.showImagePickerController(.Camera, completion:{sourceType/*:UIImagePickerControllerSourceType)*/ -> Void in
+//                    if 1 == 1 {
+//                        self.presentViewController(self.saveMessage, animated: true, completion: nil)
+//                    }
+//                })
+//                self.showImagePickerController(.Camera{self.presentViewController(self.saveMessage, animated: true, completion: nil)})
+                
+//                self.showImagePickerController(.Camera, handler: { (UIAlertController: saveMessage, animated: true, completion: nil)-> Void in
+//                    self.presentViewController(self.saveMessage, animated: true, completion: nil)
+//                })
+                
+//            }
+//            saveAlert.addAction(cameraAction)
+//        }
+        
+        
+        
+        
+        
+    let photoLibraryAction = UIAlertAction(title: "Save with picture", style: .Default) { (action) in
+            self.noPicture = false
             self.saveConfirmed()
-            self.showImagePickerController(.PhotoLibrary)
+            self.photoTakingHelper = PhotoTakingHelper(viewController: self) { (image: UIImage?) in
+                let realm = Realm()
+                if let image = image{
+                    println("\(realm.objects(RecipeWithPicture)[realm.objects(RecipeWithPicture).count-1].ingredientStr)")
+                    let add : NSData = UIImageJPEGRepresentation(image, 1)
+                    println("converted image to NSData")
+                    realm.write() {
+                        self.realm.objects(RecipeWithPicture)[self.realm.objects(RecipeWithPicture).count-1].picture = add
+                    }
+                }
+
+                self.presentViewController(self.saveMessage, animated: true, completion: nil)
+            }
+//            self.showImagePickerController(.PhotoLibrary)
+//            self.presentViewController(self.saveMessage, animated: true, completion: nil)
         }
         
         saveAlert.addAction(photoLibraryAction)
