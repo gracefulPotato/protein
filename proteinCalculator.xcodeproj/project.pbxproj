@@ -66,6 +66,7 @@
 		65D65DD31B6066F900B44955 /* rice_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DD21B6066F900B44955 /* rice_32.png */; };
 		65DCA8EB1B5F021A0013B451 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DCA8EA1B5F02190013B451 /* CategoryViewController.swift */; };
 		65E04C6C1B570F5000198FE2 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E04C6B1B570F5000198FE2 /* FoodTableViewCell.swift */; };
+		DD88EDC25892C9690AD709D3 /* Pods_proteinCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB49B7BC6B4FD60D793E1F8 /* Pods_proteinCalculator.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 /* Begin PBXFileReference section */
 		45B7BCDF7596277C5E73573D /* Pods-proteinApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-proteinApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-proteinApp/Pods-proteinApp.release.xcconfig"; sourceTree = "<group>"; };
 		4BF392D91CEBE2764F83CF6E /* Pods-proteinApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-proteinApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-proteinApp/Pods-proteinApp.debug.xcconfig"; sourceTree = "<group>"; };
+		5CB49B7BC6B4FD60D793E1F8 /* Pods_proteinCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_proteinCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6519EF5A1B57268F0047DB99 /* FoodInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodInfo.swift; sourceTree = "<group>"; };
 		6519EF5B1B57268F0047DB99 /* JsonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
 		651CF8391B572D4000C647FD /* foodinfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = foodinfo.json; sourceTree = SOURCE_ROOT; };
@@ -156,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				076E9D3FD85DE3D9E887DC6B /* Pods_proteinApp.framework in Frameworks */,
+				DD88EDC25892C9690AD709D3 /* Pods_proteinCalculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				C58486782B785BCCF5923A1A /* Pods_proteinApp.framework */,
+				5CB49B7BC6B4FD60D793E1F8 /* Pods_proteinCalculator.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -480,7 +484,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-proteinApp/Pods-proteinApp-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-proteinCalculator/Pods-proteinCalculator-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D65413C3BF00D31223026E8F /* Copy Pods Resources */ = {
@@ -495,7 +499,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-proteinApp/Pods-proteinApp-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-proteinCalculator/Pods-proteinCalculator-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F6248A56E70E964E7E36A039 /* Check Pods Manifest.lock */ = {

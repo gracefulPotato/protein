@@ -1,0 +1,6 @@
+framework module ConvenienceKit {
+  umbrella header "Pods-proteinCalculator-ConvenienceKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

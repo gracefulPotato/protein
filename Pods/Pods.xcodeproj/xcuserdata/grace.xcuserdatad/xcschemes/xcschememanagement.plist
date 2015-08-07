@@ -4,52 +4,52 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-proteinApp-Bolts.xcscheme</key>
+		<key>Pods-proteinCalculator-Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-proteinApp-Bond.xcscheme</key>
+		<key>Pods-proteinCalculator-Bond.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-proteinApp-ConvenienceKit-ConvenienceKit.xcscheme</key>
+		<key>Pods-proteinCalculator-ConvenienceKit-ConvenienceKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-proteinApp-ConvenienceKit.xcscheme</key>
+		<key>Pods-proteinCalculator-ConvenienceKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-proteinApp-FBSDKCoreKit.xcscheme</key>
+		<key>Pods-proteinCalculator-FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-proteinApp-JBChartView.xcscheme</key>
+		<key>Pods-proteinCalculator-JBChartView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-proteinApp-Realm.xcscheme</key>
+		<key>Pods-proteinCalculator-Realm.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-proteinApp-RealmSwift.xcscheme</key>
+		<key>Pods-proteinCalculator-RealmSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-proteinApp-SwiftyJSON.xcscheme</key>
+		<key>Pods-proteinCalculator-SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-proteinApp.xcscheme</key>
+		<key>Pods-proteinCalculator.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -57,52 +57,52 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4207656F90220D33795AC84D</key>
+		<key>53A2D2006E2FCB6993DD1709</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4CE3F432C32EDDA01E6D3541</key>
+		<key>82A380293B73B747C9FADBB4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5BD7BF07BD32ECEB4A6969C1</key>
+		<key>96C63FD7393E2414652DD786</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7DF0D432DC0CAA8E73951F13</key>
+		<key>A9C77D2A067CED2DD9E35F95</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8C5FF0169235B9A5670439DA</key>
+		<key>AFE68002B6DBAFDFB41374F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9EF9AE07B1D7F748277BF5C7</key>
+		<key>B22C14C73512BA5482826648</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B4A3AF7960186AC1BF0EB5BB</key>
+		<key>C1CD0567BC54EDA225BD633F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BB337512944D93A36A272C13</key>
+		<key>E87F84ABD4BB5A51AD76D132</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C63688629EC9E8C762B9CE92</key>
+		<key>F0998C04838FE3665446274A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E79DFD1B32C27E9E3FDBE5F3</key>
+		<key>FBCECE35B137F782577FD08E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
