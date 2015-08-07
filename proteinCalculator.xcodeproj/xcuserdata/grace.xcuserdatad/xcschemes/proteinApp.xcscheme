@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E87F84ABD4BB5A51AD76D132"
+               BuildableName = "Pods_proteinCalculator.framework"
+               BlueprintName = "Pods-proteinCalculator"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "65CAA8CC1B508EFC00EA8150"
                BuildableName = "proteinCalculator.app"
                BlueprintName = "proteinCalculator"
