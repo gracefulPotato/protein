@@ -16,6 +16,8 @@ class IngredientHelper: NSObject {
 //        createString()
 //    }
     static var tmpRecipeStr : String?
+    static var sortCat : String! = "name"
+    static var ascendDescend : Bool = false
     static func createString(){
         ingredStr = ""
         for i in 0..<ingredients.count{
@@ -78,38 +80,87 @@ class IngredientHelper: NSObject {
             return ("Needs more protein.",UIColor.redColor())
         }
     }
-    static func returnAminoJudgement(tryp:Double,thre:Double,isol:Double,leuc:Double,lysi:Double,meth:Double,phen:Double,vali:Double,hist:Double)->(String,UIColor){
+    static func returnAminoJudgement(tryp:Double,thre:Double,isol:Double,leuc:Double,lysi:Double,meth:Double,phen:Double,vali:Double,hist:Double)->(Bool,String,UIColor){
         if(tryp/leuc>0.15 ){//&& tryp/leuc<0.35){
             if(thre/leuc>0.4 ){//&& thre/leuc<0.6){
                 if(isol/leuc>0.61 ){//&& isol/leuc<0.81){
                     if(lysi/leuc>0.76 ){//&& lysi/leuc<0.96){
                         if(meth/leuc>0.83 ){//&& meth/leuc<1.03){
                             if(phen/leuc>0.9 ){//&& phen/leuc<1.1){
-                                return("Excellent balance!",UIColor.greenColor())
+                                return(true,"Excellent balance!",UIColor.greenColor())
                             }
                             else if(phen/leuc<=0.9){
-                                return("Good balance,\n needs more Phenylalanine.",UIColor.yellowColor())
+                                return(false,"Phenylalanine",UIColor.yellowColor())
                             }
                         }
                         else if(meth/leuc<=0.83){
-                            return("Good balance,\n needs more Methionine.",UIColor.yellowColor())
+                            return(false,"Methionine",UIColor.yellowColor())
                         }
                     }
                     else if(lysi/leuc<=0.76){
-                        return("Good balance,\n needs more Lysine.",UIColor.yellowColor())
+                        return(false,"Lysine",UIColor.yellowColor())
                     }
                 }
                 else if(isol/leuc<=0.61){
-                    return("Good balance,\n needs more Isoleucine.",UIColor.yellowColor())
+                    return(false,"Isoleucine",UIColor.yellowColor())
                 }
             }
             else if(thre/leuc<=0.4){
-                return("Good balance,\n needs more Threonine.",UIColor.yellowColor())
+                return(false,"Threonine",UIColor.yellowColor())
             }
         }
         else if(tryp/leuc<=0.15){
-            return("Good balance,\n needs more Tryptophan.",UIColor.yellowColor())
+            return(false,"Tryptophan",UIColor.yellowColor())
         }
-        return("So-so balance",UIColor.redColor())
+        return(false,"So-so balance",UIColor.redColor())
     }
+    static func mapAminoNames(name:String)->String{
+        switch(name){
+            case "Tryptophan":
+            return "tryp"
+            case "Threonine":
+            return "thre"
+            case "Isoleucine":
+            return "isol"
+            case "Leucine":
+            return "leuc"
+            case "Lysine":
+            return "lysi"
+            case "Methionine":
+            return "meth"
+            case "Phenylalanine":
+            return "phen"
+            case "Valine":
+            return "vali"
+            case "Histidine":
+            return "hist"
+        default:
+            return "name"
+        }
+    }
+    static func mapAminoVars(name:String)->String{
+        switch(name){
+        case "tryp":
+            return "Tryptophan"
+        case "thre":
+            return "Threonine"
+        case "isol":
+            return "Isoleucine"
+        case "leuc":
+            return "Leucine"
+        case "lysi":
+            return "Lysine"
+        case "meth":
+            return "Methionine"
+        case "phen":
+            return "Phenylalanine"
+        case "vali":
+            return "Valine"
+        case "hist":
+            return "Histidine"
+        default:
+            return "name"
+        }
+    }
+
 }

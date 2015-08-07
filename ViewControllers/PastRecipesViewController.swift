@@ -88,15 +88,16 @@ class PastRecipesViewController: UIViewController, UITableViewDataSource, UITabl
     }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let realm = Realm()
-        if editingStyle == .Delete {
+        //if editingStyle == .Delete {
             realm.write(){
                 realm.delete(realm.objects(RecipeWithPicture)[indexPath.row])
             }
             //realm.objects(RecipeWithPicture).removeObjectAtIndex(indexPath.row)
             //IngredientHelper.ingredients.removeAtIndex(indexPath.row)
+            loadRecipeLabel()
             tableView.reloadData()
             
-        }
+        //}
     }
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 //        if (segue.identifier == "showRecipe") {

@@ -50,6 +50,10 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     var deleteSwitch : UISwitch = UISwitch(frame: CGRectMake(220, 40, 10, 10))
     var noPicture = true
     var photoTakingHelper : PhotoTakingHelper?
+    var good : Bool = false
+    var aminoText : String = ""
+    var aminoColor : UIColor = UIColor.redColor()
+    let aminoButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,13 +167,15 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             IngredientHelper.ingredients.removeAtIndex(indexPath.row)
+            prepareBarChartView()
+            prepareOtherViews()
             ingredientTable.reloadData()
-            
+            barChartView.reloadData()
         }
     }
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         if(identifier == "showFood"){
-            if IngredientHelper.ingredients.count != 0 || IngredientHelper.ingredients[0].name == "Add ingredients to see total protein!"{
+            if IngredientHelper.ingredients.count == 0 || IngredientHelper.ingredients[0].name == "Add ingredients to see total protein!"{
                 return false
             }
             else{
@@ -260,7 +266,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         if let tField = textField {
             
             self.textField = textField!        //Save reference to the UITextField
-            self.textField.text = "Hello world"
+            self.textField.text = "My Recipe"
         }
     }
     @IBAction func addFoodButtonPressed(sender:AnyObject){
@@ -407,13 +413,36 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         if let reportLabel = reportLabel{
             let (text,color) = IngredientHelper.returnLevelJudgement()
             (tryp,thre,isol,leuc,lysi,meth,phen,vali,hist) = IngredientHelper.returnAminoTotals()
-            let (aminoText,aminoColor) = IngredientHelper.returnAminoJudgement(tryp,thre:thre,isol:isol,leuc:leuc,lysi:lysi,meth:meth,phen:phen,vali:vali,hist:hist)
+            (good,aminoText,aminoColor) = IngredientHelper.returnAminoJudgement(tryp,thre:thre,isol:isol,leuc:leuc,lysi:lysi,meth:meth,phen:phen,vali:vali,hist:hist)
             reportLabel.text = "Progress: \(text)"
             reportLabel.textColor = color
-            aminoLabel.text = "Amino balance: \(aminoText)"
+            if(good == true){
+                aminoLabel.text = "Excellent amino balance!"
+            }
+            else if(aminoText == "So-so balance"){
+                aminoLabel.text = "Amino balance: \(aminoText)"
+            }
+            else{
+                aminoLabel.text = "Amino balance: needs more\n "
+                let (width, height) = widthHeight()
+                aminoButton.setTitle(aminoText, forState: .Normal)
+                aminoButton.setTitleColor(aminoColor, forState: .Normal)
+                aminoButton.frame = CGRectMake(width/2 - 40, height - 30, 100, 50)
+                aminoButton.addTarget(self, action: "pressedAction:", forControlEvents: .TouchUpInside)
+                self.view.addSubview(aminoButton)
+            }
             aminoLabel.textColor = aminoColor
         }
     }
+    func pressedAction(sender: UIButton!) {
+        // do your stuff here
+        NSLog("you clicked on button %@", sender.tag)
+        IngredientHelper.sortCat = IngredientHelper.mapAminoNames(aminoText)
+        IngredientHelper.ascendDescend = false
+        println("IngredientHelper.sortCat\(IngredientHelper.sortCat)")
+        self.performSegueWithIdentifier("seeAmino", sender: sender)
+    }
+
     func barChartView(barChartView: JBBarChartView!, didSelectBarAtIndex index: UInt) {
             switch index{
             case 0:
@@ -443,6 +472,12 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         imagePickerController!.sourceType = sourceType
         imagePickerController!.delegate = self
         self.presentViewController(imagePickerController!, animated: true, completion: nil)
+    }
+    func widthHeight() -> (CGFloat, CGFloat){
+        var sizeRect = UIScreen.mainScreen().applicationFrame
+        var width    = sizeRect.size.width
+        var height   = sizeRect.size.height
+        return (width, height)
     }
 }
 extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

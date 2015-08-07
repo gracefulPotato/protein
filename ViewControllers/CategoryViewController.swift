@@ -36,24 +36,34 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier( reuseIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
         cell.backgroundColor = UIColor.whiteColor()
         // Configure the cell
-        var title = UILabel(frame: CGRectMake(0, 0, cell.bounds.size.width, 40))
+        var title = UILabel(frame: CGRectMake(cellWidth()/20, 0, cell.bounds.size.width, 40))
         let image = UIImage(named: imgNameArr[indexPath.section][indexPath.row])
         let imageView = UIImageView(image: image!)
-        //catLabel = UILabel(frame: CGRectMake(0, 0, cell.bounds.size.width, 40))
-        //catImg = UIImageView(image: image!)
-        imageView.frame = CGRect(x: 120, y: 5, width: 32, height: 32)
-        //catImg.frame = CGRect(x: 120, y: 5, width: 32, height: 32)
+        imageView.frame = CGRect(x: cellWidth()-40, y: 5, width: 32, height: 32)
 
-        
         cell.contentView.addSubview(imageView)
         cell.contentView.addSubview(title)
         
-        //let index = indexPath as Int
         title.text = catArr[indexPath.section][indexPath.row]
         prevcell = cell
         return cell
     }
-    
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+            var size = CGSize(width: cellWidth(), height: 40)
+            if(catArr[indexPath.section][indexPath.row] == "All Foods"){
+                size = CGSize(width: cellWidth()*2 + 16, height: 40)
+            }
+            return size
+    }
+    func cellWidth() -> CGFloat{
+        var sizeRect = UIScreen.mainScreen().applicationFrame
+        var width    = sizeRect.size.width
+        var height   = sizeRect.size.height
+        let cellWidth = (width/2 - 25)
+        return cellWidth
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "CategoryButtonTapped") {
 
@@ -65,21 +75,9 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
                 selectedCat = catArr[indexPath.section][indexPath.row]
             }
             
-            //}
             FoodViewController.tmpCategory = selectedCat
             println("Selected Category:\(selectedCat)")
             //FoodViewController.ingredients.append(addedFood)
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
