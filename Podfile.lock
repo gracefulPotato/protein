@@ -29,6 +29,7 @@ DEPENDENCIES:
   - ConvenienceKit
   - FBSDKCoreKit
   - JBChartView
+  - Realm
   - RealmSwift
   - SwiftyJSON (~> 2.2.0)
 
