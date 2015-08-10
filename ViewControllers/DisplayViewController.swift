@@ -16,9 +16,12 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
     @IBOutlet weak var protGramTextView: UILabel!
     @IBOutlet weak var barChartView : JBBarChartView!
     @IBOutlet weak var informationLabel: UILabel!
+    @IBOutlet weak var stepper : UIStepper!
+    @IBOutlet weak var valueLabel : UILabel!
     
     var addedFood : FoodInfo?
     let myTransparentWhite = UIColor(red:1.0, green:1.0, blue:1.0, alpha:0.5)
+    var multiplier : Int = 20
     var note: FoodInfo? {
         didSet {
             displayFood(self.note)
@@ -31,12 +34,17 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
             if let titleTextField = titleTextField, groupTextView = groupTextView, protGramTextView = protGramTextView  {
                 titleTextField.text = note.name
                 groupTextView.text = "Food Group:\n\(note.group)"
-                protGramTextView.text = "Total protein: \(note.protGram) grams"
+                let displayProt = (note.protGram/100) * Double(multiplier)
+                protGramTextView.text = "Total protein: \(displayProt) grams"
             }
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let max_int = Int.max
+        stepper.value = 20
+        stepper.maximumValue = Double(max_int)// as Double
+        //multiplier = 20
         barChartView.backgroundColor = myTransparentWhite
         barChartView.dataSource = self
         barChartView.delegate = self
@@ -49,6 +57,8 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
         var foodGroupImage = UIImageView(frame: CGRectMake(300, 150, 50, 50));
         foodGroupImage.image = UIImage(named: getImage(note!.group))
         self.view.addSubview(foodGroupImage);
+        stepper.autorepeat = true
+        valueLabel.text = "\(multiplier)g of"
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -66,7 +76,7 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
         if (segue.identifier == "AddFoodRecipeButtonTapped") {
             let FoodViewController = segue.destinationViewController as! HomeViewController
             FoodViewController.tmpIngredient = note
-            //FoodViewController.mult = multiplier
+            FoodViewController.mult = multiplier
             realm.write{
                 self.note!.nitFactor = self.note!.nitFactor + 1
             }
@@ -83,24 +93,25 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
     
     func barChartView(barChartView: JBBarChartView!, heightForBarViewAtIndex index: UInt) -> CGFloat {
         switch index{
+            //let displayProt = (note.protGram/100) * Double(multiplier)
             case 0:
-                return CGFloat(note!.tryp) //0.45 //0.15
+                return CGFloat((note!.tryp/100) * Double(multiplier)) //0.45 //0.15
             case 1:
-                return CGFloat(note!.thre) //1.81 //0.60
+                return CGFloat((note!.thre/100) * Double(multiplier)) //1.81 //0.60
             case 2:
-                return CGFloat(note!.isol) //1.73 //0.58
+                return CGFloat((note!.isol/100) * Double(multiplier)) //1.73 //0.58
             case 3:
-                return CGFloat(note!.leuc) //3.82 //1.27
+                return CGFloat((note!.leuc/100) * Double(multiplier)) //3.82 //1.27
             case 4:
-                return CGFloat(note!.lysi) //3.45 //1.15
+                return CGFloat((note!.lysi/100) * Double(multiplier)) //3.45 //1.15
             case 5:
-                return CGFloat(note!.meth) //1.73 //0.58
+                return CGFloat((note!.meth/100) * Double(multiplier)) //1.73 //0.58
             case 6:
-                return CGFloat(note!.phen) //3.00 //1.00
+                return CGFloat((note!.phen/100) * Double(multiplier)) //3.00 //1.00
             case 7:
-                return CGFloat(note!.vali) //2.18 //0.73
+                return CGFloat((note!.vali/100) * Double(multiplier)) //2.18 //0.73
             case 8:
-                return CGFloat(note!.hist) //1.27 //0.42
+                return CGFloat((note!.hist/100) * Double(multiplier)) //1.27 //0.42
             default:
                 return 0
         }
@@ -135,6 +146,13 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
 //    func barChartView(barChartView: JBBarChartView!, colorForBarViewAtIndex index: UInt) -> UIColor {
 //        return UIColor.blueColor()
 //    }
+    @IBAction func stepperValueChanged(sender: UIStepper) {
+
+        multiplier = Int(sender.value)
+        valueLabel.text = "\(multiplier)g of"
+        displayFood(self.note)
+        barChartView.reloadData()
+    }
     
     func getImage(groupName: String)->String{
         switch groupName{

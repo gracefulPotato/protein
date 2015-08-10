@@ -68,6 +68,7 @@
 		65D700521B751E6400C68F9C /* Pods-proteinCalculator.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65D700511B751E6400C68F9C /* Pods-proteinCalculator.release.xcconfig */; };
 		65D700541B7914CC00C68F9C /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65D700531B7914CC00C68F9C /* background.jpg */; };
 		65D700561B79160C00C68F9C /* background2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65D700551B79160C00C68F9C /* background2.jpg */; };
+		65D700581B79244A00C68F9C /* blue background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D700571B79244A00C68F9C /* blue background.png */; };
 		65DCA8EB1B5F021A0013B451 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DCA8EA1B5F02190013B451 /* CategoryViewController.swift */; };
 		65E04C6C1B570F5000198FE2 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E04C6B1B570F5000198FE2 /* FoodTableViewCell.swift */; };
 		DD88EDC25892C9690AD709D3 /* Pods_proteinCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB49B7BC6B4FD60D793E1F8 /* Pods_proteinCalculator.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -155,6 +156,7 @@
 		65D700511B751E6400C68F9C /* Pods-proteinCalculator.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-proteinCalculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-proteinCalculator/Pods-proteinCalculator.release.xcconfig"; sourceTree = "<group>"; };
 		65D700531B7914CC00C68F9C /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		65D700551B79160C00C68F9C /* background2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background2.jpg; sourceTree = "<group>"; };
+		65D700571B79244A00C68F9C /* blue background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue background.png"; sourceTree = "<group>"; };
 		65DCA8EA1B5F02190013B451 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		65E04C6B1B570F5000198FE2 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		C58486782B785BCCF5923A1A /* Pods_proteinApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_proteinApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +210,7 @@
 		652406E81B6046FC00A33D96 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				65D700571B79244A00C68F9C /* blue background.png */,
 				65D700551B79160C00C68F9C /* background2.jpg */,
 				65D700531B7914CC00C68F9C /* background.jpg */,
 				655F28181B7294E7003B86C2 /* Cooking Pot@3x.pdf */,
@@ -444,6 +447,7 @@
 				65D65DD31B6066F900B44955 /* rice_32.png in Resources */,
 				652406FE1B604DB000A33D96 /* Cereals_32.png in Resources */,
 				65D65DCB1B60620900B44955 /* Chips_32.png in Resources */,
+				65D700581B79244A00C68F9C /* blue background.png in Resources */,
 				65D65DBF1B605B2800B44955 /* steak_32.png in Resources */,
 				652407001B604EB100A33D96 /* Grapes_32.png in Resources */,
 				652406F01B60487100A33D96 /* Herbal_32.png in Resources */,

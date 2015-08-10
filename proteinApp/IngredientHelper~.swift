@@ -20,7 +20,6 @@ class IngredientHelper: NSObject {
     static var sortCat : String! = "name"
     static var ascendDescend : Bool = true
     static var tmpCategory : String = ""
-    static var displayMessage : Bool = false
     static func createString(){
         ingredStr = ""
         for i in 0..<ingredients.count{

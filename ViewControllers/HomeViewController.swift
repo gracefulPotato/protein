@@ -41,6 +41,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     var alert = UIAlertController(title: "Deletion Alert", message: "Are you sure you want to clear this recipe?\nIf you haven't saved it, you'll lose it.", preferredStyle: UIAlertControllerStyle.Alert)
     var saveAlert = UIAlertController(title: "Save Recipe?", message: "Clear recipe when done?\n\nEnter recipe title:", preferredStyle: UIAlertControllerStyle.Alert)
     var saveMessage = UIAlertController(title: "Recipe saved.", message: "Find saved recipes in the Recipe Log found in the hamburger menu.", preferredStyle: UIAlertControllerStyle.Alert)
+    var addFoodMessage = UIAlertController(title: "Add ingredients to see total protein", message: "", preferredStyle: UIAlertControllerStyle.Alert)
     
     var selectedFood: FoodInfo?
     let realm = Realm()
@@ -54,7 +55,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     var aminoText : String = ""
     var aminoColor : UIColor = UIColor.redColor()
     let aminoButton = UIButton()
-    //var mult : Int!
+    var mult : Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +64,15 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         prepareBarChartView()
         if let tmpIngredient = tmpIngredient{
             IngredientHelper.ingredients.append(tmpIngredient)
-            prepareOtherViews()
+            println("ingredients.count\(IngredientHelper.ingredients.count)")
+            //prepareOtherViews()
         }
+        if let mult = mult{
+            IngredientHelper.multipliers.append(mult)
+            println("multipliers.count\(IngredientHelper.multipliers.count)")
+            //prepareOtherViews()
+        }
+        //prepareOtherViews()
         if let tmpRecipeStr = IngredientHelper.tmpRecipeStr{
             var recipes : [String] = split(tmpRecipeStr) {$0 == "\n"}
             println("string was split")
@@ -75,6 +83,17 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
                 //ingred = String(dropFirst(dropFirst(dropFirst((ingred.characters))))
                 var paredIngred = String(dropFirst(dropFirst(dropFirst(ingred))))
                 println(paredIngred)
+                var tmpMult : String = ""
+                //var i = 0
+                while(Array(paredIngred)[0] != "g"){
+                    println("paredIngred)[0]\(Array(paredIngred)[0])")
+                    tmpMult = "\(tmpMult)\(Array(paredIngred)[0])"
+                    paredIngred = String(dropFirst(paredIngred))
+                }
+                paredIngred = String(dropFirst(dropFirst(paredIngred)))
+                println("paredIngred\(paredIngred)")
+                mult = tmpMult.toInt()
+                IngredientHelper.multipliers.append(mult)
                 let namePredicate = NSPredicate(format: "name CONTAINS[c] %@", paredIngred)
                 
                 let tmpFood = realm.objects(FoodInfo).filter(namePredicate)
@@ -88,7 +107,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             if IngredientHelper.ingredients.count == 0{
             let message = FoodInfo()
                 message.name = "Add ingredients to see total protein!"
-                IngredientHelper.ingredients.append(message)
+                //IngredientHelper.ingredients.append(message)
             }
             prepareOtherViews()
             ingredientTable.reloadData()
@@ -97,7 +116,11 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         addAlertAction()
         addSaveAlertAction()
         addSaveMessageAction()
+        addAddFoodMessageAction()
         deleteSwitch.on = true
+        if(IngredientHelper.displayMessage == true){
+            onFirstStartup()
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -107,6 +130,10 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         barChartView.reloadData()
         ingredientTable.reloadData()
         println("displayMeat: \(displayMeat)")
+    }
+    func onFirstStartup(){
+        self.presentViewController(self.addFoodMessage, animated: true, completion: nil)
+        IngredientHelper.displayMessage = false
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -146,7 +173,8 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         let row = indexPath.row
         if row < IngredientHelper.ingredients.count{
             let tmpIngred = IngredientHelper.ingredients[row]
-            cell.nameLabel?.text = tmpIngred.name
+            let tmpMult = IngredientHelper.multipliers[row]
+            cell.nameLabel?.text = "\(tmpMult)g \(tmpIngred.name)"
         }
         
         return cell
@@ -167,6 +195,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             IngredientHelper.ingredients.removeAtIndex(indexPath.row)
+            IngredientHelper.multipliers.removeAtIndex(indexPath.row)
             prepareBarChartView()
             prepareOtherViews()
             ingredientTable.reloadData()
@@ -208,6 +237,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
                     let indexPath = self.ingredientTable?.indexPathForCell(cell)
                     selectedFood = IngredientHelper.ingredients[indexPath!.row]
                     FoodViewController.note = selectedFood
+                    FoodViewController.multiplier = IngredientHelper.multipliers[indexPath!.row]
                 }
            }
            else{
@@ -224,7 +254,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         if(IngredientHelper.ingredients.count == 0){
             let message = FoodInfo()
             message.name = "Add ingredients to see total protein!"
-            IngredientHelper.ingredients.append(message)
+            //IngredientHelper.ingredients.append(message)
             ingredientTable.reloadData()
         }
     }
@@ -237,7 +267,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         var recipe = RecipeWithPicture()
         recipe.title = textField.text
         for i in 0..<IngredientHelper.ingredients.count{
-            recipe.ingredientStr = "\(recipe.ingredientStr)\n\(i+1). \(IngredientHelper.ingredients[i].name)"
+            recipe.ingredientStr = "\(recipe.ingredientStr)\n\(i+1). \(IngredientHelper.multipliers[i])g \(IngredientHelper.ingredients[i].name)"
             recipe.totProt = recipe.totProt + IngredientHelper.ingredients[i].protGram
         }
         println("new recipe!")
@@ -392,6 +422,19 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     }
     func addSaveMessageAction(){
         saveMessage.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+            switch action.style{
+            case .Default:
+                println("default")
+            case .Cancel:
+                println("cancel")
+                
+            case .Destructive:
+                println("destructive")
+            }
+        }))
+    }
+    func addAddFoodMessageAction(){
+        addFoodMessage.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
             switch action.style{
             case .Default:
                 println("default")
