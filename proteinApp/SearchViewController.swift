@@ -26,7 +26,7 @@ class SearchViewController: UIViewController {
         case SearchMode
     }
     var selectedFood: FoodInfo?
-    var tmpCategory : String! = ""
+    //var IngredientHelper.tmpCategory : String! = ""
 //    var IngredientHelper.sortCat : String! = "name"
 //    var IngredientHelper.ascendDescend : Bool = true
     var state: State = .DefaultMode{
@@ -34,9 +34,9 @@ class SearchViewController: UIViewController {
         switch (state) {
         case .DefaultMode:
             categoryTitle.title = "All Foods"
-            if(tmpCategory != ""){
-                let convertedCat = convertCat(tmpCategory)
-                if(tmpCategory != ""){
+            if(IngredientHelper.tmpCategory != ""){
+                let convertedCat = convertCat(IngredientHelper.tmpCategory)
+                if(IngredientHelper.tmpCategory != ""){
                     notes = filterNotes(convertedCat,searchString:"")
                 }
                 else{
@@ -54,10 +54,10 @@ class SearchViewController: UIViewController {
             let searchText = searchBar?.text ?? ""
             //carrySearchText = searchText as String?
             searchBar.setShowsCancelButton(true, animated: true)
-            if(tmpCategory != ""){
+            if(IngredientHelper.tmpCategory != ""){
                 notes = searchNotes(searchText)
-                let convertedCat = convertCat(tmpCategory)
-                if(tmpCategory != ""){
+                let convertedCat = convertCat(IngredientHelper.tmpCategory)
+                if(IngredientHelper.tmpCategory != ""){
                     notes = filterNotes(convertedCat,searchString:"")
                 }
                 else{
@@ -86,16 +86,16 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //if(tmpCategory != ""){
+        //if(IngredientHelper.tmpCategory != ""){
             println("filtering")
-            let convertedCat = convertCat(tmpCategory)
-            if(tmpCategory != ""){
-                println("tmpCategory \(tmpCategory)")
+            let convertedCat = convertCat(IngredientHelper.tmpCategory)
+            if(IngredientHelper.tmpCategory != ""){
+                println("IngredientHelper.tmpCategory \(IngredientHelper.tmpCategory)")
                 notes = filterNotes(convertedCat,searchString:"")
-                categoryTitle.title = tmpCategory
+                categoryTitle.title = IngredientHelper.tmpCategory
             }
             else{
-                println("tmpCategory null")
+                println("IngredientHelper.tmpCategory null")
                 notes = allFoods.sorted(IngredientHelper.sortCat, ascending: IngredientHelper.ascendDescend)
                 if(IngredientHelper.sortCat != "name"){
                     categoryTitle.title = IngredientHelper.mapAminoVars(IngredientHelper.sortCat)
@@ -179,7 +179,8 @@ class SearchViewController: UIViewController {
     
     func filterNotes(tmpCategory: String, searchString: String) -> Results<FoodInfo> {
         let realm = Realm()
-        let categoryPredicate = NSPredicate(format: "group CONTAINS[c] %@", tmpCategory)
+        let convertedCat = convertCat(tmpCategory)
+        let categoryPredicate = NSPredicate(format: "group CONTAINS[c] %@", convertedCat)
         var predArr : [NSPredicate]?
         var searchWords : [String] = split(searchString) {$0 == " "}
         for i in 0..<searchWords.count{
@@ -261,35 +262,35 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if(tmpCategory != ""){
-            let convertedCat = convertCat(tmpCategory)
+        if(IngredientHelper.tmpCategory != ""){
+            let convertedCat = convertCat(IngredientHelper.tmpCategory)
             if(convertedCat != ""){
                 notes = filterNotes(convertedCat,searchString:searchText)
             }
             else{
                 notes = searchNotes(searchText)
             }
-//            if(tmpCategory == "Soups and Sauces"){
+//            if(IngredientHelper.tmpCategory == "Soups and Sauces"){
 //                notes = filterNotes("Soups Sauces and Gravies",searchString:searchText)
 //            }
-//            else if(tmpCategory == "All Foods"){
+//            else if(IngredientHelper.tmpCategory == "All Foods"){
 //                notes = searchNotes(searchText)
 //                //notes = filterNotes("",searchString:"")
 //            }
-//            else if(tmpCategory == "Sausages, etc."){
+//            else if(IngredientHelper.tmpCategory == "Sausages, etc."){
 //                notes = filterNotes("Sausages and Luncheon Meats",searchString:searchText)
 //            }
-//            else if(tmpCategory == "Baked Goods"){
+//            else if(IngredientHelper.tmpCategory == "Baked Goods"){
 //                notes = filterNotes("Baked Products",searchString:searchText)
 //            }
-//            else if(tmpCategory == "Lamb, Veal, Game"){
+//            else if(IngredientHelper.tmpCategory == "Lamb, Veal, Game"){
 //                notes = filterNotes("Lamb Veal and Game Products",searchString:searchText)
 //            }
-//            else if(tmpCategory == "Nuts and Seeds"){
+//            else if(IngredientHelper.tmpCategory == "Nuts and Seeds"){
 //                notes = filterNotes("Nut and Seed Products",searchString:searchText)
 //            }
 //            else{
-//                notes = filterNotes(tmpCategory,searchString:searchText)
+//                notes = filterNotes(IngredientHelper.tmpCategory,searchString:searchText)
 //            }
             notes = notes.sorted(IngredientHelper.sortCat, ascending: IngredientHelper.ascendDescend)
             tableView.reloadData()
@@ -330,7 +331,7 @@ extension SearchViewController: UISearchBarDelegate {
         tableView.reloadData()
     }
     func convertCat(tmpCategory : String) -> String {
-        switch tmpCategory{
+        switch(tmpCategory){
             case "Soups and Sauces":
                 return "Soups Sauces and Gravies"
             case "Sausages, etc.":

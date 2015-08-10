@@ -17,7 +17,8 @@ class IngredientHelper: NSObject {
 //    }
     static var tmpRecipeStr : String?
     static var sortCat : String! = "name"
-    static var ascendDescend : Bool = false
+    static var ascendDescend : Bool = true
+    static var tmpCategory : String = ""
     static func createString(){
         ingredStr = ""
         for i in 0..<ingredients.count{
@@ -158,6 +159,32 @@ class IngredientHelper: NSObject {
             return "Valine"
         case "hist":
             return "Histidine"
+        default:
+            return "name"
+        }
+    }
+    static func mapImgsToCats(imgName:String)->String{
+        switch(imgName){
+        case "fish_32.png":
+            return "Fish"
+        case "Salami_32.png":
+            return "Sausages, etc."
+        case "Wheat_32.png":
+            return "Grains and Pasta"
+        case "Broccoli_32.png":
+            return "Vegetables"
+        case "beverage_32.png":
+            return "Beverages"
+        case "pistachio.png":
+            return "Nuts and Seeds"
+        case "Peas_32.png":
+            return "Legumes"
+        case "Chicken_32.png":
+            return "Poultry"
+        case "Piece_of_cheese_32.png":
+            return "Dairy and Egg"
+        case "Grapes_32.png":
+            return "Fruit"
         default:
             return "name"
         }

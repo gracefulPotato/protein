@@ -57,6 +57,10 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
             }
             return size
     }
+    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier( reuseIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
+        cell.removeFromSuperview()
+    }
     func cellWidth() -> CGFloat{
         var sizeRect = UIScreen.mainScreen().applicationFrame
         var width    = sizeRect.size.width
@@ -75,7 +79,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
                 selectedCat = catArr[indexPath.section][indexPath.row]
             }
             
-            FoodViewController.tmpCategory = selectedCat
+            IngredientHelper.tmpCategory = selectedCat
             println("Selected Category:\(selectedCat)")
             //FoodViewController.ingredients.append(addedFood)
         }

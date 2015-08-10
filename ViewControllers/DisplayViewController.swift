@@ -66,6 +66,7 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
         if (segue.identifier == "AddFoodRecipeButtonTapped") {
             let FoodViewController = segue.destinationViewController as! HomeViewController
             FoodViewController.tmpIngredient = note
+            //FoodViewController.mult = multiplier
             realm.write{
                 self.note!.nitFactor = self.note!.nitFactor + 1
             }

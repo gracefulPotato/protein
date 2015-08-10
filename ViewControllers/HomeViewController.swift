@@ -54,6 +54,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     var aminoText : String = ""
     var aminoColor : UIColor = UIColor.redColor()
     let aminoButton = UIButton()
+    //var mult : Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +85,6 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             ingredientTable.reloadData()
         }
         else{
-            println("tmpRecipeStr didnt come through")
             if IngredientHelper.ingredients.count == 0{
             let message = FoodInfo()
                 message.name = "Add ingredients to see total protein!"
@@ -439,6 +439,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         NSLog("you clicked on button %@", sender.tag)
         IngredientHelper.sortCat = IngredientHelper.mapAminoNames(aminoText)
         IngredientHelper.ascendDescend = false
+        IngredientHelper.tmpCategory = ""
         println("IngredientHelper.sortCat\(IngredientHelper.sortCat)")
         self.performSegueWithIdentifier("seeAmino", sender: sender)
     }

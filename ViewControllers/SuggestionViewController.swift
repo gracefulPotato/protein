@@ -15,40 +15,57 @@ class SuggestionViewController: UIViewController {
     var originalFood : FoodInfo!
     var matchCat : String!
     var matchImageName : String!
+    var aminoButtons : [UIButton] = []
+    //var buttonNames : [String] = []
+    var imgNames : [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         (matchCat, matchImageName) = calcMatchCat(originalFood)
-        var imgNames : [String] = split(matchImageName) {$0 == " "}
+        imgNames = split(matchImageName) {$0 == " "}
         broadSugLabel.text = "\(originalFood.name)\n\nis complemented by\n\n\(matchCat)"
         let displayVC = DisplayViewController()
+        
+        
+        //aminoButton.setImage
+        //aminoButton.setImage(image:UIImage(named: imgNames[i]),forState:UIControlState.Normal)
+        //aminoButton.setTitleColor(aminoColor, forState: .Normal)
+        //aminoButton.frame = CGRectMake(width/2 - 40, height - 30, 100, 50)
+        //aminoButton.addTarget(self, action: "pressedAction:", forControlEvents: .TouchUpInside)
+        //self.view.addSubview(aminoButton)
+        
         var origImg = UIImageView(frame: CGRectMake(100, 350, 50, 50));
         origImg.image = UIImage(named: displayVC.getImage(originalFood.group))
         self.view.addSubview(origImg)
         var tapGestureRecognizers : [UITapGestureRecognizer] = []
         for i in 0..<imgNames.count{
             println("i: \(i)")
-            tapGestureRecognizers.append(UITapGestureRecognizer(target:self, action:Selector("imageTapped")))
-            var matchImg : UIImageView
+            var aminoButton = UIButton()
+            aminoButton.setImage(UIImage(named: imgNames[i]),forState:UIControlState.Normal)
+            aminoButton.addTarget(self, action: "pressedAction:", forControlEvents: .TouchUpInside)
+            //tapGestureRecognizers.append(UITapGestureRecognizer(target:self, action:Selector("imageTapped:")))
+            //var matchImg : UIImageView
             if i % 2 == 0{
                 println("i is even")
-                matchImg = UIImageView(frame: CGRect(x:200, y:(350-60*(i/2)), width:50, height:50));
-                matchImg.addGestureRecognizer(tapGestureRecognizers[i])
+                aminoButton.frame = CGRect(x:200, y:(350-60*(i/2)), width:50, height:50)
+                //matchImg.addGestureRecognizer(tapGestureRecognizers[i])
             }
             else{
                 println("i is odd")
                 if i == 3{
-                    matchImg = UIImageView(frame: CGRect(x:200, y:(350+60*(i-1)), width:50, height:50));
-                    matchImg.addGestureRecognizer(tapGestureRecognizers[i])
+                    aminoButton.frame = CGRect(x:200, y:(350+60*(i-1)), width:50, height:50)
+                    //matchImg.addGestureRecognizer(tapGestureRecognizers[i])
                 }
                 else{
-                    matchImg = UIImageView(frame: CGRect(x:200, y:(350+60*i), width:50, height:50));
-                    matchImg.addGestureRecognizer(tapGestureRecognizers[i])
+                    aminoButton.frame = CGRect(x:200, y:(350+60*i), width:50, height:50)
+                    //matchImg.addGestureRecognizer(tapGestureRecognizers[i])
                 }
             }
-            matchImg.image = UIImage(named: imgNames[i])
-            self.view.addSubview(matchImg)
+            //matchImg.image = UIImage(named: imgNames[i])
+            //self.view.addSubview(matchImg)
+            aminoButtons.append(aminoButton)
+            self.view.addSubview(aminoButton)
         }
-        println("tapGestureRecognizers.count\(tapGestureRecognizers.count)")
+        //println("tapGestureRecognizers.count\(tapGestureRecognizers.count)")
         var plus = UIImageView(frame: CGRectMake(160, 360, 30, 30));
         plus.image = UIImage(named: "add.png")
         self.view.addSubview(plus)
@@ -60,12 +77,23 @@ class SuggestionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func imageTapped(img: AnyObject)
-    {
-        println("image tapped!")
-        self.performSegueWithIdentifier("ViewCat", sender: self)
-        //let FoodViewController = segue.destinationViewController as! SearchViewController
+    func pressedAction(sender: AnyObject){
+        println("button pressed")
+        for i in 0..<aminoButtons.count{
+            if sender as! UIButton == aminoButtons[i]{
+                println(imgNames[i])
+                IngredientHelper.tmpCategory = IngredientHelper.mapImgsToCats(imgNames[i])
+                self.performSegueWithIdentifier("showSuggestionCat", sender: self)
+            }
+        }
     }
+    
+//    func imageTapped(img: AnyObject)
+//    {
+//        println("image tapped!")
+//        self.performSegueWithIdentifier("ViewCat", sender: self)
+//        //let FoodViewController = segue.destinationViewController as! SearchViewController
+//    }
     
     func calcMatchCat(food:FoodInfo) ->(String!,String!){
         switch food.group{
