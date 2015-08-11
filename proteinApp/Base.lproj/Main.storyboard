@@ -372,10 +372,80 @@
             </objects>
             <point key="canvasLocation" x="-107" y="1074"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="bBR-3j-G4I">
+            <objects>
+                <viewController id="aU4-47-4AF" customClass="SettingsViewController" customModule="proteinCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zPj-j7-VTD"/>
+                        <viewControllerLayoutGuide type="bottom" id="lRA-a0-PLW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yqd-27-FuT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ENf-VS-4Hi">
+                                <rect key="frame" x="116" y="70" width="51" height="31"/>
+                                <connections>
+                                    <action selector="buttonClicked:" destination="aU4-47-4AF" eventType="valueChanged" id="Pwz-ly-8nN"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIW-WR-Wl4">
+                                <rect key="frame" x="66" y="70" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4i6-Tl-atw">
+                                <rect key="frame" x="250" y="285" width="100" height="50"/>
+                                <color key="backgroundColor" red="0.83606234999999995" green="0.72508907690000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0uL-nZ-bP5"/>
+                                    <constraint firstAttribute="width" constant="100" id="Rmh-mf-ora"/>
+                                </constraints>
+                                <state key="normal" title="Credits">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="9o4-JM-sAt" kind="show" id="kix-jY-jPy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4i6-Tl-atw" firstAttribute="leading" secondItem="yqd-27-FuT" secondAttribute="leadingMargin" constant="10" id="0vD-vA-NGA"/>
+                            <constraint firstAttribute="centerY" secondItem="4i6-Tl-atw" secondAttribute="centerY" constant="-10" id="4lr-eq-nWU"/>
+                            <constraint firstItem="ENf-VS-4Hi" firstAttribute="top" secondItem="zPj-j7-VTD" secondAttribute="bottom" constant="50" id="CCm-rx-Kp6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4i6-Tl-atw" secondAttribute="trailing" constant="10" id="GSB-f7-XOx"/>
+                            <constraint firstItem="lRA-a0-PLW" firstAttribute="top" secondItem="4i6-Tl-atw" secondAttribute="bottom" constant="100" id="JaP-VY-j4R"/>
+                            <constraint firstAttribute="centerX" secondItem="4i6-Tl-atw" secondAttribute="centerX" id="aI1-wT-BiQ"/>
+                            <constraint firstItem="4i6-Tl-atw" firstAttribute="top" secondItem="zPj-j7-VTD" secondAttribute="bottom" constant="100" id="cQy-nH-lJD"/>
+                            <constraint firstItem="ENf-VS-4Hi" firstAttribute="leading" secondItem="XIW-WR-Wl4" secondAttribute="trailing" constant="8" symbolic="YES" id="pLq-v1-EjU"/>
+                            <constraint firstItem="XIW-WR-Wl4" firstAttribute="leading" secondItem="yqd-27-FuT" secondAttribute="leadingMargin" constant="50" id="w2M-mB-Xen"/>
+                            <constraint firstItem="XIW-WR-Wl4" firstAttribute="top" secondItem="zPj-j7-VTD" secondAttribute="bottom" constant="50" id="xoI-eB-n56"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0vD-vA-NGA"/>
+                                <exclude reference="GSB-f7-XOx"/>
+                                <exclude reference="cQy-nH-lJD"/>
+                                <exclude reference="JaP-VY-j4R"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="meatLabel" destination="XIW-WR-Wl4" id="tpI-uJ-iy3"/>
+                        <outlet property="meatSwitch" destination="ENf-VS-4Hi" id="jMR-7U-DsQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1ah-D5-5Sq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2261" y="-1988"/>
+        </scene>
         <!--Credits-->
         <scene sceneID="Hc6-Uf-xKZ">
             <objects>
-                <viewController id="9o4-JM-sAt" customClass="SettingsViewController" customModule="proteinCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9o4-JM-sAt" customClass="CreditsViewController" customModule="proteinCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4tj-re-mGg"/>
                         <viewControllerLayoutGuide type="bottom" id="6aA-Ye-yV6"/>
@@ -489,7 +559,7 @@
                                 <items>
                                     <barButtonItem image="Settings" id="P8O-hl-hyz">
                                         <connections>
-                                            <segue destination="9o4-JM-sAt" kind="show" id="tRQ-W1-mae"/>
+                                            <segue destination="aU4-47-4AF" kind="show" id="2Yb-SR-xWU"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -569,14 +639,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="amino_4_meal_and_total.png" translatesAutoresizingMaskIntoConstraints="NO" id="ULh-Qy-Ld7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="amino_4_meal_and_total.png" translatesAutoresizingMaskIntoConstraints="NO" id="ULh-Qy-Ld7">
                                 <rect key="frame" x="26" y="240" width="548" height="290"/>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ahx-sg-G1B" customClass="JBBarChartView">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ahx-sg-G1B" customClass="JBBarChartView">
                                 <rect key="frame" x="26" y="240" width="548" height="290"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Amino balance: -" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJH-sw-lmk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amino balance: -" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJH-sw-lmk">
                                 <rect key="frame" x="26" y="545" width="548" height="45"/>
                                 <color key="backgroundColor" red="0.49709990530303028" green="0.49709990530303028" blue="0.49709990530303028" alpha="0.48999999999999999" colorSpace="calibratedRGB"/>
                                 <constraints>

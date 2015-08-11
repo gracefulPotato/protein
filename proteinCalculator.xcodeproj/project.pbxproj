@@ -71,6 +71,7 @@
 		65D700581B79244A00C68F9C /* blue background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D700571B79244A00C68F9C /* blue background.png */; };
 		65DCA8EB1B5F021A0013B451 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DCA8EA1B5F02190013B451 /* CategoryViewController.swift */; };
 		65E04C6C1B570F5000198FE2 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E04C6B1B570F5000198FE2 /* FoodTableViewCell.swift */; };
+		65F6F4571B7A663700A4653A /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F6F4561B7A663700A4653A /* CreditsViewController.swift */; };
 		DD88EDC25892C9690AD709D3 /* Pods_proteinCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB49B7BC6B4FD60D793E1F8 /* Pods_proteinCalculator.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -159,6 +160,7 @@
 		65D700571B79244A00C68F9C /* blue background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue background.png"; sourceTree = "<group>"; };
 		65DCA8EA1B5F02190013B451 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		65E04C6B1B570F5000198FE2 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
+		65F6F4561B7A663700A4653A /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		C58486782B785BCCF5923A1A /* Pods_proteinApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_proteinApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -260,6 +262,7 @@
 				652406E21B5FFF9B00A33D96 /* SettingsViewController.swift */,
 				658537771B62A21B002DF82D /* SuggestionViewController.swift */,
 				651E214A1B6AF813009A919D /* PastRecipesViewController.swift */,
+				65F6F4561B7A663700A4653A /* CreditsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = SOURCE_ROOT;
@@ -564,6 +567,7 @@
 				651CF8511B5DCA7C00C647FD /* HomeViewController.swift in Sources */,
 				651E21451B69891C009A919D /* Recipe.swift in Sources */,
 				658537781B62A21B002DF82D /* SuggestionViewController.swift in Sources */,
+				65F6F4571B7A663700A4653A /* CreditsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -197,7 +197,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "toSettings") {
             let settingsVc = SettingsViewController()
-            settingsVc.meat = displayMeat
+            //settingsVc.meat = displayMeat
         }
         if (segue.identifier == "showFood") {
             println("in showFood prepareForSegue")
