@@ -156,22 +156,22 @@ class SearchViewController: UIViewController {
         let searchPredicate = NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@", searchString, searchString)
         var predArr : [NSPredicate]?
         var searchWords : [String] = split(searchString) {$0 == " "}
+        //for i in 0..<searchWords.count{
+            //println("searchWords[\(i)]\(searchWords[i])")
+        //}
         for i in 0..<searchWords.count{
-            println(searchWords[i])
-        }
-        for i in 0..<searchWords.count{
-            if i == 0{
-                predArr = [NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@",searchWords[i],searchWords[i])]
-            }
-            else{
-                predArr!.append(NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@",searchWords[i],searchWords[i]))
-            }
+                if i == 0{
+                    predArr = [NSPredicate(format: "name CONTAINS[c] %@",searchWords[i],searchWords[i])]
+                }
+                else{
+                    predArr!.append(NSPredicate(format: "name CONTAINS[c] %@",searchWords[i],searchWords[i]))
+                }
+            //}
         }
         var ret = realm.objects(FoodInfo)
         if let predArr = predArr {
             for i in 0..<predArr.count{
                 ret = ret.filter(predArr[i])
-                println(ret)
             }
         }
         return ret
@@ -184,21 +184,21 @@ class SearchViewController: UIViewController {
         var predArr : [NSPredicate]?
         var searchWords : [String] = split(searchString) {$0 == " "}
         for i in 0..<searchWords.count{
-            println(searchWords[i])
+            //println("searchWords[\(i)]\(searchWords[i])")
         }
         for i in 0..<searchWords.count{
-            if i == 0{
-                predArr = [NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@",searchWords[i],searchWords[i])]
-            }
-            else{
-                predArr!.append(NSPredicate(format: "name CONTAINS[c] %@ OR group CONTAINS[c] %@",searchWords[i],searchWords[i]))
-            }
+                if i == 0{
+                    predArr = [NSPredicate(format: "name CONTAINS[c] %@",searchWords[i],searchWords[i])]
+                }
+                else{
+                    predArr!.append(NSPredicate(format: "name CONTAINS[c] %@",searchWords[i],searchWords[i]))
+                }
         }
         if predArr !=  nil{
               var ret = realm.objects(FoodInfo).filter(categoryPredicate)
             for i in 0..<predArr!.count{
                 ret = ret.filter(predArr![i])
-                println(ret)
+                //println(ret)
             }
             return ret
         }

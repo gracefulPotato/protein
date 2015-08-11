@@ -22,6 +22,7 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
     var addedFood : FoodInfo?
     let myTransparentWhite = UIColor(red:1.0, green:1.0, blue:1.0, alpha:0.5)
     var multiplier : Int = 20
+    var lastIndex : UInt!
     var note: FoodInfo? {
         didSet {
             displayFood(self.note)
@@ -118,30 +119,8 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
     }
     
     func barChartView(barChartView: JBBarChartView!, didSelectBarAtIndex index: UInt) {
-        if let note = note{
-            switch index{
-                case 0:
-                    informationLabel.text = "Contains \(note.tryp)g Tryptophan"
-                case 1:
-                    informationLabel.text = "Contains \(note.thre)g Threonine"
-                case 2:
-                    informationLabel.text = "Contains \(note.isol)g Isoleucine"
-                case 3:
-                    informationLabel.text = "Contains \(note.leuc)g Leucine"
-                case 4:
-                    informationLabel.text = "Contains \(note.lysi)g Lysine"
-                case 5:
-                    informationLabel.text = "Contains \(note.meth)g Methionine"
-                case 6:
-                    informationLabel.text = "Contains \(note.phen)g Phenylalanine"
-                case 7:
-                    informationLabel.text = "Contains \(note.vali)g Valine"
-                case 8:
-                    informationLabel.text = "Contains \(note.hist)g Histidine"
-                default:
-                    informationLabel.text = "Contains \(note.tryp)g DefaultCase!"
-            }
-        }
+        changeChartLabel(index)
+        lastIndex = index
     }
 //    func barChartView(barChartView: JBBarChartView!, colorForBarViewAtIndex index: UInt) -> UIColor {
 //        return UIColor.blueColor()
@@ -152,6 +131,9 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
         valueLabel.text = "\(multiplier)g of"
         displayFood(self.note)
         barChartView.reloadData()
+        if let lastIndex = lastIndex{
+            changeChartLabel(lastIndex)
+        }
     }
     
     func getImage(groupName: String)->String{
@@ -206,5 +188,35 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
             return "rice_32.png"
         }
     }
-
+    func changeChartLabel(index: UInt){
+        if let note = note{
+            switch index{
+            case 0:
+                informationLabel.text = "Contains \(scaleAndChop(note.tryp))g Tryptophan"
+            case 1:
+                informationLabel.text = "Contains \(scaleAndChop(note.thre))g Threonine"
+            case 2:
+                informationLabel.text = "Contains \(scaleAndChop(note.isol))g Isoleucine"
+            case 3:
+                informationLabel.text = "Contains \(scaleAndChop(note.leuc))g Leucine"
+            case 4:
+                informationLabel.text = "Contains \(scaleAndChop(note.lysi))g Lysine"
+            case 5:
+                informationLabel.text = "Contains \(scaleAndChop(note.meth))g Methionine"
+            case 6:
+                informationLabel.text = "Contains \(scaleAndChop(note.phen))g Phenylalanine"
+            case 7:
+                informationLabel.text = "Contains \(scaleAndChop(note.vali))g Valine"
+            case 8:
+                informationLabel.text = "Contains \(scaleAndChop(note.hist))g Histidine"
+            default:
+                informationLabel.text = "Contains 0g DefaultCase!"
+            }
+        }
+    }
+    func scaleAndChop(num : Double) -> Double{
+        var ans = (num/100) * Double(multiplier)
+        ans = ans - (ans % 0.001)
+        return ans
+    }
 }

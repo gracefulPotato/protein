@@ -64,54 +64,20 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         prepareBarChartView()
         if let tmpIngredient = tmpIngredient{
             IngredientHelper.ingredients.append(tmpIngredient)
-            println("ingredients.count\(IngredientHelper.ingredients.count)")
-            //prepareOtherViews()
         }
         if let mult = mult{
             IngredientHelper.multipliers.append(mult)
-            println("multipliers.count\(IngredientHelper.multipliers.count)")
-            //prepareOtherViews()
         }
-        //prepareOtherViews()
         if let tmpRecipeStr = IngredientHelper.tmpRecipeStr{
-            var recipes : [String] = split(tmpRecipeStr) {$0 == "\n"}
-            println("string was split")
-            for i in recipes{
-                println(i)
-            }
-            for ingred in recipes{
-                //ingred = String(dropFirst(dropFirst(dropFirst((ingred.characters))))
-                var paredIngred = String(dropFirst(dropFirst(dropFirst(ingred))))
-                println(paredIngred)
-                var tmpMult : String = ""
-                //var i = 0
-                while(Array(paredIngred)[0] != "g"){
-                    println("paredIngred)[0]\(Array(paredIngred)[0])")
-                    tmpMult = "\(tmpMult)\(Array(paredIngred)[0])"
-                    paredIngred = String(dropFirst(paredIngred))
-                }
-                paredIngred = String(dropFirst(dropFirst(paredIngred)))
-                println("paredIngred\(paredIngred)")
-                mult = tmpMult.toInt()
-                IngredientHelper.multipliers.append(mult)
-                let namePredicate = NSPredicate(format: "name CONTAINS[c] %@", paredIngred)
-                
-                let tmpFood = realm.objects(FoodInfo).filter(namePredicate)
-                println("\(object_getClassName(tmpFood))")
-                IngredientHelper.ingredients.append(tmpFood[0])
-            }
-            prepareOtherViews()
-            ingredientTable.reloadData()
+            reloadRecipe(tmpRecipeStr)
         }
         else{
             if IngredientHelper.ingredients.count == 0{
-            let message = FoodInfo()
-                message.name = "Add ingredients to see total protein!"
-                //IngredientHelper.ingredients.append(message)
+                aminoButton.enabled = false
             }
-            prepareOtherViews()
-            ingredientTable.reloadData()
         }
+        prepareOtherViews()
+        ingredientTable.reloadData()
         println("displayMeat: \(displayMeat)")
         addAlertAction()
         addSaveAlertAction()
@@ -125,15 +91,26 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+        if IngredientHelper.ingredients.count == 0{
+            aminoButton.enabled = false
+        }
         // our code
         barChartView.reloadData()
         ingredientTable.reloadData()
         println("displayMeat: \(displayMeat)")
     }
     func onFirstStartup(){
-        self.presentViewController(self.addFoodMessage, animated: true, completion: nil)
+        println("onfirststartup running")
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        let titleAction = UIAlertAction(title: "Add ingredients to see total protein!", style: .Default, handler: nil)
+        alertController.addAction(titleAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+        //let cameraAction = UIAlertAction(title: "Photo from camera", style: .Default)
+        //self.presentViewController(self.addFoodMessage, animated: true, completion: nil)
         IngredientHelper.displayMessage = false
+        println(IngredientHelper.displayMessage)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -196,6 +173,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         if editingStyle == .Delete {
             IngredientHelper.ingredients.removeAtIndex(indexPath.row)
             IngredientHelper.multipliers.removeAtIndex(indexPath.row)
+            aminoButton.hidden = true
             prepareBarChartView()
             prepareOtherViews()
             ingredientTable.reloadData()
@@ -247,20 +225,13 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     }
     
     @IBAction func deleteButtonPressed(sender:AnyObject){
-
         if IngredientHelper.ingredients.count > 0{
             self.presentViewController(alert, animated: true, completion: nil)
         }
-        if(IngredientHelper.ingredients.count == 0){
-            let message = FoodInfo()
-            message.name = "Add ingredients to see total protein!"
-            //IngredientHelper.ingredients.append(message)
-            ingredientTable.reloadData()
-        }
     }
+    
     @IBAction func saveButtonPressed(sender:AnyObject){
         self.presentViewController(saveAlert, animated: true, completion: nil)
-        println("both should have presented")
     }
 
     func saveConfirmed(){
@@ -276,6 +247,12 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             self.realm.add(recipe, update: false)
         }
         if deleteSwitch.on{
+            //if IngredientHelper.ingredients.count == 0{
+            aminoButton.hidden = true
+                aminoButton.enabled = false
+            println("disabling button")
+                prepareOtherViews()
+            //}
             if IngredientHelper.ingredients.count > 0{
                 for i in 0..<IngredientHelper.ingredients.count{
                     println("i: \(i)")
@@ -299,6 +276,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             self.textField.text = "My Recipe"
         }
     }
+    
     @IBAction func addFoodButtonPressed(sender:AnyObject){
         if IngredientHelper.ingredients.count > 0{
             if IngredientHelper.ingredients[0].name == "Add ingredients to see total protein!"{
@@ -306,6 +284,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             }
         }
     }
+    
     func prepareBarChartView(){
         barChartView.backgroundColor = myTransparentWhite
         barChartView.dataSource = self
@@ -314,6 +293,36 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         barChartView.maximumValue = 4
         barChartView.reloadData()
     }
+    
+    func reloadRecipe(tmpRecipeStr: String){
+        var recipes : [String] = split(tmpRecipeStr) {$0 == "\n"}
+        println("string was split")
+        for i in recipes{
+            println(i)
+        }
+        for ingred in recipes{
+            //ingred = String(dropFirst(dropFirst(dropFirst((ingred.characters))))
+            var paredIngred = String(dropFirst(dropFirst(dropFirst(ingred))))
+            println(paredIngred)
+            var tmpMult : String = ""
+            //var i = 0
+            while(Array(paredIngred)[0] != "g"){
+                println("paredIngred)[0]\(Array(paredIngred)[0])")
+                tmpMult = "\(tmpMult)\(Array(paredIngred)[0])"
+                paredIngred = String(dropFirst(paredIngred))
+            }
+            paredIngred = String(dropFirst(dropFirst(paredIngred)))
+            println("paredIngred\(paredIngred)")
+            mult = tmpMult.toInt()
+            IngredientHelper.multipliers.append(mult)
+            let namePredicate = NSPredicate(format: "name CONTAINS[c] %@", paredIngred)
+            
+            let tmpFood = realm.objects(FoodInfo).filter(namePredicate)
+            println("\(object_getClassName(tmpFood))")
+            IngredientHelper.ingredients.append(tmpFood[0])
+        }
+    }
+    
     func addAlertAction(){
         alert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { action in
             switch action.style{
@@ -323,6 +332,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
                     for i in 0..<IngredientHelper.ingredients.count{
                         IngredientHelper.ingredients.removeAtIndex(0)
                     }
+                    self.aminoButton.hidden = true
                     self.ingredientTable.reloadData()
                     self.prepareOtherViews()
                     self.barChartView.reloadData()
@@ -355,45 +365,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             }
         }))
         
-        
-        // Only show camera option if rear camera is available
-        
-        
-//        if (UIImagePickerController.isCameraDeviceAvailable(.Rear)) {
-//            let cameraAction = UIAlertAction(title: "Save with photo from Camera", style: .Default) { (action) in
-//                self.noPicture = false
-//                self.saveConfirmed()
-//                
-//                //self.show
-//                //self.showImagePickerController(.Camera)
-//                
-//                self.presentViewController(self.saveMessage, animated: true, completion: { () -> Void in
-//                    self.showImagePickerController(.Camera)
-//                })
-        
-        
-        
-        
-                //self.presentViewController(self.saveMessage, animated: true, completion: nil)
-                //self.showImagePickerController(.Camera, completion:{sourceType/*:UIImagePickerControllerSourceType)*/ -> Void in
-//                    if 1 == 1 {
-//                        self.presentViewController(self.saveMessage, animated: true, completion: nil)
-//                    }
-//                })
-//                self.showImagePickerController(.Camera{self.presentViewController(self.saveMessage, animated: true, completion: nil)})
-                
-//                self.showImagePickerController(.Camera, handler: { (UIAlertController: saveMessage, animated: true, completion: nil)-> Void in
-//                    self.presentViewController(self.saveMessage, animated: true, completion: nil)
-//                })
-                
-//            }
-//            saveAlert.addAction(cameraAction)
-//        }
-        
-        
-        
-        
-        
+
     let photoLibraryAction = UIAlertAction(title: "Save with picture", style: .Default) { (action) in
             self.noPicture = false
             self.saveConfirmed()
@@ -477,6 +449,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             aminoLabel.textColor = aminoColor
         }
     }
+    
     func pressedAction(sender: UIButton!) {
         // do your stuff here
         NSLog("you clicked on button %@", sender.tag)
