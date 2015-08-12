@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		076E9D3FD85DE3D9E887DC6B /* Pods_proteinApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58486782B785BCCF5923A1A /* Pods_proteinApp.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		34D60826ED94DFCB1BE57861 /* Pods_proteinCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43F1B7AC0A9B13BD5F8B3B7 /* Pods_proteinCalculator.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6519EF5D1B57268F0047DB99 /* FoodInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6519EF5A1B57268F0047DB99 /* FoodInfo.swift */; };
 		6519EF5E1B57268F0047DB99 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6519EF5B1B57268F0047DB99 /* JsonHelper.swift */; };
 		651CF83A1B572D4000C647FD /* foodinfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 651CF8391B572D4000C647FD /* foodinfo.json */; };
@@ -16,7 +16,6 @@
 		651CF8481B59CD4900C647FD /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 651CF8431B59CD4900C647FD /* JBBarChartView.m */; };
 		651CF8491B59CD4900C647FD /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 651CF8451B59CD4900C647FD /* JBChartView.m */; };
 		651CF84A1B59CD4900C647FD /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 651CF8471B59CD4900C647FD /* JBLineChartView.m */; };
-		651CF84D1B5D716B00C647FD /* KeyboardNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651CF84C1B5D716A00C647FD /* KeyboardNotificationHandler.swift */; };
 		651CF8511B5DCA7C00C647FD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651CF8501B5DCA7B00C647FD /* HomeViewController.swift */; };
 		651E21451B69891C009A919D /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651E21441B69891C009A919D /* Recipe.swift */; };
 		651E21491B6A9D24009A919D /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 651E21481B6A9D24009A919D /* add.png */; };
@@ -52,7 +51,6 @@
 		65CAA8DA1B508EFC00EA8150 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CAA8D81B508EFC00EA8150 /* Main.storyboard */; };
 		65CAA8DC1B508EFD00EA8150 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65CAA8DB1B508EFD00EA8150 /* Images.xcassets */; };
 		65CAA8DF1B508EFD00EA8150 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65CAA8DD1B508EFD00EA8150 /* LaunchScreen.xib */; };
-		65CAA8EB1B508EFD00EA8150 /* proteinAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CAA8EA1B508EFD00EA8150 /* proteinAppTests.swift */; };
 		65D65DBF1B605B2800B44955 /* steak_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DBE1B605B2800B44955 /* steak_32.png */; };
 		65D65DC11B605BB800B44955 /* beverage_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DC01B605BB800B44955 /* beverage_32.png */; };
 		65D65DC31B605D8C00B44955 /* fish_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DC21B605D8C00B44955 /* fish_32.png */; };
@@ -62,10 +60,10 @@
 		65D65DCB1B60620900B44955 /* Chips_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DCA1B60620900B44955 /* Chips_32.png */; };
 		65D65DCD1B6062BB00B44955 /* Candy_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DCC1B6062BB00B44955 /* Candy_32.png */; };
 		65D65DCF1B60636A00B44955 /* Wheat_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DCE1B60636A00B44955 /* Wheat_32.png */; };
-		65D65DD11B60643D00B44955 /* Fast_food_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DD01B60643D00B44955 /* Fast_food_32.png */; };
+		65D65DD11B60643D00B44955 /* Fast_Food_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DD01B60643D00B44955 /* Fast_Food_32.png */; };
 		65D65DD31B6066F900B44955 /* rice_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D65DD21B6066F900B44955 /* rice_32.png */; };
-		65D700501B751E5C00C68F9C /* Pods-proteinCalculator.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65D7004F1B751E5C00C68F9C /* Pods-proteinCalculator.debug.xcconfig */; };
-		65D700521B751E6400C68F9C /* Pods-proteinCalculator.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 65D700511B751E6400C68F9C /* Pods-proteinCalculator.release.xcconfig */; };
+		65D700501B751E5C00C68F9C /* (null) in Resources */ = {isa = PBXBuildFile; };
+		65D700521B751E6400C68F9C /* (null) in Resources */ = {isa = PBXBuildFile; };
 		65D700541B7914CC00C68F9C /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65D700531B7914CC00C68F9C /* background.jpg */; };
 		65D700561B79160C00C68F9C /* background2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65D700551B79160C00C68F9C /* background2.jpg */; };
 		65D700581B79244A00C68F9C /* blue background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D700571B79244A00C68F9C /* blue background.png */; };
@@ -73,23 +71,11 @@
 		65E04C6C1B570F5000198FE2 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E04C6B1B570F5000198FE2 /* FoodTableViewCell.swift */; };
 		65F6F4571B7A663700A4653A /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F6F4561B7A663700A4653A /* CreditsViewController.swift */; };
 		65F6F4591B7AA83A00A4653A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F6F4581B7AA83A00A4653A /* Settings.swift */; };
-		DD88EDC25892C9690AD709D3 /* Pods_proteinCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB49B7BC6B4FD60D793E1F8 /* Pods_proteinCalculator.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		65CAA8E51B508EFD00EA8150 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 65CAA8C51B508EFC00EA8150 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 65CAA8CC1B508EFC00EA8150;
-			remoteInfo = proteinApp;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		45B7BCDF7596277C5E73573D /* Pods-proteinApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-proteinApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-proteinApp/Pods-proteinApp.release.xcconfig"; sourceTree = "<group>"; };
-		4BF392D91CEBE2764F83CF6E /* Pods-proteinApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-proteinApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-proteinApp/Pods-proteinApp.debug.xcconfig"; sourceTree = "<group>"; };
-		5CB49B7BC6B4FD60D793E1F8 /* Pods_proteinCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_proteinCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C24E588BB03593E91FB1E3B /* Pods-proteinCalculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-proteinCalculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-proteinCalculator/Pods-proteinCalculator.debug.xcconfig"; sourceTree = "<group>"; };
+		5D01FB17A1E90671953991F3 /* Pods-proteinCalculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-proteinCalculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-proteinCalculator/Pods-proteinCalculator.release.xcconfig"; sourceTree = "<group>"; };
 		6519EF5A1B57268F0047DB99 /* FoodInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodInfo.swift; sourceTree = "<group>"; };
 		6519EF5B1B57268F0047DB99 /* JsonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
 		651CF8391B572D4000C647FD /* foodinfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = foodinfo.json; sourceTree = SOURCE_ROOT; };
@@ -140,7 +126,6 @@
 		65CAA8D91B508EFC00EA8150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65CAA8DB1B508EFD00EA8150 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		65CAA8DE1B508EFD00EA8150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		65CAA8E41B508EFD00EA8150 /* proteinCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = proteinCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CAA8E91B508EFD00EA8150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65CAA8EA1B508EFD00EA8150 /* proteinAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = proteinAppTests.swift; sourceTree = "<group>"; };
 		65D65DBE1B605B2800B44955 /* steak_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steak_32.png; sourceTree = "<group>"; };
@@ -152,10 +137,8 @@
 		65D65DCA1B60620900B44955 /* Chips_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chips_32.png; sourceTree = "<group>"; };
 		65D65DCC1B6062BB00B44955 /* Candy_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Candy_32.png; sourceTree = "<group>"; };
 		65D65DCE1B60636A00B44955 /* Wheat_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wheat_32.png; sourceTree = "<group>"; };
-		65D65DD01B60643D00B44955 /* Fast_food_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fast_food_32.png; sourceTree = "<group>"; };
+		65D65DD01B60643D00B44955 /* Fast_Food_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fast_Food_32.png; sourceTree = "<group>"; };
 		65D65DD21B6066F900B44955 /* rice_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rice_32.png; sourceTree = "<group>"; };
-		65D7004F1B751E5C00C68F9C /* Pods-proteinCalculator.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-proteinCalculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-proteinCalculator/Pods-proteinCalculator.debug.xcconfig"; sourceTree = "<group>"; };
-		65D700511B751E6400C68F9C /* Pods-proteinCalculator.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-proteinCalculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-proteinCalculator/Pods-proteinCalculator.release.xcconfig"; sourceTree = "<group>"; };
 		65D700531B7914CC00C68F9C /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		65D700551B79160C00C68F9C /* background2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background2.jpg; sourceTree = "<group>"; };
 		65D700571B79244A00C68F9C /* blue background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue background.png"; sourceTree = "<group>"; };
@@ -163,7 +146,7 @@
 		65E04C6B1B570F5000198FE2 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		65F6F4561B7A663700A4653A /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		65F6F4581B7AA83A00A4653A /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		C58486782B785BCCF5923A1A /* Pods_proteinApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_proteinApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F43F1B7AC0A9B13BD5F8B3B7 /* Pods_proteinCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_proteinCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,32 +154,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				076E9D3FD85DE3D9E887DC6B /* Pods_proteinApp.framework in Frameworks */,
-				DD88EDC25892C9690AD709D3 /* Pods_proteinCalculator.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		65CAA8E11B508EFD00EA8150 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				34D60826ED94DFCB1BE57861 /* Pods_proteinCalculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		31AF8126E3F3356D8EEB6110 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4BF392D91CEBE2764F83CF6E /* Pods-proteinApp.debug.xcconfig */,
-				65D7004F1B751E5C00C68F9C /* Pods-proteinCalculator.debug.xcconfig */,
-				65D700511B751E6400C68F9C /* Pods-proteinCalculator.release.xcconfig */,
-				45B7BCDF7596277C5E73573D /* Pods-proteinApp.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		651CF8411B59CD4900C647FD /* Jawbone - JBChartView */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,7 +190,7 @@
 				658537791B62D9AB002DF82D /* nature-background.jpg */,
 				658537751B61B7DA002DF82D /* Searching_magnifying_glass_32.png */,
 				65D65DD21B6066F900B44955 /* rice_32.png */,
-				65D65DD01B60643D00B44955 /* Fast_food_32.png */,
+				65D65DD01B60643D00B44955 /* Fast_Food_32.png */,
 				65D65DCE1B60636A00B44955 /* Wheat_32.png */,
 				65D65DCC1B6062BB00B44955 /* Candy_32.png */,
 				65D65DCA1B60620900B44955 /* Chips_32.png */,
@@ -275,8 +239,8 @@
 				65CAA8CF1B508EFC00EA8150 /* proteinApp */,
 				65CAA8E71B508EFD00EA8150 /* proteinAppTests */,
 				65CAA8CE1B508EFC00EA8150 /* Products */,
-				31AF8126E3F3356D8EEB6110 /* Pods */,
-				7791219E0F46FBCC9EA30262 /* Frameworks */,
+				F7A9D482470B927CB0AA71D6 /* Pods */,
+				8AE0C98BE9036B12512AD093 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -284,7 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				65CAA8CD1B508EFC00EA8150 /* proteinCalculator.app */,
-				65CAA8E41B508EFD00EA8150 /* proteinCalculatorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -349,13 +312,21 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		7791219E0F46FBCC9EA30262 /* Frameworks */ = {
+		8AE0C98BE9036B12512AD093 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C58486782B785BCCF5923A1A /* Pods_proteinApp.framework */,
-				5CB49B7BC6B4FD60D793E1F8 /* Pods_proteinCalculator.framework */,
+				F43F1B7AC0A9B13BD5F8B3B7 /* Pods_proteinCalculator.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F7A9D482470B927CB0AA71D6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2C24E588BB03593E91FB1E3B /* Pods-proteinCalculator.debug.xcconfig */,
+				5D01FB17A1E90671953991F3 /* Pods-proteinCalculator.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,12 +336,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65CAA8EE1B508EFD00EA8150 /* Build configuration list for PBXNativeTarget "proteinCalculator" */;
 			buildPhases = (
-				F6248A56E70E964E7E36A039 /* Check Pods Manifest.lock */,
+				7F7E9B2339AAA46C219DC9D9 /* Check Pods Manifest.lock */,
 				65CAA8C91B508EFC00EA8150 /* Sources */,
 				65CAA8CA1B508EFC00EA8150 /* Frameworks */,
 				65CAA8CB1B508EFC00EA8150 /* Resources */,
-				771D14523B66BC20AA76EFEC /* Embed Pods Frameworks */,
-				D65413C3BF00D31223026E8F /* Copy Pods Resources */,
+				46DCB478D1A5CBA63975FB38 /* Embed Pods Frameworks */,
+				B214721041546CB81F359737 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -380,24 +351,6 @@
 			productName = proteinApp;
 			productReference = 65CAA8CD1B508EFC00EA8150 /* proteinCalculator.app */;
 			productType = "com.apple.product-type.application";
-		};
-		65CAA8E31B508EFD00EA8150 /* proteinCalculatorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 65CAA8F11B508EFD00EA8150 /* Build configuration list for PBXNativeTarget "proteinCalculatorTests" */;
-			buildPhases = (
-				65CAA8E01B508EFD00EA8150 /* Sources */,
-				65CAA8E11B508EFD00EA8150 /* Frameworks */,
-				65CAA8E21B508EFD00EA8150 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				65CAA8E61B508EFD00EA8150 /* PBXTargetDependency */,
-			);
-			name = proteinCalculatorTests;
-			productName = proteinAppTests;
-			productReference = 65CAA8E41B508EFD00EA8150 /* proteinCalculatorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -411,11 +364,6 @@
 					65CAA8CC1B508EFC00EA8150 = {
 						CreatedOnToolsVersion = 6.3.2;
 						DevelopmentTeam = W2F7H328QM;
-					};
-					65CAA8E31B508EFD00EA8150 = {
-						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = W2F7H328QM;
-						TestTargetID = 65CAA8CC1B508EFC00EA8150;
 					};
 				};
 			};
@@ -433,7 +381,6 @@
 			projectRoot = "";
 			targets = (
 				65CAA8CC1B508EFC00EA8150 /* proteinCalculator */,
-				65CAA8E31B508EFD00EA8150 /* proteinCalculatorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -463,15 +410,15 @@
 				65D700561B79160C00C68F9C /* background2.jpg in Resources */,
 				652406F81B604B7400A33D96 /* Chicken_32.png in Resources */,
 				65D65DC91B605FE300B44955 /* Cookies_32.png in Resources */,
-				65D700501B751E5C00C68F9C /* Pods-proteinCalculator.debug.xcconfig in Resources */,
-				65D700521B751E6400C68F9C /* Pods-proteinCalculator.release.xcconfig in Resources */,
+				65D700501B751E5C00C68F9C /* (null) in Resources */,
+				65D700521B751E6400C68F9C /* (null) in Resources */,
 				652407081B60551E00A33D96 /* pistachio.png in Resources */,
 				652406F21B6048B000A33D96 /* Piece_of_cheese_32.png in Resources */,
 				65D65DC51B605E1100B44955 /* Peas_32.png in Resources */,
 				651E21491B6A9D24009A919D /* add.png in Resources */,
 				65D700541B7914CC00C68F9C /* background.jpg in Resources */,
 				652407021B60507E00A33D96 /* Olive_32.png in Resources */,
-				65D65DD11B60643D00B44955 /* Fast_food_32.png in Resources */,
+				65D65DD11B60643D00B44955 /* Fast_Food_32.png in Resources */,
 				65D65DC11B605BB800B44955 /* beverage_32.png in Resources */,
 				658537821B66E118002DF82D /* amino_4_meal_and_total.png in Resources */,
 				651CF83C1B580C2200C647FD /* test.json in Resources */,
@@ -489,17 +436,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		65CAA8E21B508EFD00EA8150 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		771D14523B66BC20AA76EFEC /* Embed Pods Frameworks */ = {
+		46DCB478D1A5CBA63975FB38 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -514,22 +454,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-proteinCalculator/Pods-proteinCalculator-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D65413C3BF00D31223026E8F /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-proteinCalculator/Pods-proteinCalculator-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6248A56E70E964E7E36A039 /* Check Pods Manifest.lock */ = {
+		7F7E9B2339AAA46C219DC9D9 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -544,6 +469,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		B214721041546CB81F359737 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-proteinCalculator/Pods-proteinCalculator-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -555,7 +495,6 @@
 				651CF8491B59CD4900C647FD /* JBChartView.m in Sources */,
 				651CF8481B59CD4900C647FD /* JBBarChartView.m in Sources */,
 				651E214D1B6C04A8009A919D /* RecipeTableViewCell.swift in Sources */,
-				651CF84D1B5D716B00C647FD /* KeyboardNotificationHandler.swift in Sources */,
 				651CF83E1B585DED00C647FD /* DisplayViewController.swift in Sources */,
 				651CF84A1B59CD4900C647FD /* JBLineChartView.m in Sources */,
 				655749941B5EC2D800DF75F8 /* IngredientHelper.swift in Sources */,
@@ -575,23 +514,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		65CAA8E01B508EFD00EA8150 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				65CAA8EB1B508EFD00EA8150 /* proteinAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		65CAA8E61B508EFD00EA8150 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 65CAA8CC1B508EFC00EA8150 /* proteinCalculator */;
-			targetProxy = 65CAA8E51B508EFD00EA8150 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		65CAA8D81B508EFC00EA8150 /* Main.storyboard */ = {
@@ -701,12 +624,12 @@
 		};
 		65CAA8EF1B508EFD00EA8150 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65D7004F1B751E5C00C68F9C /* Pods-proteinCalculator.debug.xcconfig */;
+			baseConfigurationReference = 2C24E588BB03593E91FB1E3B /* Pods-proteinCalculator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/proteinApp/realm-swift-0.93.2",
@@ -717,18 +640,18 @@
 				INFOPLIST_FILE = proteinApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = proteinCalculator;
-				PROVISIONING_PROFILE = "5ce66205-b541-47a6-a7be-3556fe9580b9";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		65CAA8F01B508EFD00EA8150 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65D700511B751E6400C68F9C /* Pods-proteinCalculator.release.xcconfig */;
+			baseConfigurationReference = 5D01FB17A1E90671953991F3 /* Pods-proteinCalculator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/proteinApp/realm-swift-0.93.2",
@@ -739,47 +662,7 @@
 				INFOPLIST_FILE = proteinApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = proteinCalculator;
-				PROVISIONING_PROFILE = "5ce66205-b541-47a6-a7be-3556fe9580b9";
-			};
-			name = Release;
-		};
-		65CAA8F21B508EFD00EA8150 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = proteinAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = proteinCalculatorTests;
 				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/proteinApp.app/proteinApp";
-			};
-			name = Debug;
-		};
-		65CAA8F31B508EFD00EA8150 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = proteinAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = proteinCalculatorTests;
-				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/proteinApp.app/proteinApp";
 			};
 			name = Release;
 		};
@@ -800,15 +683,6 @@
 			buildConfigurations = (
 				65CAA8EF1B508EFD00EA8150 /* Debug */,
 				65CAA8F01B508EFD00EA8150 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		65CAA8F11B508EFD00EA8150 /* Build configuration list for PBXNativeTarget "proteinCalculatorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				65CAA8F21B508EFD00EA8150 /* Debug */,
-				65CAA8F31B508EFD00EA8150 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

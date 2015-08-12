@@ -28,6 +28,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 settings.showMeat = true
             }
         }
+        println("in appdelegate before checking settings")
+        if(realm.objects(Settings).count == 0){
+            println("in conditional")
+            let settings : Settings = Settings()
+            realm.write(){
+                settings.showMeat = true
+            }
+            realm.write({ () -> Void in
+                realm.add(settings, update: false)
+            })
+            println("realm.objects(Settings).count\(realm.objects(Settings).count)")
+        }
+        println("in appdelegate after checking settings")
+        println("realm.objects(Settings).count\(realm.objects(Settings).count)")
         IngredientHelper.displayMessage = true
         let foodViewController = HomeViewController()
         //foodViewController.onFirstStartup()

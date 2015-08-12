@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1801AA6BADA901AFA03FB4D8"
+               BlueprintIdentifier = "B3858048862E528323B85A1F"
                BuildableName = "JBChartView.framework"
                BlueprintName = "Pods-proteinCalculator-JBChartView"
                ReferencedContainer = "container:Pods.xcodeproj">

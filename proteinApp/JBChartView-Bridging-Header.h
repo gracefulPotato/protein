@@ -9,9 +9,4 @@
 #ifndef proteinApp_Header_h
 #define proteinApp_Header_h
 
-#import <UIKit/UIKit.h>
-#import "JBChartView.h"
-#import "JBBarChartView.h"
-#import "JBLineChartView.h"
-
 #endif

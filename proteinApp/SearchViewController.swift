@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ConvenienceKit
 
 class SearchViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class SearchViewController: UIViewController {
     var carrySearchText : String?
     var resultsArr = [FoodInfo]()
     var keyboardNotificationHandler: KeyboardNotificationHandler?
+    let realm = Realm()
     enum State {
         case DefaultMode
         case SearchMode
@@ -42,12 +44,12 @@ class SearchViewController: UIViewController {
             }
             if(IngredientHelper.tmpCategory != ""){
                 let convertedCat = convertCat(IngredientHelper.tmpCategory)
-                if(IngredientHelper.tmpCategory != ""){
+                //if(IngredientHelper.tmpCategory != ""){
                     notes = filterNotes(convertedCat,searchString:"")
-                }
-                else{
-                    notes = allFoods.sorted(IngredientHelper.sortCat, ascending: IngredientHelper.ascendDescend)
-                }
+               // }
+               // else{
+                    //notes = allFoods.sorted(IngredientHelper.sortCat, ascending: IngredientHelper.ascendDescend)
+               // }
                 tableView.reloadData()
             }
             else{
@@ -92,13 +94,17 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
         println("settings.showMeat\(realm.objects(Settings)[0].showMeat)")
         //if(IngredientHelper.tmpCategory != ""){
             println("filtering")
             let convertedCat = convertCat(IngredientHelper.tmpCategory)
             if(IngredientHelper.tmpCategory != ""){
                 println("IngredientHelper.tmpCategory \(IngredientHelper.tmpCategory)")
+                println("IngredientHelper.convertedCategory \(convertedCat)")
                 notes = filterNotes(convertedCat,searchString:"")
+                println(notes)
+                tableView.reloadData()
                 categoryTitle.title = IngredientHelper.tmpCategory
             }
             else{
@@ -122,10 +128,10 @@ class SearchViewController: UIViewController {
                 }
             }
             
-            if(settings.showMeat == true){
-                notes = allFoods.sorted(IngredientHelper.sortCat, ascending: IngredientHelper.ascendDescend)
-            }
-            else{
+//            if(realm.objects(Settings)[0].showMeat == true){
+//                notes = allFoods.sorted(IngredientHelper.sortCat, ascending: IngredientHelper.ascendDescend)
+//            }
+            if realm.objects(Settings)[0].showMeat == false{
                 notes = allFoods.filter(vegPredicate).sorted(IngredientHelper.sortCat, ascending: IngredientHelper.ascendDescend)
             }
             tableView.reloadData()
@@ -135,7 +141,7 @@ class SearchViewController: UIViewController {
 //            notes = allFoods.sorted(IngredientHelper.sortCat, ascending: IngredientHelper.ascendDescend)
 //        }
         // Do any additional setup after loading the view, typically from a nib.
-        tableView.dataSource = self
+        //tableView.dataSource = self
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -191,7 +197,7 @@ class SearchViewController: UIViewController {
             //}
         }
         var ret = realm.objects(FoodInfo)
-        if settings.showMeat == false{
+        if realm.objects(Settings)[0].showMeat == false{
 //            let vegPredicate = NSPredicate(format: "group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@", "Dairy and Egg Products","Spices and Herbs","Baby Foods","Fats and Oils","Soups, Sauces, and Gravies","Breakfast Cereals","Fruits and Fruit Juices","Vegetables and Vegetable Products","Nut and Seed Products","Beverages","Legumes and Legume Products","Baked Products","Snacks","Sweets","Cereal Grains and Pasta","Fast Foods","Meals Entrees and Side Dishes")
             ret = ret.filter(vegPredicate)
         }
@@ -229,7 +235,9 @@ class SearchViewController: UIViewController {
             return ret
         }
         else{
+            //println(realm.objects(FoodInfo).filter(categoryPredicate))
             return realm.objects(FoodInfo).filter(categoryPredicate)
+            
         }
     }
     

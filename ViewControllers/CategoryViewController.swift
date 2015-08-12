@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import realm
+import Realm
 import RealmSwift
 
 class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
