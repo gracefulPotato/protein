@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import realm
+import RealmSwift
 
 class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
@@ -17,6 +19,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     let reuseIdentifier = "CategoryCell"
     var selectedCat : String = ""
     var prevcell : UICollectionViewCell!
+    let realm = Realm()
     @IBOutlet weak var catView : UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +33,12 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        return 24//catArr[0].count //25
+        if(realm.objects(Settings)[0].showMeat == true){
+            return 24//catArr[0].count //25
+        }
+        else{
+            return noMeatArr[0].count
+        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -40,7 +48,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         // Configure the cell
         var title = UILabel(frame: CGRectMake(cellWidth()/20, 0, cell.bounds.size.width, 40))
         var image : UIImage!
-        if(IngredientHelper.showMeat){
+        if(realm.objects(Settings)[0].showMeat){
             image = UIImage(named: imgNameArr[indexPath.section][indexPath.row])
             title.text = catArr[indexPath.section][indexPath.row]
             
@@ -87,7 +95,12 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
             var cell : UICollectionViewCell = sender as! UICollectionViewCell
             if let indexPath = self.catView?.indexPathForCell(cell) {
                 println("setting selectedCat")
-                selectedCat = catArr[indexPath.section][indexPath.row]
+                if(realm.objects(Settings)[0].showMeat == true){
+                    selectedCat = catArr[indexPath.section][indexPath.row]
+                }
+                else{
+                    selectedCat = noMeatArr[indexPath.section][indexPath.row]
+                }
             }
             
             IngredientHelper.tmpCategory = selectedCat

@@ -26,6 +26,7 @@ class SearchViewController: UIViewController {
         case SearchMode
     }
     var selectedFood: FoodInfo?
+    let vegPredicate = NSPredicate(format: "group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@", "Dairy and Egg Products","Spices and Herbs","Baby Foods","Fats and Oils","Soups, Sauces, and Gravies","Breakfast Cereals","Fruits and Fruit Juices","Vegetables and Vegetable Products","Nut and Seed Products","Beverages","Legumes and Legume Products","Baked Products","Snacks","Sweets","Cereal Grains and Pasta","Fast Foods","Meals Entrees and Side Dishes")
     //var IngredientHelper.tmpCategory : String! = ""
 //    var IngredientHelper.sortCat : String! = "name"
 //    var IngredientHelper.ascendDescend : Bool = true
@@ -33,7 +34,12 @@ class SearchViewController: UIViewController {
         didSet{
         switch (state) {
         case .DefaultMode:
-            categoryTitle.title = "All Foods"
+            if(realm.objects(Settings)[0].showMeat == true){
+                categoryTitle.title = "All Foods"
+            }
+            else{
+                categoryTitle.title = "All Vegetarian Foods"
+            }
             if(IngredientHelper.tmpCategory != ""){
                 let convertedCat = convertCat(IngredientHelper.tmpCategory)
                 if(IngredientHelper.tmpCategory != ""){
@@ -86,6 +92,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("settings.showMeat\(realm.objects(Settings)[0].showMeat)")
         //if(IngredientHelper.tmpCategory != ""){
             println("filtering")
             let convertedCat = convertCat(IngredientHelper.tmpCategory)
@@ -96,16 +103,31 @@ class SearchViewController: UIViewController {
             }
             else{
                 println("IngredientHelper.tmpCategory null")
-                notes = allFoods.sorted(IngredientHelper.sortCat, ascending: IngredientHelper.ascendDescend)
+                if(realm.objects(Settings)[0].showMeat == true){
+                    notes = allFoods.sorted(IngredientHelper.sortCat, ascending: IngredientHelper.ascendDescend)
+                }
+                else{
+                    notes = allFoods.filter(vegPredicate).sorted(IngredientHelper.sortCat, ascending: IngredientHelper.ascendDescend)
+                }
                 if(IngredientHelper.sortCat != "name"){
                     categoryTitle.title = IngredientHelper.mapAminoVars(IngredientHelper.sortCat)
                 }
                 else{
-                    categoryTitle.title = "All Foods"
+                    if(realm.objects(Settings)[0].showMeat == true){
+                        categoryTitle.title = "All Foods"
+                    }
+                    else{
+                        categoryTitle.title = "All Vegetarian Foods"
+                    }
                 }
             }
             
-            notes = notes.sorted(IngredientHelper.sortCat, ascending: IngredientHelper.ascendDescend)
+            if(settings.showMeat == true){
+                notes = allFoods.sorted(IngredientHelper.sortCat, ascending: IngredientHelper.ascendDescend)
+            }
+            else{
+                notes = allFoods.filter(vegPredicate).sorted(IngredientHelper.sortCat, ascending: IngredientHelper.ascendDescend)
+            }
             tableView.reloadData()
 //        }
 //        //notes = allFoods
@@ -169,6 +191,10 @@ class SearchViewController: UIViewController {
             //}
         }
         var ret = realm.objects(FoodInfo)
+        if settings.showMeat == false{
+//            let vegPredicate = NSPredicate(format: "group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@ OR group CONTAINS[c] %@", "Dairy and Egg Products","Spices and Herbs","Baby Foods","Fats and Oils","Soups, Sauces, and Gravies","Breakfast Cereals","Fruits and Fruit Juices","Vegetables and Vegetable Products","Nut and Seed Products","Beverages","Legumes and Legume Products","Baked Products","Snacks","Sweets","Cereal Grains and Pasta","Fast Foods","Meals Entrees and Side Dishes")
+            ret = ret.filter(vegPredicate)
+        }
         if let predArr = predArr {
             for i in 0..<predArr.count{
                 ret = ret.filter(predArr[i])

@@ -23,6 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
                 JsonHelper.loadData()
             })
+            let settings : Settings = Settings()
+            realm.write(){
+                settings.showMeat = true
+            }
         }
         IngredientHelper.displayMessage = true
         let foodViewController = HomeViewController()

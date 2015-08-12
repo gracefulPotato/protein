@@ -72,6 +72,7 @@
 		65DCA8EB1B5F021A0013B451 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DCA8EA1B5F02190013B451 /* CategoryViewController.swift */; };
 		65E04C6C1B570F5000198FE2 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E04C6B1B570F5000198FE2 /* FoodTableViewCell.swift */; };
 		65F6F4571B7A663700A4653A /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F6F4561B7A663700A4653A /* CreditsViewController.swift */; };
+		65F6F4591B7AA83A00A4653A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F6F4581B7AA83A00A4653A /* Settings.swift */; };
 		DD88EDC25892C9690AD709D3 /* Pods_proteinCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB49B7BC6B4FD60D793E1F8 /* Pods_proteinCalculator.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -161,6 +162,7 @@
 		65DCA8EA1B5F02190013B451 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		65E04C6B1B570F5000198FE2 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		65F6F4561B7A663700A4653A /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
+		65F6F4581B7AA83A00A4653A /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		C58486782B785BCCF5923A1A /* Pods_proteinApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_proteinApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -300,6 +302,7 @@
 				65CAA8D21B508EFC00EA8150 /* AppDelegate.swift */,
 				6519EF5A1B57268F0047DB99 /* FoodInfo.swift */,
 				651E21441B69891C009A919D /* Recipe.swift */,
+				65F6F4581B7AA83A00A4653A /* Settings.swift */,
 				6519EF5B1B57268F0047DB99 /* JsonHelper.swift */,
 				65CAA8D81B508EFC00EA8150 /* Main.storyboard */,
 				65CAA8DB1B508EFD00EA8150 /* Images.xcassets */,
@@ -566,6 +569,7 @@
 				65CAA8D51B508EFC00EA8150 /* SearchViewController.swift in Sources */,
 				651CF8511B5DCA7C00C647FD /* HomeViewController.swift in Sources */,
 				651E21451B69891C009A919D /* Recipe.swift in Sources */,
+				65F6F4591B7AA83A00A4653A /* Settings.swift in Sources */,
 				658537781B62A21B002DF82D /* SuggestionViewController.swift in Sources */,
 				65F6F4571B7A663700A4653A /* CreditsViewController.swift in Sources */,
 			);

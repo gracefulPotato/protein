@@ -8,6 +8,8 @@
 //
 
 import UIKit
+import RealmSwift
+import Realm
 
 class SettingsViewController: UIViewController {
     
@@ -15,13 +17,15 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var meatLabel : UILabel!
     @IBOutlet weak var recipeLabel : UILabel!
     //var meat : Bool!
+    let realm = Realm()
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         println("in settings viewdidload")
          //Do any additional setup after loading the view.
-        //if let tmpMeat = IngredientHelper.showMeat{
-            if IngredientHelper.showMeat == true{
+        //if let tmpMeat = settings.showMeat{
+            if realm.objects(Settings)[0].showMeat == true{
                 meatSwitch.setOn(true, animated:false)
             }
             else{
@@ -29,7 +33,7 @@ class SettingsViewController: UIViewController {
             }
         //}
 //        else{
-//            IngredientHelper.showMeat = true
+//            settings.showMeat = true
 //        }
         if meatSwitch.on{
             meatLabel.text = "Display meat - on"
@@ -41,11 +45,15 @@ class SettingsViewController: UIViewController {
     @IBAction func buttonClicked(sender: UISwitch) {
         if meatSwitch.on{
             meatLabel.text = "Display meat - on"
-            IngredientHelper.showMeat = true
+            realm.write(){
+            self.realm.objects(Settings)[0].showMeat = true
+            }
         }
         else{
             meatLabel.text = "Display meat - off"
-            IngredientHelper.showMeat = false
+            realm.write(){
+            self.realm.objects(Settings)[0].showMeat = false
+            }
         }
     }
     override func viewWillDisappear(animated: Bool) {

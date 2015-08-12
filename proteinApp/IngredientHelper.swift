@@ -21,7 +21,8 @@ class IngredientHelper: NSObject {
     static var ascendDescend : Bool = true
     static var tmpCategory : String = ""
     static var displayMessage : Bool = false
-    static var showMeat : Bool = true
+    //static var showMeat : Bool = true
+    dynamic var showMeat : Bool = true
     static func createString(){
         ingredStr = ""
         for i in 0..<ingredients.count{
