@@ -9,7 +9,7 @@
         <!--All Foods-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="SearchViewController" customModule="proteinCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="SearchViewController" customModule="proteinApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -36,7 +36,7 @@
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="FoodCell" id="aOs-nG-rPn" customClass="FoodTableViewCell" customModule="proteinCalculator" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="FoodCell" id="aOs-nG-rPn" customClass="FoodTableViewCell" customModule="proteinApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="608" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aOs-nG-rPn" id="BJl-Mi-Fug">
@@ -117,7 +117,7 @@
         <!--Categories-->
         <scene sceneID="PdA-6s-Kts">
             <objects>
-                <viewController id="oW4-9c-OLJ" customClass="CategoryViewController" customModule="proteinCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oW4-9c-OLJ" customClass="CategoryViewController" customModule="proteinApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Vm-4x-3hb"/>
                         <viewControllerLayoutGuide type="bottom" id="sit-Mx-C58"/>
@@ -191,7 +191,7 @@
         <!--Suggestion View Controller-->
         <scene sceneID="nNV-E5-6Af">
             <objects>
-                <viewController id="5Vt-Ev-rqt" customClass="SuggestionViewController" customModule="proteinCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5Vt-Ev-rqt" customClass="SuggestionViewController" customModule="proteinApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g4f-Oj-bKE"/>
                         <viewControllerLayoutGuide type="bottom" id="vqQ-he-QO3"/>
@@ -227,7 +227,7 @@
         <!--Display View Controller-->
         <scene sceneID="9wH-Eo-8um">
             <objects>
-                <viewController id="xQ9-aS-ivA" customClass="DisplayViewController" customModule="proteinCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xQ9-aS-ivA" customClass="DisplayViewController" customModule="proteinApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jWz-Gx-o0m"/>
                         <viewControllerLayoutGuide type="bottom" id="nQD-6p-wFv"/>
@@ -375,7 +375,7 @@
         <!--Settings View Controller-->
         <scene sceneID="bBR-3j-G4I">
             <objects>
-                <viewController id="aU4-47-4AF" customClass="SettingsViewController" customModule="proteinCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aU4-47-4AF" customClass="SettingsViewController" customModule="proteinApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zPj-j7-VTD"/>
                         <viewControllerLayoutGuide type="bottom" id="lRA-a0-PLW"/>
@@ -445,7 +445,7 @@
         <!--Credits-->
         <scene sceneID="Hc6-Uf-xKZ">
             <objects>
-                <viewController id="9o4-JM-sAt" customClass="CreditsViewController" customModule="proteinCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9o4-JM-sAt" customClass="CreditsViewController" customModule="proteinApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4tj-re-mGg"/>
                         <viewControllerLayoutGuide type="bottom" id="6aA-Ye-yV6"/>
@@ -481,7 +481,7 @@
         <!--Past Recipes-->
         <scene sceneID="Afo-hn-y9C">
             <objects>
-                <viewController id="DTY-4A-82X" customClass="PastRecipesViewController" customModule="proteinCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DTY-4A-82X" customClass="PastRecipesViewController" customModule="proteinApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5YG-9h-Uon"/>
                         <viewControllerLayoutGuide type="bottom" id="ncV-yN-GeD"/>
@@ -500,7 +500,7 @@
                                 <rect key="frame" x="6" y="64" width="588" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" id="vAP-9W-pL7" customClass="RecipeTableViewCell" customModule="proteinCalculator" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" id="vAP-9W-pL7" customClass="RecipeTableViewCell" customModule="proteinApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vAP-9W-pL7" id="Db8-rT-Asd">
@@ -595,6 +595,7 @@
                         <outlet property="recipeLabel" destination="omr-Uw-g6f" id="yjh-ev-vPd"/>
                         <outlet property="tableView" destination="cs9-ZQ-9tk" id="0xm-jt-8aW"/>
                         <segue destination="j7h-4q-BRo" kind="show" identifier="showRecipe" id="Zaf-zf-ixs"/>
+                        <segue destination="j7h-4q-BRo" kind="show" identifier="goBack" id="2W3-sa-ZOJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rsd-w7-5Yj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -604,7 +605,7 @@
         <!--Recipe Calculator-->
         <scene sceneID="cY7-lr-Zcr">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="j7h-4q-BRo" customClass="HomeViewController" customModule="proteinCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="j7h-4q-BRo" customClass="HomeViewController" customModule="proteinApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9aO-De-tEc"/>
                         <viewControllerLayoutGuide type="bottom" id="QGm-hG-FiJ"/>
@@ -662,7 +663,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FoodCell" id="ZU2-R5-RBq" customClass="FoodTableViewCell" customModule="proteinCalculator" customModuleProvider="target">
+                                    <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FoodCell" id="ZU2-R5-RBq" customClass="FoodTableViewCell" customModule="proteinApp" customModuleProvider="target">
                                         <rect key="frame" x="-64" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZU2-R5-RBq" id="RX4-xa-rKN">
@@ -829,8 +830,8 @@
         <image name="pot" width="193" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zaf-zf-ixs"/>
         <segue reference="CcA-6T-BYh"/>
         <segue reference="FF9-Xg-79v"/>
+        <segue reference="2W3-sa-ZOJ"/>
     </inferredMetricsTieBreakers>
 </document>

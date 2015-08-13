@@ -40,7 +40,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     var displayMeat : Bool!
     var alert = UIAlertController(title: "Deletion Alert", message: "Are you sure you want to clear this recipe?\nIf you haven't saved it, you'll lose it.", preferredStyle: UIAlertControllerStyle.Alert)
     var saveAlert = UIAlertController(title: "Save Recipe?", message: "Clear recipe when done?\n\nEnter recipe title:", preferredStyle: UIAlertControllerStyle.Alert)
-    var saveMessage = UIAlertController(title: "Recipe saved.", message: "Find saved recipes in the Recipe Log found in the hamburger menu.", preferredStyle: UIAlertControllerStyle.Alert)
+    //var saveMessage = UIAlertController(title: "Recipe saved.", message: "Find saved recipes in the Recipe Log found in the hamburger menu.", preferredStyle: UIAlertControllerStyle.Alert)
     var addFoodMessage = UIAlertController(title: "Add ingredients to see total protein", message: "", preferredStyle: UIAlertControllerStyle.Alert)
     
     var selectedFood: FoodInfo?
@@ -61,6 +61,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         super.viewDidLoad()
         saveAlert.addTextFieldWithConfigurationHandler(configurationTextField)
         saveAlert.view.addSubview(deleteSwitch)
+        
         prepareBarChartView()
         if let tmpIngredient = tmpIngredient{
             IngredientHelper.ingredients.append(tmpIngredient)
@@ -81,7 +82,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         println("displayMeat: \(displayMeat)")
         addAlertAction()
         addSaveAlertAction()
-        addSaveMessageAction()
+        //addSaveMessageAction()
         addAddFoodMessageAction()
         deleteSwitch.on = true
         if(IngredientHelper.displayMessage == true){
@@ -106,6 +107,10 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         alertController.addAction(titleAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alertController.addAction(cancelAction)
+        if let popoverPresentationController = alertController.popoverPresentationController{
+            popoverPresentationController.sourceView = self.view
+            popoverPresentationController.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 1.0, 1.0)
+        }
         self.presentViewController(alertController, animated: true, completion: nil)
         //let cameraAction = UIAlertAction(title: "Photo from camera", style: .Default)
         //self.presentViewController(self.addFoodMessage, animated: true, completion: nil)
@@ -265,7 +270,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
             }
         }
         if noPicture{
-            self.presentViewController(saveMessage, animated: true, completion: nil)
+         //   self.presentViewController(saveMessage, animated: true, completion: nil)
         }
     }
     func configurationTextField(textField: UITextField!)
@@ -380,7 +385,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
                     }
                 }
 
-                self.presentViewController(self.saveMessage, animated: true, completion: nil)
+              //  self.presentViewController(self.saveMessage, animated: true, completion: nil)
             }
 //            self.showImagePickerController(.PhotoLibrary)
 //            self.presentViewController(self.saveMessage, animated: true, completion: nil)
@@ -392,19 +397,19 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
         }))
         
     }
-    func addSaveMessageAction(){
-        saveMessage.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
-            switch action.style{
-            case .Default:
-                println("default")
-            case .Cancel:
-                println("cancel")
-                
-            case .Destructive:
-                println("destructive")
-            }
-        }))
-    }
+//    func addSaveMessageAction(){
+//        saveMessage.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+//            switch action.style{
+//            case .Default:
+//                println("default")
+//            case .Cancel:
+//                println("cancel")
+//                
+//            case .Destructive:
+//                println("destructive")
+//            }
+//        }))
+//    }
     func addAddFoodMessageAction(){
         addFoodMessage.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
             switch action.style{
