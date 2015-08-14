@@ -21,6 +21,7 @@ class IngredientHelper: NSObject {
     static var ascendDescend : Bool = true
     static var tmpCategory : String = ""
     static var displayMessage : Bool = false
+    static var aminos : [Double] = []
     //static var showMeat : Bool = true
     dynamic var showMeat : Bool = true
     static func createString(){
@@ -85,39 +86,323 @@ class IngredientHelper: NSObject {
             return ("Needs more protein.",UIColor.redColor())
         }
     }
+    static func firstIsHigher(first: Int, second: Int) -> Bool{
+        let firstIndex = Double(first)
+        let secondIndex = Double(second)
+        switch(firstIndex){
+            
+            
+        case 0:
+            println("in case 0")
+            switch(secondIndex){
+            case 1:
+                if firstIndex/secondIndex > 0.5{
+                    return true
+                }else{
+                    return false }
+            case 2:
+                if firstIndex/secondIndex > 0.35{
+                    return true
+                }else{
+                    return false }
+            case 3:
+                if firstIndex/secondIndex > 0.25{
+                    return true
+                }else{
+                    return false
+                }
+            case 4:
+                if firstIndex/secondIndex > 0.292{
+                    return true
+                }else{
+                    return false
+                }
+            case 5:
+                if firstIndex/secondIndex > 0.269{
+                    return true
+                }else{
+                    return false
+                }
+            case 6:
+                if firstIndex/secondIndex > 0.25{
+                    return true
+                }else{
+                    return false
+                }
+            case 7:
+                if firstIndex/secondIndex > 0.35{
+                    return true
+                }else{
+                    return false
+                }
+            case 8:
+                return false
+            default:
+                return false
+            }
+        case 1:
+            println("in case 1")
+            switch(secondIndex){
+            case 2:
+                if firstIndex/secondIndex > 0.7{
+                    return true
+                }else{
+                    return false
+                }
+            case 3:
+                if firstIndex/secondIndex > 0.5{
+                    return true
+                }else{
+                    return false
+                }
+            case 4:
+                if firstIndex/secondIndex > 0.583{
+                    return true
+                }else{
+                    return false
+                }
+            case 5:
+                if firstIndex/secondIndex > 0.538{
+                    return true
+                }else{
+                    return false
+                }
+            case 6:
+                if firstIndex/secondIndex > 0.5{
+                    return true
+                }else{
+                    return false
+                }
+            case 7:
+                if firstIndex/secondIndex > 0.7{
+                    return true
+                }else{
+                    return false
+                }
+            case 8:
+                return false
+            default:
+                return false
+            }
+        case 2:
+            println("in case 2")
+            switch(secondIndex){
+            case 3:
+                if firstIndex/secondIndex > 0.714{
+                    return true
+                }else{
+                    return false
+                }
+            case 4:
+                if firstIndex/secondIndex > 0.83{
+                    return true
+                }else{
+                    return false
+                }
+            case 5:
+                if firstIndex/secondIndex > 0.769{
+                    return true
+                }else{
+                    return false
+                }
+            case 6:
+                if firstIndex/secondIndex > 0.714{
+                    return true
+                }else{
+                    return false
+                }
+            case 7:
+                if firstIndex/secondIndex > 1.0{
+                    return true
+                }else{
+                    return false
+                }
+            case 8:
+                return false
+            default:
+                return false
+            }
+        case 3:
+            println("in case 3")
+            switch(secondIndex){
+            case 4:
+                if firstIndex/secondIndex > 1.17{
+                    return true
+                }else{
+                    return false
+                }
+            case 5:
+                if firstIndex/secondIndex > 1.08{
+                    return true
+                }else{
+                    return false }
+            case 6:
+                if firstIndex/secondIndex > 1.0{
+                    return true
+                }else{
+                    return false }
+            case 7:
+                if firstIndex/secondIndex > 1.4{
+                    return true
+                }else{
+                    return false
+                }
+            case 8:
+                return false
+            default:
+                return false
+            }
+        case 4:
+            println("in case 4")
+            switch(secondIndex){
+            case 5:
+                if firstIndex/secondIndex > 0.93{
+                    return true
+                }else{
+                    return false
+                }
+            case 6:
+                if firstIndex/secondIndex > 0.857{
+                    return true
+                }else{
+                    return false
+                }
+            case 7:
+                if firstIndex/secondIndex > 1.2{
+                    return true
+                }else{
+                    return false
+                }
+            case 8:
+                return false
+            default:
+                return false
+            }
+        case 5:
+            println("in case 5")
+            switch(secondIndex){
+            case 6:
+                if firstIndex/secondIndex > 0.929{
+                    return true
+                }else{
+                    return false
+                }
+            case 7:
+                if firstIndex/secondIndex > 1.3{
+                    return true
+                }else{
+                    return false
+                }
+            case 8:
+                return false
+            default:
+                return false
+            }
+        case 6:
+            println("in case 6")
+            switch(secondIndex){
+            case 7:
+                if firstIndex/secondIndex > 1.4{
+                    return true
+                }else{
+                    return false
+                }
+            case 8:
+                return false
+            default:
+                return false
+            }
+        case 7:
+            println("in case 7")
+            return false
+        case 8:
+            return false
+        case 9:
+            return true
+        default:
+            println("in default")
+            return false
+        }
+    }
     static func returnAminoJudgement(tryp:Double,thre:Double,isol:Double,leuc:Double,lysi:Double,meth:Double,phen:Double,vali:Double,hist:Double)->(Bool,String,UIColor){
-        if(tryp/leuc>0.15 ){//&& tryp/leuc<0.35){
-            if(thre/leuc>0.4 ){//&& thre/leuc<0.6){
-                if(isol/leuc>0.61 ){//&& isol/leuc<0.81){
-                    if(lysi/leuc>0.76 ){//&& lysi/leuc<0.96){
-                        if(meth/leuc>0.83 ){//&& meth/leuc<1.03){
-                            if(phen/leuc>0.9 ){//&& phen/leuc<1.1){
-                                return(true,"Excellent balance!",UIColor.greenColor())
-                            }
-                            else if(phen/leuc<=0.9){
-                                return(false,"Phenylalanine",UIColor.yellowColor())
-                            }
-                        }
-                        else if(meth/leuc<=0.83){
-                            return(false,"Methionine",UIColor.yellowColor())
-                        }
-                    }
-                    else if(lysi/leuc<=0.76){
-                        return(false,"Lysine",UIColor.yellowColor())
-                    }
-                }
-                else if(isol/leuc<=0.61){
-                    return(false,"Isoleucine",UIColor.yellowColor())
-                }
+        aminos.append(tryp)
+        aminos.append(thre)
+        aminos.append(isol)
+        aminos.append(leuc)
+        aminos.append(lysi)
+        aminos.append(meth)
+        aminos.append(phen)
+        aminos.append(vali)
+        aminos.append(hist)
+        aminos.append(1000)
+        var indexOfLowest = 9
+        for i in 0..<aminos.count{
+            println("indexOfLowest\(indexOfLowest)")
+            if firstIsHigher(indexOfLowest,second: i){
+                indexOfLowest = i
             }
-            else if(thre/leuc<=0.4){
-                return(false,"Threonine",UIColor.yellowColor())
+            println("firstIsHigher(indexOfLowest,second: i)\(firstIsHigher(indexOfLowest,second: i))")
+        }
+        switch(indexOfLowest){
+        case 0:
+            if (tryp/leuc>0.15 ){
+                return(true,"Excellent balance!",UIColor.greenColor())
             }
+            else if tryp == 0{
+                return(false,"So-so balance",UIColor.redColor())
+            }
+            else{
+                return(false,"Tryptophan",UIColor.yellowColor())
+            }
+        case 1:
+            return(false,"Threonine",UIColor.yellowColor())
+        case 2:
+            return(false,"Isoleucine",UIColor.yellowColor())
+        case 4:
+            return(false,"Lysine",UIColor.yellowColor())
+        case 5:
+            return(false,"Methionine",UIColor.yellowColor())
+        case 6:
+            return(false,"Phenylalanine",UIColor.yellowColor())
+        case 7:
+            return(false,"Valine",UIColor.yellowColor())
+        case 8:
+            return(false,"Histidine",UIColor.yellowColor())
+        default:
+            return(false,"So-so balance",UIColor.redColor())
         }
-        else if(tryp/leuc<=0.15){
-            return(false,"Tryptophan",UIColor.yellowColor())
-        }
-        return(false,"So-so balance",UIColor.redColor())
+//        if(tryp/leuc>0.15 ){//&& tryp/leuc<0.35){
+//            if(thre/leuc>0.4 ){//&& thre/leuc<0.6){
+//                if(isol/leuc>0.61 ){//&& isol/leuc<0.81){
+//                    if(lysi/leuc>0.76 ){//&& lysi/leuc<0.96){
+//                        if(meth/leuc>0.83 ){//&& meth/leuc<1.03){
+//                            if(phen/leuc>0.9 ){//&& phen/leuc<1.1){
+//                                return(true,"Excellent balance!",UIColor.greenColor())
+//                            }
+//                            else if(phen/leuc<=0.9){
+//                                return(false,"Phenylalanine",UIColor.yellowColor())
+//                            }
+//                        }
+//                        else if(meth/leuc<=0.83){
+//                            return(false,"Methionine",UIColor.yellowColor())
+//                        }
+//                    }
+//                    else if(lysi/leuc<=0.76){
+//                        return(false,"Lysine",UIColor.yellowColor())
+//                    }
+//                }
+//                else if(isol/leuc<=0.61){
+//                    return(false,"Isoleucine",UIColor.yellowColor())
+//                }
+//            }
+//            else if(thre/leuc<=0.4){
+//                return(false,"Threonine",UIColor.yellowColor())
+//            }
+//        }
+//        else if(tryp/leuc<=0.15){
+//            return(false,"Tryptophan",UIColor.yellowColor())
+//        }
+//        return(false,"So-so balance",UIColor.redColor())
     }
     static func mapAminoNames(name:String)->String{
         switch(name){
