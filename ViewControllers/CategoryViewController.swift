@@ -20,10 +20,11 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     var selectedCat : String = ""
     var prevcell : UICollectionViewCell!
     let realm = Realm()
+    var alert = UIAlertController(title: "Warning! Database loading, please do not close the app.", message: "This will ONLY occur the FIRST time Amino Ally is opened. The first few categories will load more quickly.", preferredStyle: UIAlertControllerStyle.Alert)
     @IBOutlet weak var catView : UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        addAlertAction()
         // Do any additional setup after loading the view.
     }
 
@@ -90,10 +91,32 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "CategoryButtonTapped") {
 
+
             let FoodViewController = segue.destinationViewController as! SearchViewController
             assert(sender as? UICollectionViewCell != nil, "sender is not a collection view")
             var cell : UICollectionViewCell = sender as! UICollectionViewCell
             if let indexPath = self.catView?.indexPathForCell(cell) {
+                if(realm.objects(FoodInfo).count < 50){
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                else if(realm.objects(FoodInfo).count < 500 && indexPath.row > 4){
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                else if(realm.objects(FoodInfo).count < 1000 && indexPath.row > 6){
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                else if(realm.objects(FoodInfo).count < 1500 && indexPath.row > 8){
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                else if(realm.objects(FoodInfo).count < 2000 && indexPath.row > 9){
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                else if(realm.objects(FoodInfo).count < 2700 && indexPath.row > 11){
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                else if(realm.objects(FoodInfo).count < 3000 && indexPath.row > 14){
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
                 println("setting selectedCat")
                 if(realm.objects(Settings)[0].showMeat == true){
                     selectedCat = catArr[indexPath.section][indexPath.row]
@@ -107,5 +130,29 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
             println("Selected Category:\(selectedCat)")
             //FoodViewController.ingredients.append(addedFood)
         }
+    }
+    func addAlertAction(){
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+            switch action.style{
+            case .Default:
+                println("default")
+//                if IngredientHelper.ingredients.count > 0{
+//                    for i in 0..<IngredientHelper.ingredients.count{
+//                        IngredientHelper.ingredients.removeAtIndex(0)
+//                    }
+//                    self.aminoButton.hidden = true
+//                    self.ingredientTable.reloadData()
+//                    self.prepareOtherViews()
+//                    self.barChartView.reloadData()
+                    
+                //}
+                //self.tmpIngredient = nil
+            case .Cancel:
+                println("cancel")
+                
+            case .Destructive:
+                println("destructive")
+            }
+        }))
     }
 }
