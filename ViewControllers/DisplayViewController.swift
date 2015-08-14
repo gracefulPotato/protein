@@ -55,7 +55,8 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
         titleTextField.adjustsFontSizeToFitWidth = true
         barChartView.reloadData()
         displayFood(self.note)
-        var foodGroupImage = UIImageView(frame: CGRectMake(300, 150, 50, 50));
+        let (width, height) = widthHeight()
+        var foodGroupImage = UIImageView(frame: CGRectMake(width * 2 / 3, height / 4, 50, 50));
         foodGroupImage.image = UIImage(named: getImage(note!.group))
         self.view.addSubview(foodGroupImage);
         stepper.autorepeat = true
@@ -218,5 +219,11 @@ class DisplayViewController: UIViewController, JBBarChartViewDataSource, JBBarCh
         var ans = (num/100) * Double(multiplier)
         ans = ans - (ans % 0.001)
         return ans
+    }
+    func widthHeight() -> (CGFloat, CGFloat){
+        var sizeRect = UIScreen.mainScreen().applicationFrame
+        var width    = sizeRect.size.width
+        var height   = sizeRect.size.height
+        return (width, height)
     }
 }

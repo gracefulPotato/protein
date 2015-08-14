@@ -151,7 +151,7 @@ class HomeViewController: UIViewController, JBBarChartViewDataSource, JBBarChart
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FoodCell", forIndexPath: indexPath) as! FoodTableViewCell //1
-        
+        cell.backgroundColor = UIColor.clearColor()
         let row = indexPath.row
         if row < IngredientHelper.ingredients.count{
             let tmpIngred = IngredientHelper.ingredients[row]

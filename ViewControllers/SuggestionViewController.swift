@@ -32,11 +32,13 @@ class SuggestionViewController: UIViewController {
         //aminoButton.frame = CGRectMake(width/2 - 40, height - 30, 100, 50)
         //aminoButton.addTarget(self, action: "pressedAction:", forControlEvents: .TouchUpInside)
         //self.view.addSubview(aminoButton)
-        
-        var origImg = UIImageView(frame: CGRectMake(100, 350, 50, 50));
+        let (width, height) = widthHeight()
+        let yApprox = Int(2*height/3)//3*height/4-40)
+        var origImg = UIImageView(frame: CGRect(x:Int(width/4 - 25), y:yApprox, width:50, height:50));
         origImg.image = UIImage(named: displayVC.getImage(originalFood.group))
         self.view.addSubview(origImg)
         var tapGestureRecognizers : [UITapGestureRecognizer] = []
+        
         for i in 0..<imgNames.count{
             println("i: \(i)")
             var aminoButton = UIButton()
@@ -44,19 +46,20 @@ class SuggestionViewController: UIViewController {
             aminoButton.addTarget(self, action: "pressedAction:", forControlEvents: .TouchUpInside)
             //tapGestureRecognizers.append(UITapGestureRecognizer(target:self, action:Selector("imageTapped:")))
             //var matchImg : UIImageView
+            
             if i % 2 == 0{
                 println("i is even")
-                aminoButton.frame = CGRect(x:200, y:(350-60*(i/2)), width:50, height:50)
+                aminoButton.frame = CGRect(x:Int(3*width/4 - 25), y:Int(yApprox-60*(i/2)), width:50, height:50)
                 //matchImg.addGestureRecognizer(tapGestureRecognizers[i])
             }
             else{
                 println("i is odd")
                 if i == 3{
-                    aminoButton.frame = CGRect(x:200, y:(350+60*(i-1)), width:50, height:50)
+                    aminoButton.frame = CGRect(x:Int(3*width/4 - 25), y:Int(yApprox+60*(i-1)), width:50, height:50)
                     //matchImg.addGestureRecognizer(tapGestureRecognizers[i])
                 }
                 else{
-                    aminoButton.frame = CGRect(x:200, y:(350+60*i), width:50, height:50)
+                    aminoButton.frame = CGRect(x:Int(3*width/4 - 25), y:Int(yApprox+60*i), width:50, height:50)
                     //matchImg.addGestureRecognizer(tapGestureRecognizers[i])
                 }
             }
@@ -66,7 +69,7 @@ class SuggestionViewController: UIViewController {
             self.view.addSubview(aminoButton)
         }
         //println("tapGestureRecognizers.count\(tapGestureRecognizers.count)")
-        var plus = UIImageView(frame: CGRectMake(160, 360, 30, 30));
+        var plus = UIImageView(frame: CGRect(x:Int(width/2 - 25), y:Int(yApprox+10), width:30, height:30));
         plus.image = UIImage(named: "add.png")
         self.view.addSubview(plus)
         //textView.text = "Randomly generated suggestions:\n - <Food just viewed> and <Food from suggested category>"
@@ -170,5 +173,11 @@ class SuggestionViewController: UIViewController {
                 return ("Any high-protein food group","Peas_32.png Chicken_32.png pistachio.png Salami_32.png fish_32.png")
             }
         }
+    }
+    func widthHeight() -> (CGFloat, CGFloat){
+        var sizeRect = UIScreen.mainScreen().applicationFrame
+        var width    = sizeRect.size.width
+        var height   = sizeRect.size.height
+        return (width, height)
     }
 }

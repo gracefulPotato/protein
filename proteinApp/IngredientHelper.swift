@@ -87,50 +87,57 @@ class IngredientHelper: NSObject {
         }
     }
     static func firstIsHigher(first: Int, second: Int) -> Bool{
-        let firstIndex = Double(first)
-        let secondIndex = Double(second)
-        switch(firstIndex){
+        //let firstIndex = Double(first)
+        //let secondIndex = Double(second)
+        println("firstIndex\(first)")
+        println("secondIndex\(second)")
+
+        switch(first){
             
-            
-        case 0:
+            case 0:
             println("in case 0")
-            switch(secondIndex){
+            switch(second){
             case 1:
-                if firstIndex/secondIndex > 0.5{
+                println(aminos[first])
+                println(aminos)
+                println(aminos[first]/aminos[second])
+                if aminos[first]/aminos[second] > 0.3{
+                    println("first higher")
                     return true
                 }else{
+                    println("first lower")
                     return false }
             case 2:
-                if firstIndex/secondIndex > 0.35{
+                if aminos[first]/aminos[second] > 0.25{
                     return true
                 }else{
                     return false }
             case 3:
-                if firstIndex/secondIndex > 0.25{
+                if aminos[first]/aminos[second] > 0.15{
                     return true
                 }else{
                     return false
                 }
             case 4:
-                if firstIndex/secondIndex > 0.292{
+                if aminos[first]/aminos[second] > 0.192{
                     return true
                 }else{
                     return false
                 }
             case 5:
-                if firstIndex/secondIndex > 0.269{
+                if aminos[first]/aminos[second] > 0.169{
                     return true
                 }else{
                     return false
                 }
             case 6:
-                if firstIndex/secondIndex > 0.25{
+                if aminos[first]/aminos[second] > 0.15{
                     return true
                 }else{
                     return false
                 }
             case 7:
-                if firstIndex/secondIndex > 0.35{
+                if aminos[first]/aminos[second] > 0.35{
                     return true
                 }else{
                     return false
@@ -142,39 +149,39 @@ class IngredientHelper: NSObject {
             }
         case 1:
             println("in case 1")
-            switch(secondIndex){
+            switch(second){
             case 2:
-                if firstIndex/secondIndex > 0.7{
+                if aminos[first]/aminos[second] > 0.6{
                     return true
                 }else{
                     return false
                 }
             case 3:
-                if firstIndex/secondIndex > 0.5{
+                if aminos[first]/aminos[second] > 0.4{
                     return true
                 }else{
                     return false
                 }
             case 4:
-                if firstIndex/secondIndex > 0.583{
+                if aminos[first]/aminos[second] > 0.483{
                     return true
                 }else{
                     return false
                 }
             case 5:
-                if firstIndex/secondIndex > 0.538{
+                if aminos[first]/aminos[second] > 0.438{
                     return true
                 }else{
                     return false
                 }
             case 6:
-                if firstIndex/secondIndex > 0.5{
+                if aminos[first]/aminos[second] > 0.4{
                     return true
                 }else{
                     return false
                 }
             case 7:
-                if firstIndex/secondIndex > 0.7{
+                if aminos[first]/aminos[second] > 0.6{
                     return true
                 }else{
                     return false
@@ -186,33 +193,33 @@ class IngredientHelper: NSObject {
             }
         case 2:
             println("in case 2")
-            switch(secondIndex){
+            switch(second){
             case 3:
-                if firstIndex/secondIndex > 0.714{
+                if aminos[first]/aminos[second] > 0.614{
                     return true
                 }else{
                     return false
                 }
             case 4:
-                if firstIndex/secondIndex > 0.83{
+                if aminos[first]/aminos[second] > 0.73{
                     return true
                 }else{
                     return false
                 }
             case 5:
-                if firstIndex/secondIndex > 0.769{
+                if aminos[first]/aminos[second] > 0.669{
                     return true
                 }else{
                     return false
                 }
             case 6:
-                if firstIndex/secondIndex > 0.714{
+                if aminos[first]/aminos[second] > 0.614{
                     return true
                 }else{
                     return false
                 }
             case 7:
-                if firstIndex/secondIndex > 1.0{
+                if aminos[first]/aminos[second] > 0.9{
                     return true
                 }else{
                     return false
@@ -224,25 +231,25 @@ class IngredientHelper: NSObject {
             }
         case 3:
             println("in case 3")
-            switch(secondIndex){
+            switch(second){
             case 4:
-                if firstIndex/secondIndex > 1.17{
+                if aminos[first]/aminos[second] > 1.07{
                     return true
                 }else{
                     return false
                 }
             case 5:
-                if firstIndex/secondIndex > 1.08{
+                if aminos[first]/aminos[second] > 0.98{
                     return true
                 }else{
                     return false }
             case 6:
-                if firstIndex/secondIndex > 1.0{
+                if aminos[first]/aminos[second] > 0.9{
                     return true
                 }else{
                     return false }
             case 7:
-                if firstIndex/secondIndex > 1.4{
+                if aminos[first]/aminos[second] > 1.3{
                     return true
                 }else{
                     return false
@@ -254,21 +261,21 @@ class IngredientHelper: NSObject {
             }
         case 4:
             println("in case 4")
-            switch(secondIndex){
+            switch(second){
             case 5:
-                if firstIndex/secondIndex > 0.93{
+                if aminos[first]/aminos[second] > 0.83{
                     return true
                 }else{
                     return false
                 }
             case 6:
-                if firstIndex/secondIndex > 0.857{
+                if aminos[first]/aminos[second] > 0.757{
                     return true
                 }else{
                     return false
                 }
             case 7:
-                if firstIndex/secondIndex > 1.2{
+                if aminos[first]/aminos[second] > 1.1{
                     return true
                 }else{
                     return false
@@ -280,15 +287,15 @@ class IngredientHelper: NSObject {
             }
         case 5:
             println("in case 5")
-            switch(secondIndex){
+            switch(second){
             case 6:
-                if firstIndex/secondIndex > 0.929{
+                if aminos[first]/aminos[second] > 0.829{
                     return true
                 }else{
                     return false
                 }
             case 7:
-                if firstIndex/secondIndex > 1.3{
+                if aminos[first]/aminos[second] > 1.2{
                     return true
                 }else{
                     return false
@@ -300,9 +307,9 @@ class IngredientHelper: NSObject {
             }
         case 6:
             println("in case 6")
-            switch(secondIndex){
+            switch(second){
             case 7:
-                if firstIndex/secondIndex > 1.4{
+                if aminos[first]/aminos[second] > 1.3{
                     return true
                 }else{
                     return false
@@ -318,6 +325,7 @@ class IngredientHelper: NSObject {
         case 8:
             return false
         case 9:
+            println("in case 9")
             return true
         default:
             println("in default")
@@ -325,23 +333,25 @@ class IngredientHelper: NSObject {
         }
     }
     static func returnAminoJudgement(tryp:Double,thre:Double,isol:Double,leuc:Double,lysi:Double,meth:Double,phen:Double,vali:Double,hist:Double)->(Bool,String,UIColor){
-        aminos.append(tryp)
-        aminos.append(thre)
-        aminos.append(isol)
-        aminos.append(leuc)
-        aminos.append(lysi)
-        aminos.append(meth)
-        aminos.append(phen)
-        aminos.append(vali)
-        aminos.append(hist)
-        aminos.append(1000)
+        if(tryp != 0 || thre != 0 || isol != 0 || leuc != 0 || lysi != 0 || meth != 0 || phen != 0 || vali != 0 || hist != 0){
+            aminos.append(tryp)
+            aminos.append(thre)
+            aminos.append(isol)
+            aminos.append(leuc)
+            aminos.append(lysi)
+            aminos.append(meth)
+            aminos.append(phen)
+            aminos.append(vali)
+            aminos.append(hist)
+            aminos.append(1000)
+        }
         var indexOfLowest = 9
         for i in 0..<aminos.count{
             println("indexOfLowest\(indexOfLowest)")
             if firstIsHigher(indexOfLowest,second: i){
                 indexOfLowest = i
             }
-            println("firstIsHigher(indexOfLowest,second: i)\(firstIsHigher(indexOfLowest,second: i))")
+            //println("firstIsHigher(indexOfLowest,second: \(i))\(firstIsHigher(indexOfLowest,second: i))")
         }
         switch(indexOfLowest){
         case 0:
